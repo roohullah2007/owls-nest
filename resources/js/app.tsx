@@ -17,6 +17,7 @@ createInertiaApp({
             case name.startsWith('settings/'):
                 return [AppLayout, SettingsLayout];
             case name === 'dashboard':
+            case name.startsWith('admin/'):
                 return AppLayout;
             default:
                 // Public marketing pages provide their own <SiteLayout>; they

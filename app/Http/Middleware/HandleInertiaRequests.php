@@ -39,6 +39,9 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'name' => config('app.name'),
             'auth' => [
+                // is_admin is a real users column (boolean cast) and is not
+                // hidden, so it serializes onto the shared user automatically —
+                // the React sidebar reads it to gate the admin nav.
                 'user' => $request->user(),
             ],
             'flash' => [

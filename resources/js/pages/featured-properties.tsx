@@ -6,12 +6,22 @@ import { ListingsBrowser } from '@/components/site/sections/listings-browser';
 import { InstagramGrid } from '@/components/site/sections/instagram-grid';
 import { WorkWithUsBand } from '@/components/site/sections/work-with-us-band';
 import { FEATURED_LISTINGS } from '@/data/featured-listings';
+import type { Listing } from '@/types';
 
 const HERO_IMAGE =
     'https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1920&q=80';
 const WORK_WITH_US_IMAGE = '/images/featured-work-with-us.webp';
 
-export default function FeaturedProperties() {
+export default function FeaturedProperties({
+    listings,
+}: {
+    listings?: Listing[];
+}) {
+    // Live MLS results from the admin-configured Featured Listings settings;
+    // fall back to the static fixtures when none are available.
+    const featured =
+        listings && listings.length > 0 ? listings : FEATURED_LISTINGS;
+
     return (
         <SiteLayout>
             <Head title="Featured Properties - Owl's Nest Real Estate" />
@@ -46,7 +56,7 @@ export default function FeaturedProperties() {
                 className="bg-white pt-16 pb-20"
             >
                 <Container className="max-w-[1300px] lg:px-12">
-                    <ListingsBrowser listings={FEATURED_LISTINGS} />
+                    <ListingsBrowser listings={featured} />
                 </Container>
             </section>
 
