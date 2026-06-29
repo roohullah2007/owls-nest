@@ -178,17 +178,15 @@
    These are sitewide and intentionally NOT duplicated per component.
 --------------------------------------------------------------------------- */
 
-/* Prevent horizontal scroll + keep images fluid (RESPONSIVE-GUARD) */
+/* Prevent horizontal scroll (RESPONSIVE-GUARD).
+   NOTE: do NOT add a global `img { height: auto }` here — in Tailwind v4 an
+   unlayered rule overrides the `@layer utilities` height classes (h-10, h-full,
+   …), which made every image render at full size. Tailwind's preflight already
+   applies `img { max-width:100%; height:auto }` inside @layer base, so utilities
+   still win. */
 html,
 body {
     overflow-x: hidden;
-}
-img {
-    max-width: 100%;
-    height: auto;
-}
-img.absolute {
-    height: 100%;
 }
 
 /* Elegant zoom + shadow on content images sitewide (IMG-HOVER) */
