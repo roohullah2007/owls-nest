@@ -21,14 +21,14 @@ export default function Buyers() {
             <PageHero
                 eyebrow="Buyers"
                 title="Perfect Home Finder"
-                image="/assets/images/hero-buyers.jpg"
+                image="/images/hero-buyers.webp"
                 imageAlt="Waterfront homes at dusk"
             />
 
             {/* Confidence intro */}
             <ImageTextSplit
                 className="py-10 md:py-16"
-                image="/assets/images/64-fairway.jpg"
+                image="/images/64-fairway.webp"
                 imageAlt="A home in the White Mountains region"
                 eyebrow="🏡 Buy with Owl's Nest Real Estate"
                 title={
@@ -145,7 +145,7 @@ export default function Buyers() {
             <section
                 className="relative bg-cover bg-fixed bg-center"
                 style={{
-                    backgroundImage: "url('/assets/images/cta-home.jpg')",
+                    backgroundImage: "url('/images/cta-home.webp')",
                 }}
             >
                 <div className="absolute inset-0 bg-navy/60" />

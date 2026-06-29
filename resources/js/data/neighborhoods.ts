@@ -12,31 +12,31 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     {
         id: 'owls-nest-resort',
         name: "Owl's Nest Resort",
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/owl-s-nest-resort.jpg',
+        image: '/images/nb-owls-nest-resort.webp',
         href: '#',
     },
     {
         id: 'rumney-ridge',
         name: 'Rumney Ridge',
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/file_000000005a2471fd9de364c15aa7385c.png',
+        image: '/images/nb-rumney-ridge.webp',
         href: '#',
     },
     {
         id: 'waterville-valley',
         name: 'Waterville Valley',
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/Waterville_Valley_Town_Square_Village_Rd_New_Hampshire_-_panoramio-scaled.jpg',
+        image: '/images/nb-waterville-valley.webp',
         href: '#',
     },
     {
         id: 'lakes-region',
         name: 'Lakes Region',
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/Lakes-Region-NH.png',
+        image: '/images/nb-lakes-region.webp',
         href: '#',
     },
     {
         id: 'investment-properties',
         name: 'Investment Properties',
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/7xm.xyz685693.jpg',
+        image: '/images/nb-investment-properties.webp',
         href: '#',
     },
 ];

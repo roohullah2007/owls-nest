@@ -1,0 +1,89 @@
+/* Team member page — a thin layer over the shared block styles (Page Header
+   hero, .cb-* profile, .fl-* listings grids, CTA block). The page is
+   light-first: every content section keeps the blocks' white/neutral
+   defaults; no dark backdrops. */
+
+/* Portrait — a touch taller than the stock content-block image, pinned to the
+   top of its column (the content-block grid vertically centers by default). */
+.tm-photo {
+    height: 600px;
+    align-self: start;
+}
+
+/* Rich-text bio extras (lists/headings from the Team manager's editor). */
+.tm-profile .cb-body ul,
+.tm-profile .cb-body ol { margin: 0 0 14px; padding-left: 22px; }
+.tm-profile .cb-body li { margin: 0 0 6px; }
+.tm-profile .cb-body h2,
+.tm-profile .cb-body h3 {
+    color: #111315;
+    font-weight: 500;
+    margin: 18px 0 8px;
+}
+.tm-profile .cb-body h2 { font-size: 20px; }
+.tm-profile .cb-body h3 { font-size: 17px; }
+.tm-profile .cb-body a { color: var(--accent); }
+
+/* Contact rows — phone / email with a small outlined icon chip. */
+.tm-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0 0 24px;
+}
+.tm-contact-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: #111315;
+    font-size: 15px;
+    line-height: 22px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.tm-contact-row:hover { color: var(--accent); }
+.tm-contact-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #D1D5DB;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #111315;
+    flex: 0 0 auto;
+}
+.tm-contact-icon svg { width: 16px; height: 16px; }
+
+/* Social row — outlined circles, dark glyphs on white. */
+.tm-social {
+    display: flex;
+    gap: 12px;
+    margin: 0 0 28px;
+}
+.tm-social a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #D1D5DB;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #111315;
+    transition: border-color 0.2s, color 0.2s;
+}
+.tm-social a:hover { border-color: var(--accent); color: var(--accent); }
+.tm-social svg { width: 15px; height: 15px; }
+
+/* Listings sections reuse .fl-block; the eyebrow sits above the title. */
+.tm-listings .fl-head .cb-eyebrow { margin-bottom: 10px; }
+
+/* MLS compliance text on its own white band before the CTA. */
+.tm-compliance {
+    background: #FFFFFF;
+    padding: 8px 0 64px;
+}
+
+@media (max-width: 768px) {
+    .cb-image.tm-photo { height: 440px; }
+}

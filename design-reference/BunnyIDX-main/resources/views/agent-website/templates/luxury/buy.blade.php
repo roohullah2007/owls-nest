@@ -1,0 +1,8 @@
+@extends('agent-website.templates.luxury.layout')
+
+@section('nav-buy', 'active')
+
+{{-- Block-builder page — all content is composed from insertable blocks. --}}
+@section('content')
+@include('agent-website.partials.blocks-renderer', ['currentPage' => 'buy', 'slot' => 'default'])
+@endsection

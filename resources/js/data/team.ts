@@ -17,7 +17,7 @@ export const TEAM: TeamMember[] = [
         id: 'tom-dematteo',
         name: 'Tom DeMatteo',
         role: "Broker/Owner, Owl's Nest Real Estate",
-        photo: '/assets/images/team-tom.png',
+        photo: '/images/team-tom.webp',
         photoAlt: 'Tom DeMatteo',
         bio: [
             "Tom DeMatteo is the Broker/Owner of Owl's Nest Real Estate, a boutique firm based in New Hampshire's White Mountains, specializing in residential, land, and development opportunities throughout Campton, Thornton, Plymouth, and surrounding areas.",
@@ -30,7 +30,7 @@ export const TEAM: TeamMember[] = [
         id: 'dawn-assencoa',
         name: 'Dawn Assencoa',
         role: "Realtor® | Owl's Nest Real Estate",
-        photo: '/assets/images/team-dawn.png',
+        photo: '/images/team-dawn.webp',
         photoAlt: 'Dawn Assencoa',
         bio: [
             "Dawn Assencoa is a real estate professional with Owl's Nest Real Estate, bringing a strong work ethic and a practical, client-focused approach to every transaction. Now based in Plymouth, New Hampshire, she serves clients throughout the surrounding White Mountains region.",
@@ -42,7 +42,7 @@ export const TEAM: TeamMember[] = [
         id: 'mattie-boyle',
         name: 'Mattie Boyle',
         role: "Realtor® | Owl's Nest Real Estate",
-        photo: '/assets/images/team-mattie.jpeg',
+        photo: '/images/team-mattie.webp',
         photoAlt: 'Mattie Boyle',
         bio: [
             "Mattie Boyle is a dedicated real estate professional with Owl's Nest Real Estate. As a local expert in the White Mountains region, she specializes in helping clients navigate the unique opportunities within resort markets, vacation homes, and investment properties.",
@@ -54,7 +54,7 @@ export const TEAM: TeamMember[] = [
         id: 'enzo',
         name: 'Enzo',
         role: "Mascot | Owl's Nest Real Estate",
-        photo: '/assets/images/team-enzo.png',
+        photo: '/images/team-enzo.webp',
         photoAlt: 'Enzo, office mascot',
         imageClassName: 'object-top',
         bio: [

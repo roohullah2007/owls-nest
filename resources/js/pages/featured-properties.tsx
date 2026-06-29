@@ -9,8 +9,7 @@ import { FEATURED_LISTINGS } from '@/data/featured-listings';
 
 const HERO_IMAGE =
     'https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1920&q=80';
-const WORK_WITH_US_IMAGE =
-    'https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85/https://media-production.lp-cdn.com/media/86bbaba7-9587-4299-976a-8be65b6733d0';
+const WORK_WITH_US_IMAGE = '/images/featured-work-with-us.webp';
 
 export default function FeaturedProperties() {
     return (

@@ -1,0 +1,78 @@
+/* ── Visitor auth modal (Login / Register) — header-owned, outside .ps-app ── */
+.ps-auth-overlay {
+    position: fixed; inset: 0; z-index: 50000;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 9vh 16px 16px;
+    background: rgba(15, 17, 21, .55);
+    font-family: var(--ps-font, var(--ps-font-default));
+}
+/* display:flex above would defeat the `hidden` attribute — keep it authoritative
+   (this is how the modal opens/closes). */
+.ps-auth-overlay[hidden] { display: none; }
+
+/* Lead gating — the page renders blurred and inert behind the forced modal. */
+body.ps-gated main,
+body.ps-gated .site-footer { filter: blur(7px); pointer-events: none; user-select: none; }
+.ps-auth-gate-title { margin: 4px 0 4px; font-size: 19px; font-weight: 800; color: #111315; letter-spacing: -.01em; }
+.ps-auth-gate-sub { margin: 0 0 16px; font-size: 13px; color: #6b7280; }
+.ps-auth-modal {
+    position: relative;
+    width: min(420px, 100%);
+    background: #fff; border-radius: 18px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, .35);
+    padding: 22px 22px 20px;
+    box-sizing: border-box;
+}
+.ps-auth-modal *, .ps-auth-modal *::before, .ps-auth-modal *::after { box-sizing: border-box; }
+.ps-auth-close {
+    position: absolute; top: 12px; right: 12px;
+    width: 34px; height: 34px; border: 0; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent; color: #6b7280; cursor: pointer;
+}
+.ps-auth-close:hover { background: #f3f4f6; color: #111827; }
+.ps-auth-tabs { display: flex; gap: 4px; margin-bottom: 18px; border-bottom: 1px solid #e5e7eb; }
+.ps-auth-tabs button {
+    padding: 6px 14px 10px; border: 0; background: none; cursor: pointer;
+    font: inherit; font-size: 14px; font-weight: 600; color: #6b7280;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.ps-auth-tabs button.is-active { color: var(--ps-theme-primary, #0f1115); border-bottom-color: var(--ps-theme-primary, #0f1115); }
+.ps-auth-modal form { display: flex; flex-direction: column; gap: 12px; }
+.ps-auth-modal form[hidden] { display: none; }
+/* Google sign-in button + divider (shown only when platform keys exist). */
+.ps-auth-google {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    height: 44px; border: 1px solid #d1d5db; border-radius: 11px;
+    background: #fff; color: #1f2937; text-decoration: none;
+    font-size: 14px; font-weight: 600;
+}
+.ps-auth-google:hover { background: #f9fafb; }
+.ps-auth-or { display: flex; align-items: center; gap: 12px; margin: 14px 0; color: #9ca3af; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.ps-auth-or::before, .ps-auth-or::after { content: ''; flex: 1; height: 1px; background: #e5e7eb; }
+.ps-auth-modal form label { display: flex; flex-direction: column; gap: 5px; font-size: 12px; font-weight: 600; color: #4b5563; }
+.ps-auth-modal form input {
+    height: 42px; padding: 0 12px;
+    border: 1px solid #d1d5db; border-radius: 10px;
+    font: inherit; font-size: 14px; color: #111827; background: #fff;
+}
+.ps-auth-modal form input:focus { outline: none; border-color: var(--ps-theme-primary, #0f1115); box-shadow: 0 0 0 3px rgba(15, 17, 21, .08); }
+.ps-auth-error { margin: 0; font-size: 12.5px; font-weight: 600; color: #dc2626; }
+/* Marketing-consent checkbox + disclosure (TCPA-style, editor-overridable). */
+.ps-auth-consent {
+    flex-direction: row !important; align-items: flex-start; gap: 9px !important;
+    font-weight: 400 !important; cursor: pointer;
+}
+.ps-auth-consent input[type="checkbox"] { height: auto !important; width: 15px; margin-top: 2px; flex-shrink: 0; accent-color: var(--ps-theme-primary, #0f1115); }
+.ps-auth-consent span { font-size: 11px; line-height: 1.55; color: #6b7280; max-height: 110px; overflow-y: auto; }
+.ps-auth-consent strong { color: #374151; }
+.ps-auth-submit {
+    height: 44px; border: 0; border-radius: 11px; cursor: pointer;
+    background: var(--ps-theme-primary, #0f1115); color: #fff;
+    font: inherit; font-size: 14px; font-weight: 700;
+}
+.ps-auth-submit:hover { opacity: .92; }
+.ps-auth-submit:disabled { opacity: .6; cursor: default; }
+.ps-auth-switch { margin: 2px 0 0; font-size: 12.5px; color: #6b7280; text-align: center; }
+.ps-auth-switch button { border: 0; background: none; padding: 0; cursor: pointer; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--ps-theme-primary, #0f1115); text-decoration: underline; }
+

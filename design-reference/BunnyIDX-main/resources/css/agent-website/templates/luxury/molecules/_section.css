@@ -1,0 +1,26 @@
+/* Section container & text */
+.section {
+    padding: 100px 40px;
+}
+
+.section-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.section-text {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 600px;
+}

@@ -1,0 +1,127 @@
+/* Testimonials 3-col grid + cards */
+.testimonials-section {
+    background: var(--bg-alt);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 40px;
+    position: relative;
+}
+
+.testimonial-quote {
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-family: Georgia, serif;
+}
+
+.testimonial-text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text);
+}
+
+.testimonial-role {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+.testimonials-locked {
+    text-align: center;
+    padding: 60px 40px;
+    color: var(--text-dim);
+    font-size: 13px;
+}
+.testimonials-locked svg {
+    margin: 0 auto 12px;
+    opacity: 0.4;
+}
+
+/* ── Testimonials Slider ── */
+.testimonials-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-slider-track {
+    display: flex;
+    gap: 0;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonials-slider .testimonial-slide {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.testimonials-slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.testimonials-slider-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: all 0.2s;
+}
+
+.testimonials-slider-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.testimonials-slider-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.testimonials-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+}
+
+.testimonials-slider-dot.active {
+    background: var(--accent);
+    width: 24px;
+    border-radius: 4px;
+}

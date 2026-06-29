@@ -1,0 +1,19 @@
+/* Topbar language button (luxury theme). The picker modal, flag chips and
+   the Google Translate chrome-hiding rules are self-contained in
+   partials/translate-modal.blade.php so they work on every public layout. */
+.site-topbar-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.15s;
+}
+.site-topbar-lang:hover { opacity: 1; }

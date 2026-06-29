@@ -1,0 +1,180 @@
+/* Newsletter block (insertable) — two variants:
+   .nl-split     content left, image right
+   .nl-centered  centered content with an optional logo on top
+   Two themes: light (default — light grey bg, black text, black-bordered
+   button) and dark (black bg, white text). Namespaced .nl-*. */
+/* Section padding is shared (molecules/_block-layout.css); the container is
+   narrower here (1200px) so it stays local. */
+.nl-block {
+    /* Light theme (default) */
+    --nl-c-bg: #F3F4F6;
+    --nl-c-fg: #111315;
+    --nl-c-muted: #5F656D;
+    --nl-c-dim: #6B7280;
+    --nl-c-input-bg: #FFFFFF;
+    --nl-c-input-fg: #111315;
+    --nl-c-input-placeholder: #8B9096;
+    --nl-c-input-border: #D1D5DB;
+    --nl-c-btn-bg: transparent;
+    --nl-c-btn-fg: #111315;
+    --nl-c-btn-border: #111315;
+    --nl-c-btn-hover-fg: #FFFFFF;
+    background: var(--nl-bg, var(--nl-c-bg));
+}
+.nl-block.nl-theme-dark {
+    --nl-c-bg: #000000;
+    --nl-c-fg: #FFFFFF;
+    --nl-c-muted: rgba(255, 255, 255, 0.78);
+    --nl-c-dim: rgba(255, 255, 255, 0.55);
+    --nl-c-input-bg: rgba(255, 255, 255, 0.06);
+    --nl-c-input-fg: #FFFFFF;
+    --nl-c-input-placeholder: rgba(255, 255, 255, 0.5);
+    --nl-c-input-border: rgba(255, 255, 255, 0.3);
+    --nl-c-btn-bg: transparent;
+    --nl-c-btn-fg: #FFFFFF;
+    --nl-c-btn-border: #FFFFFF;
+    --nl-c-btn-hover-fg: #0A0A0A;
+}
+.nl-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Split */
+.nl-split {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: stretch;
+}
+.nl-split .nl-content {
+    align-self: center;
+}
+.nl-image {
+    overflow: hidden;
+    min-height: 400px;
+    background: var(--bg-card);
+}
+.nl-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Centered */
+.nl-centered {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+.nl-logo {
+    display: block;
+    max-width: 110px;
+    max-height: 96px;
+    object-fit: contain;
+    margin: 0 auto 28px;
+}
+.nl-centered .nl-form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Content */
+.nl-title {
+    font-family: var(--font-heading, var(--font));
+    color: var(--nl-fg, var(--nl-c-fg));
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.12;
+    letter-spacing: 0.01em;
+    margin: 0 0 16px;
+}
+.nl-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--nl-text, var(--nl-c-muted));
+    margin: 0 0 28px;
+}
+.nl-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+}
+.nl-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+/* Inline layout — inputs + button in one row (wraps on small screens). */
+.nl-form--inline { max-width: none; }
+.nl-form--inline .nl-fields {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.nl-form--inline .nl-input { flex: 1 1 180px; width: auto; }
+.nl-form--inline .nl-submit { flex: 0 0 auto; align-self: auto; }
+.nl-input {
+    width: 100%;
+    padding: 14px 22px;
+    border: 1px solid var(--nl-c-input-border);
+    border-radius: 9999px;
+    background: var(--nl-c-input-bg);
+    color: var(--nl-c-input-fg);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.nl-input::placeholder { color: var(--nl-c-input-placeholder); }
+.nl-input:focus { border-color: var(--accent); }
+/* Mirrors the template's outline button (.cb-buttons .btn.btn-outline +
+   .cb-btn-line) so newsletter CTAs match the rest of the site. */
+.nl-submit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    background: var(--nl-c-btn-bg);
+    color: var(--nl-c-btn-fg);
+    border: 1px solid var(--nl-c-btn-border);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.nl-btn-line {
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+    flex: 0 0 auto;
+}
+.nl-centered .nl-submit { align-self: center; }
+.nl-submit:hover { background: var(--nl-c-btn-fg); color: var(--nl-c-btn-hover-fg); }
+.nl-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--nl-c-dim);
+    text-align: left;
+}
+.nl-consent input { margin-top: 3px; flex-shrink: 0; }
+.nl-consent a { text-decoration: underline; color: inherit; }
+.nl-success {
+    padding: 16px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text);
+    font-size: 14px;
+}

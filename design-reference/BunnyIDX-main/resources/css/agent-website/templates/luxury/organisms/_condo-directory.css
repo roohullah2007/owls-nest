@@ -1,0 +1,691 @@
+/* Condo Directory (/condos) — WHITE like /blog and the community pages.
+   Buildings grouped by area with a client-side name search; cards link to
+   each building's page. The building page itself reuses ap-* (area page). */
+
+.cd-page {
+    background: #FFFFFF;
+    color: #111315;
+}
+
+/* Name search + total count */
+.cd-search {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 36px;
+}
+.cd-search input {
+    flex: 1;
+    max-width: 420px;
+    height: 48px;
+    padding: 0 18px;
+    border: 1px solid #D9DDE2;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #111315;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.cd-search input:focus { border-color: #111315; }
+.cd-search input::placeholder { color: #A6ACB3; }
+.cd-count { font-size: 13px; color: #8B9096; white-space: nowrap; }
+
+/* Filter bar (name search + Area / Price dropdowns + Grid|Map toggle) */
+.cd-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+}
+.cd-filters input,
+.cd-filters select {
+    height: 48px;
+    padding: 0 18px;
+    border: 1px solid #D9DDE2;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #111315;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.cd-filters input { flex: 1 1 240px; min-width: 200px; }
+.cd-filters input:focus,
+.cd-filters select:focus { border-color: #111315; }
+.cd-filters input::placeholder { color: #A6ACB3; }
+.cd-filters select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235F656D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    cursor: pointer;
+}
+.cd-filters + .cd-count { margin: 0 0 32px; }
+
+/* Custom dropdowns (Areas / Price) — a button + listbox over a hidden select */
+.cd-dd { position: relative; }
+.cd-dd-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 170px;
+    height: 48px;
+    padding: 0 18px;
+    border: 1px solid #D9DDE2;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #111315;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+.cd-dd-btn:hover,
+.cd-dd-btn[aria-expanded="true"] { border-color: #111315; }
+.cd-dd-btn span { flex: 1; text-align: left; white-space: nowrap; }
+.cd-dd-btn svg { width: 12px; height: 8px; color: #5F656D; transition: transform 0.15s; }
+.cd-dd-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+.cd-dd-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 30;
+    min-width: 100%;
+    max-height: 320px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: #FFFFFF;
+    border: 1px solid #E4E7EB;
+    border-radius: 12px;
+    box-shadow: 0 14px 40px rgba(17, 19, 21, 0.14);
+}
+.cd-dd-menu [role="option"] {
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: #3A3F45;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.12s, color 0.12s;
+}
+.cd-dd-menu [role="option"]:hover { background: #F3F4F6; color: #111315; }
+.cd-dd-menu [role="option"][aria-selected="true"] {
+    background: #111315;
+    color: #FFFFFF;
+}
+
+/* Grid | Map toggle */
+.cd-view-toggle {
+    display: inline-flex;
+    margin-left: auto;
+    border: 1px solid #D9DDE2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.cd-view-toggle button {
+    height: 46px;
+    padding: 0 22px;
+    border: 0;
+    background: #FFFFFF;
+    color: #5F656D;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+.cd-view-toggle button + button { border-left: 1px solid #D9DDE2; }
+.cd-view-toggle button:hover { color: #111315; }
+.cd-view-toggle button.is-active { background: #111315; color: #FFFFFF; }
+
+/* Map view */
+.cd-map {
+    height: 620px;
+    border: 1px solid #E4E7EB;
+    border-radius: 14px;
+    overflow: hidden;
+    z-index: 0;
+}
+.cd-pin-wrap { background: none; border: 0; }
+.cd-pin {
+    display: inline-block;
+    transform: translate(-50%, -100%);
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #111315;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(17, 19, 21, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: transform 0.12s;
+}
+.cd-pin:hover { transform: translate(-50%, -100%) scale(1.06); }
+.cd-map .leaflet-popup-content-wrapper { border-radius: 12px; padding: 0; overflow: hidden; }
+.cd-map .leaflet-popup-content { margin: 0; width: 260px !important; }
+.cd-pop { display: block; text-decoration: none; color: inherit; }
+.cd-pop img,
+.cd-pop-placeholder {
+    display: block;
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #F2F3F5 0%, #E4E7EB 100%);
+}
+.cd-pop-body { display: block; padding: 12px 14px 14px; }
+.cd-pop-body strong { display: block; font-size: 14px; font-weight: 600; color: #111315; margin: 0 0 3px; }
+.cd-pop-body span { display: block; font-size: 12px; color: #8B9096; }
+
+/* Area group */
+.cd-area { margin: 0 0 44px; }
+.cd-area-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 0 0 14px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid #E4E7EB;
+}
+.cd-area-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #111315;
+    margin: 0;
+}
+.cd-area-count { font-size: 12px; color: #8B9096; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* Building cards */
+.cd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+.cd-card {
+    display: block;
+    border: 1px solid #E4E7EB;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #FFFFFF;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.cd-card:hover {
+    border-color: #C8CCD1;
+    box-shadow: 0 10px 30px rgba(17, 19, 21, 0.08);
+    transform: translateY(-2px);
+}
+.cd-card-media {
+    aspect-ratio: 16 / 10;
+    background: #F2F3F5;
+}
+.cd-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.cd-card-placeholder { display: block; width: 100%; height: 100%; background: linear-gradient(135deg, #F2F3F5 0%, #E4E7EB 100%); }
+.cd-card-body { padding: 14px 16px 16px; }
+.cd-card-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111315;
+    margin: 0 0 4px;
+}
+.cd-card-addr {
+    font-size: 12px;
+    color: #8B9096;
+    margin: 0;
+}
+
+.cd-no-results { font-size: 14px; color: #8B9096; text-align: center; padding: 40px 0; }
+
+/* New Development project facts strip (status / developer / completion / pricing) */
+.nd-facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px 28px;
+    padding: 18px 26px;
+    margin: 0 0 36px;
+    border: 1px solid #E4E7EB;
+    border-radius: 14px;
+    background: #F8F9FA;
+}
+.nd-fact { display: flex; flex-direction: column; gap: 3px; }
+.nd-fact-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B9096;
+}
+.nd-fact-value { font-size: 14px; color: #111315; }
+
+/* Project logo leading the facts strip */
+.nd-facts-logo {
+    display: flex;
+    align-items: center;
+    padding-right: 28px;
+    border-right: 1px solid #E4E7EB;
+}
+.nd-facts-logo img { max-height: 52px; max-width: 160px; object-fit: contain; display: block; }
+
+/* Brochure download (right end of the facts strip) */
+.nd-facts-brochure { display: flex; align-items: center; margin-left: auto; }
+.nd-brochure-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid #111315;
+    border-radius: 999px;
+    background: #111315;
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+}
+.nd-brochure-btn:hover { background: #FFFFFF; color: #111315; }
+.nd-brochure-btn svg { width: 15px; height: 15px; }
+
+/* Primary action buttons under the facts strip */
+.nd-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 36px;
+}
+.nd-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 1px solid #111315;
+    border-radius: 999px;
+    background: #FFFFFF;
+    color: #111315;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+}
+.nd-action-btn:hover { background: #111315; color: #FFFFFF; }
+.nd-action-primary { background: #111315; color: #FFFFFF; }
+.nd-action-primary:hover { background: #FFFFFF; color: #111315; }
+
+/* Deposit schedule — numbered steps in the sidebar card */
+.nd-deposit {
+    list-style: none;
+    margin: 0;
+    padding: 0 22px 8px;
+}
+.nd-deposit li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #F0F1F3;
+    font-size: 13px;
+    color: #3A3F45;
+}
+.nd-deposit li:last-child { border-bottom: 0; }
+.nd-deposit-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: #111315;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* About the Developer */
+.nd-developer--logo {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+}
+.nd-developer-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    padding: 22px;
+    border-radius: 14px;
+    background: #111315;
+}
+.nd-developer-logo img { max-width: 100%; max-height: 72px; object-fit: contain; display: block; }
+.nd-developer-body {
+    max-width: 820px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #3A3F45;
+}
+@media (max-width: 640px) {
+    .nd-developer--logo { flex-direction: column; gap: 18px; }
+}
+
+/* Location — full-width map */
+.nd-map-section {
+    background: #FFFFFF;
+    padding: 0 0 0;
+}
+.nd-map-head { padding-bottom: 22px; }
+.nd-map-head .ap-section-title { margin-bottom: 4px; }
+.nd-map-addr { margin: 0; font-size: 14px; color: #8B9096; }
+.nd-map {
+    width: 100%;
+    height: 480px;
+    z-index: 0;
+}
+
+/* Legal disclaimer */
+.nd-disclaimer-section {
+    background: #FFFFFF;
+    padding: 36px 0 56px;
+}
+.nd-disclaimer {
+    margin: 0;
+    padding-top: 22px;
+    border-top: 1px solid #E4E7EB;
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: #8B9096;
+}
+.nd-disclaimer strong { color: #5F656D; }
+
+/* Project highlights — full-width section after the About copy */
+.nd-highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 10px 28px;
+}
+.nd-highlights li {
+    position: relative;
+    padding: 4px 0 4px 26px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #3A3F45;
+}
+.nd-highlights li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 14px;
+    height: 1px;
+    background: #111315;
+}
+
+/* Request Information modal */
+.nd-req-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(10, 10, 10, 0.7);
+}
+.nd-req-modal[hidden] { display: none; }
+.nd-req-card {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 32px;
+    color: #111315;
+}
+.nd-req-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #E4E7EB;
+    border-radius: 999px;
+    background: #FFFFFF;
+    color: #5F656D;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+}
+.nd-req-close:hover { color: #111315; border-color: #C8CCD1; }
+.nd-req-title {
+    margin: 0 0 4px;
+    font-family: var(--font-heading, var(--font));
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #111315;
+}
+.nd-req-sub { margin: 0 0 20px; font-size: 13px; color: #8B9096; }
+.nd-req-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.nd-req-field { margin: 0 0 14px; }
+.nd-req-field label {
+    display: block;
+    margin: 0 0 5px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8B9096;
+}
+.nd-req-field input,
+.nd-req-field textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #D9DDE2;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #111315;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+}
+.nd-req-field input:focus,
+.nd-req-field textarea:focus { border-color: #111315; }
+.nd-req-submit {
+    width: 100%;
+    padding: 13px 18px;
+    border: 1px solid #111315;
+    border-radius: 999px;
+    background: #111315;
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+.nd-req-submit:hover { background: #FFFFFF; color: #111315; }
+@media (max-width: 480px) {
+    .nd-req-row { grid-template-columns: 1fr; }
+    .nd-req-card { padding: 24px; }
+}
+
+/* Sticky VIP CTA (bottom-left) */
+.nd-vip-btn {
+    position: fixed;
+    left: 22px;
+    bottom: 22px;
+    z-index: 900;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: #111315;
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(17, 19, 21, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.nd-vip-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(17, 19, 21, 0.45); }
+.nd-vip-btn svg { width: 15px; height: 15px; }
+
+/* Key Building Details — label/value rows in the sidebar card */
+.nd-details { margin: 0; padding: 0 22px 6px; }
+.nd-detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid #F0F1F3;
+}
+.nd-detail:last-child { border-bottom: 0; }
+.nd-detail dt { font-size: 12.5px; color: #8B9096; margin: 0; }
+.nd-detail dd { font-size: 13px; color: #111315; font-weight: 500; margin: 0; text-align: right; }
+
+/* Gallery grid */
+.nd-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+}
+.nd-gallery-item {
+    display: block;
+    padding: 0;
+    border: 1px solid #E4E7EB;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #F2F3F5;
+    cursor: zoom-in;
+    aspect-ratio: 4 / 3;
+    transition: box-shadow 0.15s, transform 0.15s;
+}
+.nd-gallery-item:hover { box-shadow: 0 10px 30px rgba(17, 19, 21, 0.12); transform: translateY(-2px); }
+.nd-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Floor plan cards */
+.nd-floorplans {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+}
+.nd-floorplan {
+    display: block;
+    padding: 0;
+    border: 1px solid #E4E7EB;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #FFFFFF;
+    cursor: zoom-in;
+    text-align: left;
+    transition: box-shadow 0.15s, transform 0.15s;
+}
+.nd-floorplan:hover { box-shadow: 0 10px 30px rgba(17, 19, 21, 0.12); transform: translateY(-2px); }
+.nd-floorplan-media { display: block; aspect-ratio: 4 / 3; background: #F8F9FA; }
+.nd-floorplan-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.nd-floorplan-label {
+    display: block;
+    padding: 10px 14px;
+    border-top: 1px solid #F0F1F3;
+    font-size: 13px;
+    font-weight: 500;
+    color: #111315;
+}
+
+/* Lightbox (gallery + floor plans) */
+.nd-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 10, 10, 0.92);
+}
+/* display:flex above would defeat the hidden attribute — keep it authoritative. */
+.nd-lightbox[hidden] { display: none; }
+.nd-lightbox figure { margin: 0; max-width: min(1100px, 88vw); text-align: center; }
+.nd-lightbox img {
+    max-width: 100%;
+    max-height: 82vh;
+    border-radius: 8px;
+    background: #FFFFFF;
+}
+.nd-lightbox figcaption { margin-top: 12px; font-size: 13px; color: rgba(255, 255, 255, 0.75); }
+.nd-lb-close,
+.nd-lb-nav {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.nd-lb-close:hover,
+.nd-lb-nav:hover { background: rgba(255, 255, 255, 0.2); }
+.nd-lb-close { top: 22px; right: 22px; }
+.nd-lb-prev { left: 22px; top: 50%; transform: translateY(-50%); }
+.nd-lb-next { right: 22px; top: 50%; transform: translateY(-50%); }
+
+@media (max-width: 640px) {
+    .nd-facts-logo { padding-right: 0; border-right: 0; }
+    .nd-facts-brochure { margin-left: 0; }
+    .nd-lb-prev { left: 10px; }
+    .nd-lb-next { right: 10px; }
+}
+
+@media (max-width: 640px) {
+    .cd-search { flex-direction: column; align-items: stretch; gap: 8px; }
+    .cd-search input { max-width: none; }
+    .cd-filters { flex-direction: column; align-items: stretch; }
+    .cd-filters input { min-width: 0; }
+    .cd-view-toggle { margin-left: 0; }
+    .cd-view-toggle button { flex: 1; }
+    .cd-map { height: 480px; }
+    .nd-actions { flex-direction: column; }
+    .nd-action-btn { justify-content: center; }
+    .nd-map { height: 360px; }
+    .nd-vip-btn { left: 14px; bottom: 14px; }
+}

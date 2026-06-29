@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Left hand -->
+  <g transform="translate(10, 20) rotate(-15, 40, 64)">
+    <!-- Palm -->
+    <rect x="24" y="50" width="32" height="38" rx="10" fill="#F6AD55"/>
+    <!-- Thumb -->
+    <rect x="52" y="56" width="10" height="20" rx="5" fill="#F6AD55"/>
+    <!-- Fingers -->
+    <rect x="26" y="22" width="8" height="32" rx="4" fill="#F6AD55"/>
+    <rect x="36" y="18" width="8" height="36" rx="4" fill="#F6AD55"/>
+    <rect x="46" y="22" width="8" height="32" rx="4" fill="#F6AD55"/>
+    <rect x="16" y="30" width="8" height="26" rx="4" fill="#F6AD55"/>
+  </g>
+  <!-- Right hand -->
+  <g transform="translate(60, 20) rotate(15, 40, 64) scale(-1,1) translate(-80,0)">
+    <rect x="24" y="50" width="32" height="38" rx="10" fill="#FBD38D"/>
+    <rect x="52" y="56" width="10" height="20" rx="5" fill="#FBD38D"/>
+    <rect x="26" y="22" width="8" height="32" rx="4" fill="#FBD38D"/>
+    <rect x="36" y="18" width="8" height="36" rx="4" fill="#FBD38D"/>
+    <rect x="46" y="22" width="8" height="32" rx="4" fill="#FBD38D"/>
+    <rect x="16" y="30" width="8" height="26" rx="4" fill="#FBD38D"/>
+  </g>
+  <!-- Impact lines -->
+  <line x1="64" y1="8" x2="64" y2="18" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+  <line x1="44" y1="12" x2="48" y2="20" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+  <line x1="84" y1="12" x2="80" y2="20" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+  <!-- Sparkle dots -->
+  <circle cx="36" cy="8" r="3" fill="#FFD700"/>
+  <circle cx="92" cy="8" r="3" fill="#FFD700"/>
+  <circle cx="64" cy="2" r="2" fill="#FFD700"/>
+</svg>

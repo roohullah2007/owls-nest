@@ -1,0 +1,79 @@
+/* Button base & variants */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border: 1.5px solid;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+/* Hero buttons — rounded-full white pill, 12px, no letter spacing */
+.hero-buttons .btn {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+.btn-white {
+    border-color: #FFFFFF;
+    background: #FFFFFF;
+    color: #0A0A0A;
+}
+.btn-white:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-white-outline {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: transparent;
+    color: #FFFFFF;
+}
+.btn-white-outline:hover {
+    border-color: #FFFFFF;
+    background: #FFFFFF;
+    color: #0A0A0A;
+}
+
+.btn-outline-white {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: #FFFFFF;
+}
+.btn-outline-white:hover {
+    border-color: #FFFFFF;
+    background: #FFFFFF;
+    color: #0A0A0A;
+}
+
+.btn-accent {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #FFFFFF;
+}
+.btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.btn-outline {
+    border-color: var(--accent);
+    background: transparent;
+    color: var(--accent);
+}
+.btn-outline:hover {
+    background: var(--accent);
+    color: #FFFFFF;
+}

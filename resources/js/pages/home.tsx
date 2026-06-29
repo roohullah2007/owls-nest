@@ -129,7 +129,7 @@ export default function Home() {
             <FeaturedListings />
 
             <ImageTextSplit
-                image="https://owlsnestrealestate.com/wp-content/uploads/2026/05/pexels-cottonbro-4569340-1536x1024.jpg"
+                image="/images/home-about.webp"
                 imageAlt="A family unpacking moving boxes in their new home"
                 eyebrow="About"
                 title="Owl's Nest Real Estate"
@@ -174,7 +174,7 @@ export default function Home() {
             <TestimonialsCarousel testimonials={TESTIMONIALS} />
 
             <WorkWithUsBand
-                image="/assets/images/hero-communities.jpg"
+                image="/images/hero-communities.webp"
                 eyebrow="Work With Us"
                 title="Owl's Nest Real Estate"
                 description="Their work ethic and enthusiasm are grounded in a corporate sales discipline and hospitality industry background. They routinely go above and beyond to exceed their clients' expectations in the New Hampshire residential real estate market."

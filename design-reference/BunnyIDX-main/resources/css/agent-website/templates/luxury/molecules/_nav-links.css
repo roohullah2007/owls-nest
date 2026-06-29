@@ -1,0 +1,162 @@
+/* Navigation link list & underline animation */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+}
+
+/* Menu alignment (default right) */
+body.menu-align-right .nav-links {
+    margin-left: auto;
+}
+body.menu-align-center .nav-links {
+    margin: 0 auto;
+}
+body.menu-align-left .nav-links {
+    margin-right: auto;
+}
+
+.nav-links > li {
+    position: relative;
+}
+
+.nav-links a {
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap; /* two-line items ("MEET THE TEAM") break the row's vertical rhythm */
+    color: #FFFFFF;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.nav-links a:hover,
+.site-nav.scrolled .nav-links a:hover {
+    color: #D1D5DB;
+}
+
+/* Header is always dark — keep links white (incl. on scroll). */
+.site-nav.scrolled .nav-links a {
+    color: #FFFFFF;
+}
+
+.site-nav.scrolled .nav-links a.active {
+    color: #D1D5DB;
+}
+
+/* Nav dropdown */
+.nav-dropdown-parent {
+    position: relative;
+}
+
+/* Chevron on dropdown parents — rotates open on hover. */
+.nav-dropdown-parent > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.nav-chevron {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: transform 0.2s;
+}
+.nav-dropdown-parent:hover .nav-chevron {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    padding: 8px 0;
+    margin-top: 12px;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+    transform: translateY(4px);
+    z-index: 200;
+}
+
+.nav-dropdown-parent:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-dropdown li a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #1f2937 !important;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+
+.nav-dropdown li a:hover {
+    background: #f5f5f5;
+    color: var(--accent) !important;
+}
+
+.nav-dropdown-more a {
+    font-weight: 500 !important;
+    color: var(--accent) !important;
+    border-top: 1px solid #eee;
+    margin-top: 4px;
+    padding-top: 12px !important;
+}
+
+/* The trailing "More" dropdown sits near the right edge — open it leftward. */
+.nav-dropdown--right {
+    left: auto;
+    right: 0;
+}
+
+/* Long single-column dropdowns scroll rather than run off the screen. */
+.nav-dropdown-cols-1 {
+    max-height: min(70vh, 480px);
+    overflow-y: auto;
+}
+
+/* Long dropdowns fan into a centered multi-column "mega" panel so they stay
+   on-screen. Width is fixed per column count; it clamps to the viewport and the
+   grid reflows on narrow screens. Centered under the parent to avoid edge overflow. */
+.nav-dropdown-mega {
+    display: grid;
+    gap: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    max-width: calc(100vw - 32px);
+    max-height: min(70vh, 520px);
+    overflow-y: auto;
+}
+.nav-dropdown-parent:hover .nav-dropdown-mega {
+    transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-cols-2 {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+    width: 480px;
+}
+.nav-dropdown-cols-3 {
+    grid-template-columns: repeat(3, minmax(170px, 1fr));
+    width: 700px;
+}
+.nav-dropdown-mega li a {
+    white-space: normal;
+}
+/* The "View All" footer spans the full panel width. */
+.nav-dropdown-mega .nav-dropdown-more {
+    grid-column: 1 / -1;
+}

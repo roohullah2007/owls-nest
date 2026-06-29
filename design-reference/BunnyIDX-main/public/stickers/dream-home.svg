@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- House body -->
+  <rect x="28" y="62" width="72" height="50" rx="4" fill="#FBB6CE"/>
+  <!-- Roof -->
+  <polygon points="22,64 64,26 106,64" fill="#ED64A6"/>
+  <!-- Door -->
+  <rect x="52" y="82" width="24" height="30" rx="3" fill="#B83280"/>
+  <circle cx="70" cy="98" r="2.5" fill="#FFD700"/>
+  <!-- Windows -->
+  <rect x="34" y="72" width="14" height="14" rx="3" fill="#FFF5F7"/>
+  <line x1="41" y1="72" x2="41" y2="86" stroke="#ED64A6" stroke-width="1.5"/>
+  <line x1="34" y1="79" x2="48" y2="79" stroke="#ED64A6" stroke-width="1.5"/>
+  <rect x="80" y="72" width="14" height="14" rx="3" fill="#FFF5F7"/>
+  <line x1="87" y1="72" x2="87" y2="86" stroke="#ED64A6" stroke-width="1.5"/>
+  <line x1="80" y1="79" x2="94" y2="79" stroke="#ED64A6" stroke-width="1.5"/>
+  <!-- Chimney -->
+  <rect x="82" y="30" width="12" height="24" rx="2" fill="#B83280"/>
+  <!-- Big heart above -->
+  <path d="M64,8 C64,8 52,-2 42,8 C32,18 42,30 64,44 C86,30 96,18 86,8 C76,-2 64,8 64,8Z" fill="#E53E3E" opacity="0.9"/>
+  <!-- Little hearts -->
+  <path d="M20,40 C20,40 16,36 13,40 C10,44 16,48 20,52 C24,48 30,44 27,40 C24,36 20,40 20,40Z" fill="#FC8181" opacity="0.7"/>
+  <path d="M108,44 C108,44 104,40 101,44 C98,48 104,52 108,56 C112,52 118,48 115,44 C112,40 108,44 108,44Z" fill="#FC8181" opacity="0.7"/>
+</svg>

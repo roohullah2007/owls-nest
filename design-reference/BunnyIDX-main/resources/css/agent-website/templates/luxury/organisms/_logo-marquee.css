@@ -1,0 +1,66 @@
+/* Logo marquee (insertable) — a seamless, infinitely-scrolling row of logos.
+   The track holds the logo set twice and animates by -50% so it loops with no
+   seam. Optional monochrome filter; pauses on hover. */
+.logo-marquee {
+    overflow: hidden;
+    padding: 40px 0;
+    background: var(--bg);
+}
+.logo-marquee-title {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 0 0 28px;
+    padding: 0 24px;
+}
+.logo-marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: logoMarquee var(--logo-speed, 30s) linear infinite;
+}
+.logo-marquee:hover .logo-marquee-track {
+    animation-play-state: paused;
+}
+.logo-marquee-item {
+    flex: 0 0 auto;
+    margin: 0 48px;
+}
+.logo-marquee-item img {
+    height: 56px;
+    width: 150px;
+    object-fit: contain;
+    display: block;
+}
+.logo-marquee-item-placeholder {
+    height: 56px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--border);
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.logo-marquee-mono .logo-marquee-item img {
+    filter: grayscale(1) brightness(0);
+    opacity: 0.65;
+    transition: opacity 0.2s;
+}
+.logo-marquee-mono .logo-marquee-item:hover img {
+    opacity: 1;
+}
+
+@keyframes logoMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .logo-marquee-track { animation: none; flex-wrap: wrap; justify-content: center; }
+}

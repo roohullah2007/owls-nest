@@ -1,0 +1,23 @@
+/* CSS Custom Properties — single theme palette (no dark mode).
+   These are the template's fixed colors; there is no light/dark scheme toggle. */
+:root {
+    --font: 'Roboto Flex', 'Manrope', sans-serif;
+    --font-heading: 'Roboto Flex', sans-serif;
+
+    /* Palette */
+    --bg: #0A0A0A;
+    --bg-alt: #141414;
+    --bg-card: #1A1A1A;
+    --text: #FFFFFF;
+    --text-muted: #E5E5E5;
+    --text-dim: #BFBFBF;
+    --border: #2A2A2A;
+    --accent: #111315;
+    /* Solid CTA / button color the shared property-search UI uses (theme primary). */
+    --search-primary: #0A0A0A;
+    --accent-hover: #000000;
+    --hero-overlay: rgba(0, 0, 0, 0.55);
+    --nav-bg: rgba(10, 10, 10, 0.8);
+    --nav-border: rgba(255, 255, 255, 0.06);
+    --footer-bg: #050505;
+}

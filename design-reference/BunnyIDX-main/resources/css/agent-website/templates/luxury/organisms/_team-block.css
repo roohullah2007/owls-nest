@@ -1,0 +1,196 @@
+/* Team block (insertable) — agent team members as a grid or, in the slider
+   layout, a left heading/arrows column beside a horizontal scroll of cards.
+   Namespaced .team-block* to avoid collisions. */
+/* Layout primitives (section padding, .team-block-inner container, the slider
+   grid and scroll track) are shared — see molecules/_block-layout.css. */
+.team-block {
+    background: var(--bg);
+}
+
+/* Optional social row (top right) */
+.team-block-social {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+.team-block-social a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #9CA3AF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--team-fg, #111315);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.team-block-social a:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+.team-block-social svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Headings & view-all */
+.team-block-title {
+    font-family: var(--font-heading, var(--font));
+    color: var(--team-fg, #111315);
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 60px;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin: 0 0 28px;
+}
+.team-block-viewall {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--team-fg, #111315);
+    color: var(--team-fg, #111315);
+    border-radius: 9999px;
+    padding: 12px 28px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: background 0.25s, color 0.25s;
+}
+.team-block-viewall:hover {
+    background: #000;
+    color: #fff;
+}
+.team-block-viewall-line {
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+}
+
+/* Card */
+.team-block-card {
+    width: 288px;
+    flex: 0 0 auto;
+}
+.team-block-grid .team-block-card {
+    width: auto;
+}
+.team-block-img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: var(--bg-card);
+}
+.team-block-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.team-block-card:hover .team-block-img img {
+    transform: scale(1.04);
+}
+/* .team-block-img-placeholder — shared, see molecules/_block-layout.css */
+.team-block-first {
+    color: var(--team-fg, #111315);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0;
+}
+.team-block-last {
+    font-family: var(--font-heading, var(--font));
+    color: var(--team-fg, #111315);
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+}
+.team-block-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #9CA3AF;
+    border-radius: 9999px;
+    padding: 6px 16px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 300;
+    color: var(--team-fg, #111315);
+    text-transform: uppercase;
+}
+.team-block-role svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Slider layout — heading/arrows column + horizontal scroll of cards.
+   (.team-block-slider grid and .team-block-track are shared primitives.) */
+.team-block-aside {
+    display: flex;
+    flex-direction: column;
+}
+.team-block-arrows {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 48px;
+}
+.team-block-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #9CA3AF;
+    background: transparent;
+    color: var(--team-fg, #111315);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.team-block-arrow:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+.team-block-track .team-block-card {
+    scroll-snap-align: start;
+}
+
+/* Grid layout */
+.team-block-head {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+}
+.team-block-head .team-block-title {
+    margin: 0;
+}
+.team-block-head-center {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.team-block-head-right {
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+.team-block-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}

@@ -1,0 +1,31 @@
+/* Form inputs, textareas, selects */
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: var(--accent);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--text-dim);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}

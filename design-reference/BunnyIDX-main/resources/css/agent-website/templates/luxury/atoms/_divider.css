@@ -1,0 +1,7 @@
+/* Horizontal accent divider */
+.divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 24px 0;
+}

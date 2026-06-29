@@ -1,0 +1,241 @@
+/*
+ | Calculator blocks — GLOBAL, theme-agnostic styles (lives under css/agent-website/
+ | blocks/, NOT under any template). Shared by every template; each one imports this
+ | file from its own main.css. The only things adopted from the active template are
+ | the fonts (--font / --font-heading) and the brand accent (--accent) — everything
+ | else is the block's own neutral light/dark palette. One namespace (.calc-*) with
+ | a light + dark theme; logic is global in partials/calculators-script.blade.php.
+ */
+.calc-block {
+    --calc-bg: #ffffff;
+    --calc-fg: #111315;
+    --calc-muted: #5F656D;
+    --calc-border: #E4E7EB;
+    --calc-card: #ffffff;
+    --calc-accent: var(--accent, #111315);
+    /* Inputs — grey pills like the contact form (.ctc-field input). */
+    --calc-input-bg: #F3F4F6;
+    --calc-input-fg: #111315;
+    --calc-input-ph: #9AA0A6;
+    --calc-focus-border: rgba(0, 0, 0, 0.4);
+    --calc-focus-ring: rgba(0, 0, 0, 0.25);
+    /* Result card — light grey in the light theme (not black). */
+    --calc-result-bg: #F3F4F6;
+    --calc-result-fg: #111315;
+    --calc-result-muted: #8B9096;
+    --calc-result-border: #E4E7EB;
+    --calc-result-val: #111315;
+    background: var(--calc-bg);
+    color: var(--calc-fg);
+    font-family: var(--font);
+    padding: 96px 0;
+}
+.calc-block.calc-theme-dark {
+    --calc-bg: #0A0A0A;
+    --calc-fg: #ffffff;
+    --calc-muted: #BFBFBF;
+    --calc-border: #2A2A2A;
+    --calc-card: #141414;
+    --calc-input-bg: rgba(255, 255, 255, 0.06);
+    --calc-input-fg: #ffffff;
+    --calc-input-ph: rgba(255, 255, 255, 0.45);
+    --calc-focus-border: rgba(255, 255, 255, 0.4);
+    --calc-focus-ring: rgba(255, 255, 255, 0.2);
+    --calc-card: #1A1A1A;
+    --calc-result-bg: #141414;
+    --calc-result-fg: #ffffff;
+    --calc-result-muted: #BFBFBF;
+    --calc-result-border: #2A2A2A;
+    --calc-result-val: #ffffff;
+}
+
+.calc-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.calc-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+.calc-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--calc-accent); margin: 0 0 14px;
+}
+/* Heading — matches the template's block headings (.cb-heading): heading font,
+   light weight, uppercase, subtle tracking. */
+.calc-title {
+    font-family: var(--font-heading, var(--font));
+    font-size: 38px; line-height: 1.15; font-weight: 400;
+    letter-spacing: 0.01em; text-transform: uppercase;
+    color: var(--calc-fg); margin: 0;
+}
+.calc-sub { margin: 16px 0 0; font-size: 16px; line-height: 1.75; color: var(--calc-muted); }
+
+.calc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: start; }
+
+/* Inputs card */
+.calc-form {
+    background: var(--calc-card);
+    border: 1px solid var(--calc-border);
+    border-radius: 20px;
+    padding: 32px;
+}
+.calc-field { margin-bottom: 22px; }
+.calc-field:last-child { margin-bottom: 0; }
+/* Sub-section header inside an inputs card (e.g. Rent vs Buy: Buying / Renting). */
+.calc-group {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--calc-accent); margin: 28px 0 16px; padding-top: 22px;
+    border-top: 1px solid var(--calc-border);
+}
+.calc-group:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+/* Label — matches .ctc-field label: uppercase, light weight, 12px. */
+.calc-label {
+    display: block; font-size: 12px; font-weight: 300; line-height: 16px;
+    text-transform: uppercase; color: var(--calc-fg); margin-bottom: 8px;
+}
+.calc-input-wrap { position: relative; }
+.calc-input-prefix, .calc-input-suffix {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    color: var(--calc-muted); font-size: 14px; pointer-events: none;
+}
+.calc-input-prefix { left: 22px; }
+.calc-input-suffix { right: 22px; }
+/* Input — grey pill, transparent border, focus ring (matches the contact form). */
+.calc-input {
+    width: 100%;
+    background: var(--calc-input-bg);
+    border: 1px solid transparent; border-radius: 9999px;
+    padding: 15px 22px; font-family: var(--font);
+    font-size: 14px; line-height: 20px; color: var(--calc-input-fg);
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.calc-input::placeholder { color: var(--calc-input-ph); }
+.calc-input.has-prefix { padding-left: 34px; }
+.calc-input:focus { outline: none; border-color: var(--calc-focus-border); box-shadow: 0 0 0 1px var(--calc-focus-ring); }
+.calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.calc-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.calc-segment { display: flex; gap: 8px; flex-wrap: wrap; }
+.calc-seg-btn {
+    flex: 1; min-width: 52px; height: 50px;
+    border: 1px solid transparent; border-radius: 9999px;
+    background: var(--calc-input-bg); color: var(--calc-muted);
+    font-family: var(--font); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s;
+}
+.calc-seg-btn.active { background: var(--calc-accent); color: #fff; }
+
+/* Result card */
+.calc-result {
+    position: sticky; top: 110px;
+    background: var(--calc-result-bg); color: var(--calc-result-fg);
+    border-radius: 20px; padding: 36px 32px; text-align: center;
+}
+.calc-result-label {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--calc-result-muted);
+}
+.calc-result-amount {
+    font-family: var(--font-heading, var(--font));
+    font-size: 48px; font-weight: 400; letter-spacing: 0.01em;
+    margin: 12px 0 6px; line-height: 1.08;
+}
+.calc-result-amount span { font-size: 18px; color: var(--calc-result-muted); font-weight: 500; }
+.calc-result-note { font-size: 12px; color: var(--calc-result-muted); }
+.calc-result-amount.is-good { color: #1A9D5F; }
+.calc-result-amount.is-bad { color: #D14343; }
+
+.calc-breakdown { margin-top: 28px; border-top: 1px solid var(--calc-result-border); padding-top: 20px; text-align: left; }
+.calc-break-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; font-size: 14px; }
+.calc-break-row + .calc-break-row { border-top: 1px solid var(--calc-result-border); }
+.calc-break-row.is-total { margin-top: 6px; border-top: 1px solid var(--calc-result-border); padding-top: 14px; font-size: 15px; font-weight: 600; }
+.calc-break-key { display: flex; align-items: center; gap: 10px; color: var(--calc-result-muted); }
+.calc-break-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+.calc-break-val { font-weight: 600; color: var(--calc-result-val); }
+
+.calc-cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    width: 100%; margin-top: 28px; padding: 16px 28px; border-radius: 9999px;
+    background: var(--calc-accent); color: #fff;
+    font-family: var(--font); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase; transition: opacity 0.2s;
+}
+.calc-cta:hover { opacity: 0.85; }
+.calc-disclaimer {
+    max-width: 1100px; margin: 28px auto 0; padding: 0 24px;
+    font-size: 12px; line-height: 1.7; color: var(--calc-muted);
+}
+
+/* ── Per-calculator identity ──────────────────────────────────────────────
+   A colour-coded chip in the head so each calculator reads as its own tool. */
+.calc-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 16px; margin-bottom: 16px; border-radius: 9999px;
+    font-family: var(--font); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+}
+.calc-chip svg { width: 15px; height: 15px; }
+.calc-mortgage .calc-chip { background: #E0F2FE; color: #1693C9; }
+.calc-afford  .calc-chip { background: #E6F6EC; color: #138A52; }
+.calc-refi    .calc-chip { background: #FDF0E3; color: #C26A06; }
+.calc-rvb     .calc-chip { background: #EDE5FB; color: #7C36EE; }
+.calc-closing .calc-chip { background: #FCE8F3; color: #DE3884; }
+.calc-ptax    .calc-chip { background: #DBEAFE; color: #2563EB; }
+.calc-hvalue  .calc-chip { background: #E0E7FF; color: #4F46E5; }
+
+/* Select fields reuse the pill input style. */
+select.calc-input { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 40px; }
+
+/* Rent vs Buy — optional address lookup row + verdict toggle. */
+.calc-lookup { display: flex; gap: 10px; }
+.calc-lookup .calc-input-wrap { flex: 1; }
+.calc-lookup-btn {
+    flex: 0 0 auto; padding: 0 22px; border-radius: 9999px;
+    border: 1px solid transparent; background: var(--calc-accent); color: #fff;
+    font-family: var(--font); font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer; transition: opacity 0.2s;
+}
+.calc-lookup-btn:hover { opacity: 0.85; }
+.calc-lookup-status { margin-top: 8px; font-size: 12px; color: var(--calc-muted); min-height: 16px; }
+
+/* MLS-location autocomplete dropdown (SiteSuggest) on calculator address inputs. */
+.calc-suggest {
+    position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 30;
+    background: var(--calc-card); border: 1px solid var(--calc-border); border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); padding: 6px;
+}
+.calc-suggest-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    width: 100%; text-align: left; padding: 10px 14px; border: 0; background: transparent;
+    border-radius: 9999px; font-family: var(--font); font-size: 14px; color: var(--calc-fg);
+    cursor: pointer; transition: background 0.15s;
+}
+.calc-suggest-item:hover { background: var(--calc-input-bg); }
+.calc-suggest-hint { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--calc-muted); }
+.calc-verdict {
+    display: inline-flex; gap: 0; margin-bottom: 4px; padding: 4px; border-radius: 9999px;
+    background: var(--calc-result-border);
+}
+.calc-verdict span {
+    padding: 6px 18px; border-radius: 9999px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--calc-result-muted);
+}
+.calc-verdict span.is-win { background: var(--calc-accent); color: #fff; }
+
+/* Result-amount accent per calculator (the headline number). */
+.calc-afford .calc-result-amount { color: #138A52; }
+.calc-refi   .calc-result-amount.is-good { color: #138A52; }
+
+/* Affordability — buying-power meter (payment vs monthly budget). */
+.calc-meter { margin-top: 20px; text-align: left; }
+.calc-meter-track { height: 10px; border-radius: 9999px; background: var(--calc-result-border); overflow: hidden; }
+.calc-meter-fill { height: 100%; border-radius: 9999px; background: #138A52; transition: width 0.3s ease; }
+.calc-meter-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: var(--calc-result-muted); }
+
+/* Refinance — current → new comparison tiles. */
+.calc-compare { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; margin: 22px 0 4px; }
+.calc-compare-tile { text-align: center; padding: 14px 8px; border-radius: 12px; background: var(--calc-result-border); }
+.calc-compare-tile.is-new { background: transparent; border: 1.5px solid #C26A06; }
+.calc-compare-tile .t-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--calc-result-muted); }
+.calc-compare-tile .t-val { font-size: 22px; font-weight: 600; color: var(--calc-result-val); margin-top: 4px; }
+.calc-compare-tile.is-new .t-val { color: #C26A06; }
+.calc-compare-arrow { color: var(--calc-result-muted); font-size: 18px; }
+
+@media (max-width: 880px) {
+    .calc-grid { grid-template-columns: 1fr; }
+    .calc-result { position: static; }
+    .calc-title { font-size: 28px; }
+}

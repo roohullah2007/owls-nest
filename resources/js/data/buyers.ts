@@ -6,21 +6,21 @@ import type { PathCardItem } from '@/types/listing';
 /** Three "Your Path to Homeownership" teaser cards (rendered via PathCard). */
 export const BUYER_PATHS: PathCardItem[] = [
     {
-        image: '/assets/images/hero-property-search.jpg',
+        image: '/images/hero-property-search.webp',
         alt: 'Search Homes',
         title: 'Search Homes',
         href: '/property-search',
         cta: 'Browse Listings',
     },
     {
-        image: '/assets/images/cta-home.jpg',
+        image: '/images/cta-home.webp',
         alt: 'Get Pre-Approved',
         title: 'Get Pre-Approved',
         href: '/contact',
         cta: 'Connect With a Lender',
     },
     {
-        image: '/assets/images/hero-contact.jpg',
+        image: '/images/hero-contact.webp',
         alt: 'Talk to an Agent',
         title: 'Talk to an Agent',
         href: '/contact',

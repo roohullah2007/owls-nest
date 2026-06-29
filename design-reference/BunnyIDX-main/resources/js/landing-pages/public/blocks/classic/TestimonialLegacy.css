@@ -1,0 +1,5 @@
+.lp-quote { max-width: 760px; margin: 0 auto; text-align: center; }
+.lp-quote .mark { font-size: 60px; line-height: .6; color: var(--accent); font-weight: 800; }
+.lp-quote blockquote { font-size: clamp(20px, 2.6vw, 27px); font-weight: 600; letter-spacing: -.01em; margin-top: 8px; }
+.lp-quote .who { margin-top: 22px; font-weight: 700; }
+.lp-quote .where { color: var(--muted); font-size: 14px; }

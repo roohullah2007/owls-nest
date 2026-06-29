@@ -18,11 +18,11 @@ export default function About() {
                 eyebrow="About"
                 title="Owl's Nest Real Estate"
                 subtitle="Elevate Your Real Estate Journey with Owl's Nest Real Estate."
-                image="https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85,fit=scale-down,width=1280/https://media-production.lp-cdn.com/media/f1dd1051-bd0d-4a86-9b16-905483e8a278"
+                image="/images/about-hero.webp"
             />
 
             <ImageTextSplit
-                image="/assets/images/about-story.png"
+                image="/images/about-story.webp"
                 imageAlt="A mountain-view home at sunset"
                 eyebrow="About"
                 title="Owl's Nest Real Estate"
@@ -73,7 +73,7 @@ export default function About() {
             <TestimonialsCarousel testimonials={TESTIMONIALS} />
 
             <WorkWithUsBand
-                image="/assets/images/hero-communities.jpg"
+                image="/images/hero-communities.webp"
                 eyebrow="Work With Us"
                 title="Owl's Nest Real Estate"
                 description="Their work ethic and enthusiasm are grounded in a corporate sales discipline and hospitality industry background. They routinely go above and beyond to exceed their clients' expectations in the New Hampshire residential real estate market."

@@ -15,7 +15,7 @@ interface ValuationWidgetProps {
 }
 
 export function ValuationWidget({
-    image = '/assets/images/waterfront-living.jpg',
+    image = '/images/waterfront-living.webp',
     eyebrow = 'Instant Property Valuation',
     title = 'Have an Expert Help You Find Out What Your Home Is Really Worth Today',
     description = "Discover your property's value through our accurate evaluation and tailored insights.",

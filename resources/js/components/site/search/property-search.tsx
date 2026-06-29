@@ -347,7 +347,7 @@ export function PropertySearch() {
 
                     <div className="mt-10 border-t border-gray-200 pt-6">
                         <img
-                            src="/assets/images/primemls-logo.png"
+                            src="/images/primemls-logo.webp"
                             alt="PrimeMLS"
                             className="mb-4 h-9 w-auto"
                         />

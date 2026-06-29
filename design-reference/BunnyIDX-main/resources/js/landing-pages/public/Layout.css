@@ -1,0 +1,85 @@
+/*
+ | Classic landing-page design — base + layout CSS.
+ | Copied verbatim from the old resources/views/landing-pages/templates/classic/
+ | layout.blade.php <style> block so the React render is pixel-identical. Per-block
+ | CSS lives co-located with each block component (blocks/*.css).
+ */
+.lp-scope {
+    --ink: #111315;
+    --muted: #5F656D;
+    --line: #E7E9ED;
+    --bg: #FFFFFF;
+    --soft: #F4F5F7;
+}
+.lp-scope, .lp-scope * { box-sizing: border-box; }
+.lp-scope { font-family: var(--lp-font, 'Roboto Flex', system-ui, sans-serif); color: var(--ink); background: var(--soft); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.lp-scope img { max-width: 100%; display: block; }
+.lp-scope a { color: inherit; text-decoration: none; }
+/* The scoped `a` reset above (0,1,1) outranks `.lp-btn` (0,1,0), which would
+   leave anchor buttons with dark inherited text. Restore the button colors with
+   a higher-specificity selector so <a class="lp-btn"> matches <button class="lp-btn">. */
+.lp-scope a.lp-btn { color: #fff; }
+.lp-scope a.lp-btn-ghost { color: var(--ink); }
+.lp-container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.lp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent); color: #fff; font-weight: 500; font-size: 14px;
+    padding: 11px 22px; border-radius: 9px; border: 0; cursor: pointer;
+    transition: filter .15s, transform .05s; width: 100%;
+}
+.lp-btn:hover { filter: brightness(.93); }
+.lp-btn:active { transform: translateY(1px); }
+.lp-btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.lp-btn-ghost:hover { filter: none; background: var(--soft); }
+.lp-eyebrow { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.lp-section { padding: 76px 0; background: var(--soft); }
+.lp-section h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 500; letter-spacing: -.02em; text-align: center; line-height: 1.1; }
+.lp-section-sub { text-align: center; color: var(--muted); max-width: 620px; margin: 14px auto 0; font-size: 17px; }
+
+/* Header */
+.lp-header { position: sticky; top: 0; z-index: 30; background: #fff; border-bottom: 1px solid var(--line); }
+.lp-header-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+.lp-brand { font-weight: 600; font-size: 18px; letter-spacing: -.01em; }
+.lp-logo-img { height: 34px; width: auto; object-fit: contain; display: block; }
+.lp-header-actions { display: flex; align-items: center; gap: 18px; }
+.lp-header-phone { font-size: 14px; font-weight: 600; color: var(--muted); }
+.lp-header .lp-btn { width: auto; padding: 10px 20px; font-size: 14px; }
+
+/* Preview / success banners */
+.lp-banner { text-align: center; font-size: 13px; font-weight: 600; padding: 9px; color: #fff; }
+.lp-banner.preview { background: #111315; }
+.lp-banner.success { background: #1f8f3a; }
+
+/* Form fields */
+.lp-field { margin-bottom: 12px; text-align: left; }
+.lp-field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+.lp-field input, .lp-field textarea {
+    width: 100%; padding: 13px 15px; border: 1px solid var(--line); border-radius: 10px;
+    font: inherit; font-size: 15px; background: #fff; color: var(--ink);
+}
+.lp-field input:focus, .lp-field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+.lp-consent { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--muted); margin: 6px 0 12px; text-align: left; }
+.lp-consent input { margin-top: 2px; width: auto; }
+.lp-form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+.lp-thanks { text-align: center; padding: 20px; }
+.lp-thanks .lp-check { width: 56px; height: 56px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, #fff); color: var(--accent); display: grid; place-items: center; margin: 0 auto 14px; }
+.lp-thanks h3 { font-size: 22px; font-weight: 800; }
+.lp-thanks p { color: var(--muted); margin-top: 6px; }
+
+/* Footer */
+.lp-footer { background: #0c1117; color: #fff; padding: 48px 0 36px; }
+.lp-footer-top { display: flex; flex-wrap: wrap; gap: 20px 24px; align-items: flex-start; justify-content: space-between; }
+.lp-footer .name { font-weight: 600; font-size: 18px; }
+.lp-footer .contact { color: rgba(255,255,255,.7); font-size: 14px; margin-top: 6px; }
+.lp-footer .contact a:hover { color: #fff; }
+.lp-footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.lp-footer-links a { color: rgba(255,255,255,.78); font-size: 14px; font-weight: 500; }
+.lp-footer-links a:hover { color: #fff; }
+.lp-footer-rule { height: 1px; background: rgba(255,255,255,.12); margin: 26px 0 18px; }
+.lp-footer .legal { color: rgba(255,255,255,.45); font-size: 12px; line-height: 1.7; }
+.lp-footer .legal strong { color: rgba(255,255,255,.65); font-weight: 600; }
+
+@media (max-width: 760px) {
+    .lp-section { padding: 52px 0; }
+    .lp-header-phone { display: none; }
+}

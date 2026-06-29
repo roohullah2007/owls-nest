@@ -9,37 +9,37 @@ export const COMMUNITY_PROJECTS: Neighborhood[] = [
     {
         id: 'owls-nest-resort',
         name: "Owl's Nest Resort",
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/owl-s-nest-resort.jpg',
+        image: '/images/nb-owls-nest-resort.webp',
         href: '/property-search',
     },
     {
         id: 'rumney-ridge-trade-center',
         name: 'Rumney Ridge Trade Center',
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/file_000000005a2471fd9de364c15aa7385c.png',
+        image: '/images/nb-rumney-ridge.webp',
         href: '/property-search',
     },
     {
         id: 'waterville-valley',
         name: 'Waterville Valley',
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/Waterville_Valley_Town_Square_Village_Rd_New_Hampshire_-_panoramio-scaled.jpg',
+        image: '/images/nb-waterville-valley.webp',
         href: '/property-search',
     },
     {
         id: 'lakes-region',
         name: 'Lakes Region',
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/Lakes-Region-NH.png',
+        image: '/images/nb-lakes-region.webp',
         href: '/property-search',
     },
     {
         id: 'featured-properties',
         name: 'Featured Properties',
-        image: '/assets/images/hero-communities.jpg',
+        image: '/images/hero-communities.webp',
         href: '/#featured',
     },
     {
         id: 'investment-opportunities',
         name: 'Investment Opportunities',
-        image: '/assets/images/hero-owls-nest-resort.jpg',
+        image: '/images/hero-owls-nest-resort.webp',
         href: '/property-search',
     },
 ];
@@ -64,7 +64,7 @@ export const WELCOME_SECTIONS: WelcomeSection[] = [
             "As your trusted real estate partner, we're here to help you navigate the Owl's Nest Resort real estate market with confidence. From elegant townhomes to luxury vacation properties, we'll guide you in finding the perfect home to fit your goals and lifestyle.",
         ],
         cta: { label: "Explore Owl's Nest Resort", href: '/property-search' },
-        image: '/assets/images/hero-owls-nest-resort.jpg',
+        image: '/images/hero-owls-nest-resort.webp',
         imageAlt: "Aerial view of Owl's Nest Resort",
     },
     {
@@ -79,7 +79,7 @@ export const WELCOME_SECTIONS: WelcomeSection[] = [
             label: 'Explore Rumney Ridge Trade Center',
             href: '/property-search',
         },
-        image: '/assets/images/rumney-welcome.avif',
+        image: '/images/rumney-welcome.webp',
         imageAlt: 'Rumney Ridge Trade Center development',
     },
     {
@@ -91,7 +91,7 @@ export const WELCOME_SECTIONS: WelcomeSection[] = [
             "Whether you're searching for a mountain getaway, ski condo, or full-time residence, Waterville Valley offers a wide range of properties to suit every lifestyle.",
         ],
         cta: { label: 'Explore Waterville Valley', href: '/property-search' },
-        image: '/assets/images/wv-hero.jpg',
+        image: '/images/wv-hero.webp',
         imageAlt: 'Waterville Valley Town Square resort village',
     },
     {
@@ -102,7 +102,7 @@ export const WELCOME_SECTIONS: WelcomeSection[] = [
             'From waterfront estates to cozy lake cottages and luxury retreats, the Lakes Region offers real estate opportunities for every kind of buyer.',
         ],
         cta: { label: 'Explore Lakes Region', href: '/property-search' },
-        image: 'https://owlsnestrealestate.com/wp-content/uploads/2026/05/Lakes-Region-NH.png',
+        image: '/images/nb-lakes-region.webp',
         imageAlt: 'Lakes Region waterfront town',
     },
 ];

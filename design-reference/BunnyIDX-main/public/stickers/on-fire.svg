@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Outer flame -->
+  <path d="M64,4 C64,4 96,28 100,60 C104,80 92,112 64,118 C36,112 24,80 28,60 C32,28 64,4 64,4Z" fill="#E53E3E"/>
+  <!-- Middle flame -->
+  <path d="M64,20 C64,20 86,38 88,62 C90,78 82,102 64,106 C46,102 38,78 40,62 C42,38 64,20 64,20Z" fill="#F6AD55"/>
+  <!-- Inner flame -->
+  <path d="M64,42 C64,42 78,52 80,68 C82,80 74,94 64,96 C54,94 46,80 48,68 C50,52 64,42 64,42Z" fill="#FBBF24"/>
+  <!-- Core glow -->
+  <ellipse cx="64" cy="82" rx="10" ry="14" fill="#FFF9C4"/>
+  <!-- House outline in fire -->
+  <g opacity="0.8">
+    <!-- House body -->
+    <rect x="46" y="72" width="36" height="28" rx="2" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+    <!-- Roof -->
+    <polyline points="42,74 64,56 86,74" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- Door -->
+    <rect x="58" y="84" width="12" height="16" rx="1" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  </g>
+  <!-- Spark particles -->
+  <circle cx="40" cy="16" r="3" fill="#FFD700"/>
+  <circle cx="88" cy="12" r="2" fill="#FFD700"/>
+  <circle cx="32" cy="32" r="2" fill="#F6AD55"/>
+  <circle cx="96" cy="28" r="2.5" fill="#F6AD55"/>
+</svg>

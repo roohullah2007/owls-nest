@@ -14,22 +14,22 @@ export interface BlogSlide {
 
 const POSTS = {
     mashpee: {
-        image: '/assets/images/hero-communities.jpg',
+        image: '/images/hero-communities.webp',
         date: 'April 16, 2026',
         title: 'Mashpee Neighborhoods For Golf, Ponds, And Beaches',
     },
     secondHome: {
-        image: '/assets/images/hero-owls-nest-resort.jpg',
+        image: '/images/hero-owls-nest-resort.webp',
         date: 'May 7, 2026',
         title: 'What It Is Like To Own A Second Home On Cape Cod',
     },
     checklist: {
-        image: '/assets/images/waterfront-living.jpg',
+        image: '/images/waterfront-living.webp',
         date: 'March 5, 2026',
         title: 'Out-Of-State Buyer Checklist For Closing On A Cape Cod Home',
     },
     falmouth: {
-        image: '/assets/images/hero-lakes-region.png',
+        image: '/images/hero-lakes-region.webp',
         date: 'April 2, 2026',
         title: 'Falmouth Villages Guide For Cape Cod Home Buyers',
     },

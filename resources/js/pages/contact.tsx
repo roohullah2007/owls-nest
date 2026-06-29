@@ -21,7 +21,7 @@ export default function Contact() {
                 {/* Right-side background image (desktop only) */}
                 <div className="absolute top-0 right-0 hidden h-full w-[35%] lg:block">
                     <img
-                        src="https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85,fit=scale-down,width=1280/https://media-production.lp-cdn.com/media/c21b835d-ee6f-414c-9f6b-d4f366b1dcc4"
+                        src="/images/contact-hero.webp"
                         alt="Luxury home staircase"
                         className="h-full w-full object-cover"
                     />

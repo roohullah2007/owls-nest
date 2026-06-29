@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Explosion rays behind head -->
+  <polygon points="64,0 72,30 100,6 80,34 124,24 90,46 128,64 90,68 118,96 78,78 92,118 66,86 48,120 52,78 14,100 42,68 0,68 40,50 6,28 46,38 30,6 54,32" fill="#FFD700" opacity="0.7"/>
+  <!-- Head (bottom half) -->
+  <path d="M28,70 Q28,110 64,114 Q100,110 100,70 Z" fill="#FBBF24"/>
+  <!-- Top of head blown open -->
+  <path d="M28,70 Q28,40 46,30" fill="none" stroke="#F59E0B" stroke-width="3"/>
+  <path d="M100,70 Q100,40 82,30" fill="none" stroke="#F59E0B" stroke-width="3"/>
+  <!-- Wide open eyes -->
+  <circle cx="46" cy="74" r="10" fill="#FFFFFF"/>
+  <circle cx="46" cy="74" r="5" fill="#92400E"/>
+  <circle cx="82" cy="74" r="10" fill="#FFFFFF"/>
+  <circle cx="82" cy="74" r="5" fill="#92400E"/>
+  <!-- Open mouth (shocked) -->
+  <ellipse cx="64" cy="98" rx="12" ry="10" fill="#92400E"/>
+  <!-- Brain bits flying out -->
+  <ellipse cx="48" cy="24" rx="8" ry="6" fill="#FC8181" transform="rotate(-20,48,24)"/>
+  <ellipse cx="80" cy="20" rx="7" ry="5" fill="#FC8181" transform="rotate(15,80,20)"/>
+  <ellipse cx="64" cy="14" rx="8" ry="5" fill="#FCA5A5" transform="rotate(5,64,14)"/>
+  <!-- Sparkle dots -->
+  <circle cx="36" cy="12" r="3" fill="#E53E3E"/>
+  <circle cx="96" cy="10" r="3" fill="#E53E3E"/>
+  <circle cx="110" cy="36" r="2" fill="#FFD700"/>
+  <circle cx="18" cy="40" r="2" fill="#FFD700"/>
+</svg>

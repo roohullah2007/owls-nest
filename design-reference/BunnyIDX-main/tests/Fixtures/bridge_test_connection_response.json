@@ -1,0 +1,8 @@
+{
+    "@odata.context": "https://api.bridgedataoutput.com/api/v2/OData/miamire/$metadata#Property",
+    "value": [
+        {
+            "ListingKey": "MIA2024050001"
+        }
+    ]
+}

@@ -5,7 +5,7 @@ import type { Listing, PathCardItem, PropertySlide } from '@/types/listing';
 const LISTINGS = {
     listing1: {
         id: 'listing1',
-        image: '/assets/listings/listing1.jpg',
+        image: '/images/listings/listing1.webp',
         alt: '3039 Us Route 3 Lot 1, Thornton, NH',
         price: '$1,395,000',
         beds: 4,
@@ -16,7 +16,7 @@ const LISTINGS = {
     },
     listing2: {
         id: 'listing2',
-        image: '/assets/listings/listing2.jpg',
+        image: '/images/listings/listing2.webp',
         alt: '41 Fischer Mountain Road, Thornton, NH',
         price: '$1,300,000',
         beds: 3,
@@ -27,7 +27,7 @@ const LISTINGS = {
     },
     listing3: {
         id: 'listing3',
-        image: '/assets/listings/listing3.jpg',
+        image: '/images/listings/listing3.webp',
         alt: '15 Edgewater Lane, Thornton, NH',
         price: '$1,195,000',
         beds: 4,
@@ -38,7 +38,7 @@ const LISTINGS = {
     },
     listing4: {
         id: 'listing4',
-        image: '/assets/listings/listing4.jpg',
+        image: '/images/listings/listing4.webp',
         alt: '1072 State Route 49, Thornton, NH',
         price: '$1,100,000',
         beds: 4,
@@ -78,21 +78,21 @@ export const FEATURED_PROPERTY_SLIDES: PropertySlide[] = [
 /** The three teaser/path cards on the navy band (Home Search / Valuation / Contact). */
 export const PATH_CARDS: PathCardItem[] = [
     {
-        image: '/assets/images/hero-property-search.jpg',
+        image: '/images/hero-property-search.webp',
         alt: 'Home Search',
         title: 'Home Search',
         href: '#',
         cta: 'Learn More',
     },
     {
-        image: '/assets/images/cta-home.jpg',
+        image: '/images/cta-home.webp',
         alt: 'Home Valuation',
         title: 'Home Valuation',
         href: '#',
         cta: 'Learn More',
     },
     {
-        image: '/assets/images/hero-contact.jpg',
+        image: '/images/hero-contact.webp',
         alt: 'Contact Us',
         title: 'Contact Us',
         href: '#',

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Star burst background -->
+  <polygon points="64,4 74,40 112,28 84,54 118,72 80,72 88,112 64,82 40,112 48,72 10,72 44,54 16,28 54,40" fill="#FFD700"/>
+  <!-- Inner star burst -->
+  <polygon points="64,18 71,44 100,36 80,56 106,68 78,68 84,98 64,76 44,98 50,68 22,68 48,56 28,36 57,44" fill="#FBBF24"/>
+  <!-- Center circle -->
+  <circle cx="64" cy="64" r="26" fill="#E53E3E"/>
+  <!-- DEAL text -->
+  <text x="64" y="71" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="18" fill="#FFFFFF">DEAL</text>
+  <!-- Small sparkle dots -->
+  <circle cx="18" cy="14" r="3" fill="#FFD700"/>
+  <circle cx="110" cy="10" r="2" fill="#FFD700"/>
+  <circle cx="6" cy="90" r="2" fill="#FFD700"/>
+  <circle cx="122" cy="96" r="3" fill="#FFD700"/>
+</svg>

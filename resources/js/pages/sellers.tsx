@@ -31,12 +31,12 @@ export default function Sellers() {
                         <span className="whitespace-nowrap">Hassle-Free!</span>
                     </>
                 }
-                image="/assets/images/cta-home.jpg"
+                image="/images/cta-home.webp"
                 imageAlt="Elegantly furnished living room"
             />
 
             <ImageTextSplit
-                image="/assets/images/sellers-confidence.webp"
+                image="/images/sellers-confidence.webp"
                 imageAlt="A modern home for sale"
                 eyebrow="Sell Your Home With Confidence"
                 title={
@@ -111,7 +111,7 @@ export default function Sellers() {
             </section>
 
             <ImageTextSplit
-                image="/assets/images/sellers-benefits.jpg"
+                image="/images/sellers-benefits.webp"
                 imageAlt="A realtor meeting clients at a home"
                 reverse
                 title={

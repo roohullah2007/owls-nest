@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Door frame -->
+  <rect x="30" y="16" width="68" height="96" rx="4" fill="#8B6F47"/>
+  <!-- Open door (perspective) -->
+  <g transform="skewY(-3)">
+    <rect x="32" y="20" width="40" height="88" rx="2" fill="#D69E2E"/>
+    <circle cx="66" cy="66" r="3" fill="#B7791F"/>
+  </g>
+  <!-- Interior glow -->
+  <rect x="72" y="20" width="24" height="88" rx="1" fill="#FEFCBF" opacity="0.8"/>
+  <!-- Light rays from door -->
+  <polygon points="72,20 96,20 118,8 92,8" fill="#FEFCBF" opacity="0.3"/>
+  <polygon points="72,108 96,108 120,120 68,120" fill="#FEFCBF" opacity="0.3"/>
+  <!-- Welcome mat -->
+  <rect x="36" y="108" width="56" height="12" rx="3" fill="#E53E3E"/>
+  <text x="64" y="118" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="8" fill="#FFFFFF">WELCOME</text>
+  <!-- Sparkle at door -->
+  <polygon points="82,40 84,34 86,40 92,42 86,44 84,50 82,44 76,42" fill="#FFD700" opacity="0.8"/>
+</svg>

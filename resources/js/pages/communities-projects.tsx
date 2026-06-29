@@ -30,7 +30,7 @@ export default function CommunitiesProjects() {
             <PageHero
                 eyebrow="Areas and Projects"
                 title="Communities & Projects"
-                image="/assets/images/hero-communities.jpg"
+                image="/images/hero-communities.webp"
             />
 
             {/* Areas and current projects grid */}
@@ -134,7 +134,7 @@ export default function CommunitiesProjects() {
             />
 
             <WorkWithUsBand
-                image="/assets/images/hero-communities.jpg"
+                image="/images/hero-communities.webp"
                 eyebrow="Work With Us"
                 title="Owl's Nest Real Estate"
                 description="Whether you're buying, selling, or investing, our team brings deep local knowledge and personalized service to help you make the right move with confidence across New Hampshire's White Mountains and Lakes Region."

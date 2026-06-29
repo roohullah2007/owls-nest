@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Face circle -->
+  <circle cx="64" cy="68" r="52" fill="#FBBF24"/>
+  <circle cx="64" cy="68" r="48" fill="#F59E0B"/>
+  <!-- Dollar sign eyes - left -->
+  <circle cx="44" cy="56" r="14" fill="#38A169"/>
+  <text x="44" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="20" fill="#FFFFFF">$</text>
+  <!-- Dollar sign eyes - right -->
+  <circle cx="84" cy="56" r="14" fill="#38A169"/>
+  <text x="84" y="63" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="20" fill="#FFFFFF">$</text>
+  <!-- Big grin -->
+  <path d="M36,86 Q64,112 92,86" fill="#92400E"/>
+  <!-- Teeth -->
+  <rect x="44" y="86" width="40" height="10" rx="2" fill="#FFFFFF"/>
+  <!-- Tongue -->
+  <ellipse cx="64" cy="100" rx="10" ry="6" fill="#E53E3E"/>
+  <!-- Money floating -->
+  <rect x="4" y="12" width="20" height="12" rx="2" fill="#38A169" opacity="0.7"/>
+  <text x="14" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="10" fill="#FFFFFF">$</text>
+  <rect x="100" y="8" width="20" height="12" rx="2" fill="#38A169" opacity="0.7"/>
+  <text x="110" y="18" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="10" fill="#FFFFFF">$</text>
+  <rect x="92" y="108" width="18" height="10" rx="2" fill="#38A169" opacity="0.5" transform="rotate(15,101,113)"/>
+</svg>

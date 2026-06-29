@@ -7,12 +7,12 @@ import { InstagramIcon } from '@/components/site/icons';
 const IG_URL = 'https://instagram.com/owlsnestrealestate';
 
 const DEFAULT_IMAGES = [
-    '/assets/images/ig-1.jpg',
-    '/assets/images/ig-2.jpg',
-    '/assets/images/ig-3.jpg',
-    '/assets/images/ig-4.jpg',
-    '/assets/images/ig-5.jpg',
-    '/assets/images/ig-6.jpg',
+    '/images/ig-1.webp',
+    '/images/ig-2.webp',
+    '/images/ig-3.webp',
+    '/images/ig-4.webp',
+    '/images/ig-5.webp',
+    '/images/ig-6.webp',
 ];
 
 interface InstagramGridProps {

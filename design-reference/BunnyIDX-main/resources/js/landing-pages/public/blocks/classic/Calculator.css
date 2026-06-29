@@ -1,0 +1,19 @@
+.lp-calc { background: var(--soft); }
+.lp-calc-card { max-width: 640px; margin: 44px auto 0; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 32px; box-shadow: 0 16px 40px rgba(16,24,40,.06); }
+.lp-calc-valrow { display: flex; align-items: baseline; justify-content: space-between; }
+.lp-calc-valrow .lbl { font-size: 14px; font-weight: 600; color: var(--muted); }
+.lp-calc-valrow .val { font-size: 28px; font-weight: 600; letter-spacing: -.02em; }
+.lp-calc-range { width: 100%; margin: 16px 0 6px; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px; background: var(--line); outline: none; }
+.lp-calc-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 999px; background: var(--accent); cursor: pointer; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+.lp-calc-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 999px; background: var(--accent); cursor: pointer; border: 3px solid #fff; }
+.lp-calc-fees { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+.lp-calc-fee { background: var(--soft); border-radius: 12px; padding: 16px; text-align: center; }
+.lp-calc-fee .k { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.lp-calc-fee .v { font-size: 22px; font-weight: 600; margin-top: 6px; }
+.lp-calc-fee.strike .v { color: var(--muted); text-decoration: line-through; }
+.lp-calc-save { margin-top: 22px; text-align: center; background: color-mix(in srgb, var(--accent) 10%, #fff); border: 1px solid color-mix(in srgb, var(--accent) 30%, #fff); border-radius: 14px; padding: 22px; }
+.lp-calc-save .k { font-size: 13px; font-weight: 600; color: var(--ink); }
+.lp-calc-save .v { font-size: 40px; font-weight: 700; letter-spacing: -.02em; color: var(--accent); margin-top: 4px; }
+.lp-calc-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 14px; }
+.lp-calc-card .lp-btn { width: auto; margin: 20px auto 0; display: flex; }
+@media (max-width: 560px) { .lp-calc-fees { grid-template-columns: 1fr; } }

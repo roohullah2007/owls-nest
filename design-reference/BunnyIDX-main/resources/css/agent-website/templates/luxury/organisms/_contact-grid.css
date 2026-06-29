@@ -1,0 +1,167 @@
+/* ── Contact page — Page Hero (see _page-header.css) followed by this WHITE
+   content section: "Get In Touch" details + social (left), form card (right),
+   and a full-width map below. All in content width on a white background. */
+.ctc-section { background: #FFFFFF; padding: 96px 0; }
+.ctc-inner { max-width: 1400px; margin: 0 auto; padding: 0 64px; }
+
+.ctc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+/* LEFT: Get in touch details */
+.ctc-info { color: #111315; }
+.ctc-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+.ctc-group {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    color: #111315;
+    margin: 0 0 14px;
+}
+.ctc-link {
+    display: block;
+    text-decoration: underline;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 22px;
+    color: #2A2D31;
+    margin-bottom: 4px;
+    transition: color 0.2s;
+}
+.ctc-link:hover { color: var(--accent); }
+.ctc-addr {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 22px;
+    color: #2A2D31;
+    margin: 0 0 4px;
+}
+
+/* Social icons — dark circular outline on white, invert on hover */
+.ctc-socials { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.ctc-socials a {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    border: 1px solid #111315;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #111315;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.ctc-socials a:hover { background: #111315; color: #FFFFFF; border-color: #111315; }
+.ctc-socials svg { width: 16px; height: 16px; }
+
+/* RIGHT: Form card */
+.ctc-form-card {
+    background: #FFFFFF;
+    border: 1px solid #E4E7EB;
+    padding: 40px;
+    width: 100%;
+}
+.ctc-form { display: flex; flex-direction: column; gap: 24px; }
+.ctc-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ctc-field { display: flex; flex-direction: column; }
+.ctc-field label {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 8px;
+}
+.ctc-field input,
+.ctc-field textarea {
+    width: 100%;
+    background: #F3F4F6;
+    border: 1px solid transparent;
+    border-radius: 9999px;
+    padding: 16px 24px;
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.ctc-field textarea { border-radius: 24px; resize: none; padding: 20px 24px; }
+.ctc-field input::placeholder,
+.ctc-field textarea::placeholder { color: #9AA0A6; }
+.ctc-field input:focus,
+.ctc-field textarea:focus { outline: none; border-color: rgba(0, 0, 0, 0.4); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.ctc-field-error { color: #DC2626; font-size: 12px; margin-top: 6px; }
+
+.ctc-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000000;
+}
+.ctc-consent input[type="checkbox"] {
+    margin: 2px 0 0;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    accent-color: #000000;
+    cursor: pointer;
+}
+.ctc-consent a { color: #000000; text-decoration: underline; }
+
+.ctc-submit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid #000000;
+    background: transparent;
+    color: #000000;
+    border-radius: 9999px;
+    padding: 14px 40px;
+    margin-top: 4px;
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+}
+.ctc-submit:hover { background: #000000; color: #FFFFFF; }
+.ctc-submit-line { width: 40px; height: 1px; background: currentColor; }
+
+/* Map — in the left column, below the contact details + social */
+.ctc-map {
+    margin-top: 36px;
+    width: 100%;
+    height: 360px;
+    border: 1px solid #E4E7EB;
+    overflow: hidden;
+}
+.ctc-map iframe { display: block; width: 100%; height: 100%; }
+
+@media (max-width: 1100px) {
+    .ctc-inner { padding: 0 32px; }
+    .ctc-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 560px) {
+    .ctc-section { padding: 56px 0 72px; }
+    .ctc-inner { padding: 0 20px; }
+    .ctc-details { grid-template-columns: 1fr; gap: 24px; }
+    .ctc-form-card { padding: 28px 22px; }
+    .ctc-form-row { grid-template-columns: 1fr; }
+    .ctc-map { height: 300px; }
+}

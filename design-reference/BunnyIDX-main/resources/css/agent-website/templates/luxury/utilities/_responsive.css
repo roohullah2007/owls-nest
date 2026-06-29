@@ -1,0 +1,231 @@
+/* All responsive breakpoints consolidated */
+@media (max-width: 768px) {
+    /* Navigation — hamburger replaces the inline links + the desktop "More" button */
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-menu-btn { display: none; }
+    .nav-phone { display: none; }
+    .nav-email-btn { display: none; }
+    .nav-inner { padding: 0 16px; height: 60px; }
+
+    /* Top bar — drop contact info, keep social + login/register right-aligned */
+    .site-topbar-left { display: none; }
+    .site-topbar-inner { justify-content: flex-end; padding: 6px 16px; }
+    .site-topbar-right { margin-left: auto; }
+
+    /* Sections */
+    .section { padding: 60px 20px; }
+    .section-title { font-size: 28px; }
+
+    /* Footer */
+    .footer-cols { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+    /* Connect popup */
+    .connect-wrapper { bottom: 20px; right: 20px; }
+    .connect-popup { width: 290px; }
+
+    /* Hero */
+    .hero { min-height: 600px; }
+    .hero-title { font-size: 36px; }
+    .hero-content { padding: 0 20px; }
+
+    /* Page header */
+    .page-header { height: 40vh; min-height: 300px; }
+    .page-header-title { font-size: 32px; }
+    .page-header-content { padding: 0 20px; }
+
+    /* Page Header block heroes (all heights/styles) — 20px gutter for the
+       content/boxed card; the absolutely-positioned background stays full-bleed. */
+    .pgh-inner { padding: 0 20px; }
+
+    /* About */
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-image img { height: 350px; }
+    .about-image::after { display: none; }
+    .about-content-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-photo img,
+    .about-photo-placeholder { height: 400px; }
+    .about-photo::after { display: none; }
+    .about-info-grid { grid-template-columns: 1fr; }
+
+    /* Buy/sell */
+    .buysell-grid { grid-template-columns: 1fr; }
+    .buysell-card { height: 360px; }
+
+    /* Testimonials */
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonials-slider .testimonial-slide { padding-left: 0; padding-right: 0; }
+
+    /* Steps */
+    .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    /* Stats */
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Services */
+    .services-grid { grid-template-columns: 1fr; }
+
+    /* Services block — one card per view in both grid and slider */
+    .services-block { padding: 56px 0; }
+    .services-block-grid .services-block-track { grid-template-columns: 1fr; }
+    .services-block-slider .services-block-card { flex-basis: 100%; }
+    .services-block-card-title { font-size: 26px; line-height: 30px; margin: 24px 0 20px; }
+
+    /* Team block — stack the slider heading above the cards; single-column grid */
+    .team-block { padding: 56px 20px; }
+    .team-block-slider { grid-template-columns: 1fr; gap: 24px; }
+    .team-block-arrows { margin-top: 0; padding-top: 0; }
+    .team-block-title { font-size: 36px; line-height: 42px; }
+    .team-block-grid-cards { grid-template-columns: 1fr; }
+    .team-block-head { flex-direction: column; align-items: flex-start; }
+
+    /* Card-grid blocks: the shared inner container drops its 24px gutter so
+       each section's own `56px 20px` padding is the single mobile gutter
+       (previously they stacked into a 44px double gutter). */
+    .fl-inner,
+    .fl-showcase-wrap,
+    .cm-inner,
+    .team-block-inner { padding: 0; }
+
+    /* Slider asides — title and arrows compact in one row; the View All pill
+       hides here and re-renders under the track (.slider-viewall-m). */
+    .fl-slider-aside,
+    .team-block-aside,
+    .cm-aside { flex-direction: row; align-items: center; justify-content: space-between; gap: 16px; }
+    .fl-slider-aside .fl-title { margin-bottom: 0; }
+    .team-block-aside .team-block-title { margin-bottom: 0; }
+    .cm-aside .cm-title { margin-bottom: 0; }
+    .fl-slider-aside .team-block-viewall,
+    .team-block-aside .team-block-viewall,
+    .cm-aside .team-block-viewall { display: none; }
+    .fl-slider-arrows,
+    .team-block-arrows,
+    .cm-arrows { margin-top: 0; padding-top: 0; }
+    .slider-viewall-m { display: flex; justify-content: center; padding: 24px 0 0; }
+
+    /* Testimonials block */
+    .tb-spotlight { padding: 64px 20px; }
+    .tb-spotlight-title { font-size: 34px; line-height: 40px; margin-bottom: 40px; }
+    .tb-viewport { margin: 0; }
+    .tb-prev { left: -4px; }
+    .tb-next { right: -4px; }
+    .tb-slide { padding: 48px 24px; }
+    .tb-quote { font-size: 22px; line-height: 30px; }
+    .tb-head-title { font-size: 32px; line-height: 38px; }
+    .tb-slider { grid-template-columns: 1fr; gap: 24px; }
+    .tb-slider-title { font-size: 32px; line-height: 38px; }
+    .tb-slider-arrows { margin-top: 0; padding-top: 8px; }
+    .tb-slider-track .tb-card { flex-basis: 84%; }
+    .tb-grid { grid-template-columns: 1fr; }
+
+    /* Newsletter block */
+    .nl-block { padding: 56px 0; }
+    .nl-split { grid-template-columns: 1fr; gap: 32px; }
+    .nl-image { min-height: 240px; order: -1; }
+    .nl-title { font-size: 30px; }
+
+    /* Featured listings block — single 20px gutter (inner padding removed
+       above), smaller card images for the small screen. */
+    .fl-block { padding: 56px 20px; }
+    /* Showcase variant: gutter on the head + cards, but the black backdrop
+       band stays full-bleed (it sits outside the padded wrappers). */
+    .fl-showcase-section { padding: 56px 0; }
+    .fl-showcase-section .fl-inner,
+    .fl-showcase-wrap { padding: 0 20px; }
+    .fl-title { font-size: 30px; line-height: 36px; }
+    .fl-big, .fl-card-big { height: 360px; }
+    .fl-thumbs { grid-template-columns: 1fr; }
+    .fl-thumbs .fl-card, .fl-card-thumb { height: 300px; }
+    .fl-backdrop { top: 300px; }
+    .fl-slider { grid-template-columns: 1fr; gap: 24px; }
+    .fl-slider-arrows { margin-top: 0; padding-top: 0; }
+    .fl-slider-track .fl-card { flex-basis: 84%; height: 380px; }
+    .fl-grid { grid-template-columns: 1fr; }
+    .fl-grid .fl-card, .fl-card-sm { height: 320px; }
+    .fl-info { transform: translateY(0); }
+
+    /* Communities block — two-up cards; slider collapses to single column */
+    .cm-block { padding: 56px 20px; }
+    .cm-title { font-size: 30px; line-height: 36px; }
+    .cm-grid, .cm-grid-2, .cm-grid-3, .cm-grid-4 { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cm-slider { grid-template-columns: 1fr; gap: 24px; }
+    .cm-arrows { margin-top: 0; padding-top: 0; }
+    .cm-track .cm-card { width: 78%; }
+    .cm-card-title { font-size: 16px; }
+
+    /* How It Works (process) block — stack steps on mobile (the inner
+       container's 24px gutter is the single horizontal padding). */
+    .pr-block { padding: 56px 0; }
+    .pr-title { font-size: 30px; line-height: 36px; }
+    .pr-head { margin-bottom: 36px; }
+    .pr-block-row .pr-steps,
+    .pr-block-row .pr-steps-2,
+    .pr-block-row .pr-steps-3,
+    .pr-block-row .pr-steps-4 { grid-template-columns: 1fr; gap: 32px; }
+
+    /* Content block — stack, image always first on mobile; trimmer buttons */
+    .cb-grid { grid-template-columns: 1fr; gap: 32px; }
+    .cb-image-right .cb-image { order: 0; }
+    .cb-image { height: 320px; }
+    .cb-heading { font-size: 30px; }
+    .cb-buttons { gap: 10px; }
+    .cb-buttons .btn { padding: 10px 22px; font-size: 10px; letter-spacing: 2px; }
+    .cb-buttons .cb-btn-line { width: 22px; }
+
+    /* FAQ block — stack heading above the accordion */
+    .fq-split { grid-template-columns: 1fr; gap: 24px; }
+    .fq-heading { font-size: 36px; line-height: 42px; }
+    .fq-q { font-size: 19px; }
+
+    /* CTA block */
+    .cta-block { min-height: 70vh; }
+    .cta-card { padding: 48px 28px; }
+    .cta-heading { font-size: 34px; line-height: 40px; }
+
+    /* Home Valuation block — the pill becomes a stacked card: full-width
+       field (the .hv-field wrapper must stretch, not shrink-to-content) over
+       a full-width button; suggestions align to the card edges. */
+    .hv-title { font-size: 30px; }
+    .hv-form { flex-direction: column; align-items: stretch; border-radius: 18px; padding: 10px; gap: 10px; }
+    .hv-field { width: 100%; }
+    .hv-input { width: 100%; text-align: center; padding: 14px 12px; font-size: 16px; }
+    .hv-suggest { left: 0; right: 0; top: calc(100% + 6px); }
+    .hv-submit { width: 100%; padding: 15px 28px; }
+
+    /* Valuation flow page — stack map above the lead panel */
+    .hvp-grid { grid-template-columns: 1fr; gap: 24px; }
+    .hvp-map { height: 360px; }
+
+    /* Videos block — single column / full-width slider cards */
+    .vid-grid { grid-template-columns: 1fr; }
+    .vid-track .vid-card { flex-basis: 86%; }
+    .vid-title-h { font-size: 32px; line-height: 38px; }
+
+    /* Latest Blog Posts — stack featured above the list */
+    .lbp-grid { grid-template-columns: 1fr; gap: 32px; }
+    .lbp-title { font-size: 34px; line-height: 40px; margin-bottom: 32px; }
+    .lbp-feat-img { height: 320px; }
+    .lbp-item { grid-template-columns: 120px 1fr; gap: 16px; }
+    .lbp-item-imgwrap { height: 96px; }
+    .lbp-item-title { font-size: 17px; line-height: 22px; }
+
+    /* Blog listing — single column; the featured hero image shrinks from its
+       520px desktop height to a card-like ratio */
+    .blog-grid { grid-template-columns: 1fr; gap: 32px; }
+    .blog-title { font-size: 34px; line-height: 40px; }
+    .blog-featured { margin-bottom: 48px; }
+    .blog-feat-img, .blog-feat-empty { height: 240px; }
+    .blog-feat-title { font-size: 26px; line-height: 32px; }
+
+    /* Blog post hero — 20px gutter for the title card; the absolutely-
+       positioned image stays full-bleed */
+    .bpost-hero { padding: 0 20px; }
+
+    /* Forms */
+    .contact-form { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+
+    /* Contact */
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}

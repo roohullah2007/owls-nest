@@ -23,7 +23,7 @@ export const NAV_LINKS: NavLink[] = [
 
 export const SITE = {
     name: "Owl's Nest Real Estate",
-    logo: '/assets/images/logo.png',
+    logo: '/images/logo.webp',
     phoneDisplay: '401-648-5308',
     phoneHref: 'tel:+14016485308',
     email: 'TomDeMatteo.ONR@gmail.com',

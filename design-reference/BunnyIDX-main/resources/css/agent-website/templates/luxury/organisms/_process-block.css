@@ -1,0 +1,168 @@
+/* How It Works (process) block (insertable) — a numbered, step-by-step process
+   shown as a row of cards or a vertical timeline. Each step has a number badge
+   and/or a curated icon or image, a title, and a description. Namespaced .pr-*.
+   Section padding + the .pr-inner container are shared — see
+   molecules/_block-layout.css. */
+.pr-block {
+    background: var(--bg);
+}
+
+/* Heading */
+.pr-head {
+    margin-bottom: 56px;
+}
+.pr-head-center { text-align: center; }
+.pr-head-left { text-align: left; }
+.pr-head-right { text-align: right; }
+.pr-title {
+    font-family: var(--font-heading, var(--font));
+    color: var(--pr-fg, var(--text, #111315));
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+}
+.pr-desc {
+    color: var(--pr-fg, var(--text-muted, #5F656D));
+    opacity: 0.8;
+    font-size: 15px;
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0;
+}
+.pr-head-center .pr-desc { margin: 0 auto; }
+.pr-head-right .pr-desc { margin-left: auto; }
+
+/* Step media circle / number */
+.pr-step-head {
+    position: relative;
+    display: inline-flex;
+}
+.pr-media,
+.pr-num-big {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+.pr-media-icon {
+    background: #FFFFFF;
+    border: 1px solid #E4E7EB;
+    color: var(--pr-accent, var(--accent, #111315));
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.pr-media-icon svg {
+    width: 26px;
+    height: 26px;
+}
+.pr-media-image {
+    overflow: hidden;
+    background: var(--bg-card, #F3F4F6);
+}
+.pr-media-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.pr-num-big {
+    background: var(--pr-accent, var(--accent, #1693C9));
+    color: #fff;
+    font-family: var(--font-heading, var(--font));
+    font-size: 22px;
+    font-weight: 500;
+}
+.pr-num-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--pr-accent, var(--accent, #1693C9));
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg, #fff);
+}
+
+/* Step body */
+.pr-step-title {
+    font-family: var(--font-heading, var(--font));
+    color: var(--pr-fg, var(--text, #111315));
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+}
+.pr-step-desc {
+    color: var(--pr-fg, var(--text-muted, #5F656D));
+    opacity: 0.85;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Row layout — cards side by side ── */
+.pr-block-row .pr-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+.pr-block-row .pr-steps-2 { grid-template-columns: repeat(2, 1fr); }
+.pr-block-row .pr-steps-3 { grid-template-columns: repeat(3, 1fr); }
+.pr-block-row .pr-steps-4 { grid-template-columns: repeat(4, 1fr); }
+.pr-block-row .pr-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.pr-block-row .pr-step-head {
+    margin-bottom: 22px;
+}
+
+/* ── Vertical layout — timeline with a connecting line ── */
+.pr-block-vertical .pr-steps {
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+    margin: 0 auto;
+}
+.pr-block-vertical .pr-step {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    padding-bottom: 40px;
+}
+.pr-block-vertical .pr-step:last-child {
+    padding-bottom: 0;
+}
+/* Connecting line runs from below each circle to the next step. */
+.pr-block-vertical .pr-step::before {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 64px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border, #E4E7EB);
+}
+.pr-block-vertical .pr-step:last-child::before {
+    display: none;
+}
+.pr-block-vertical .pr-step-head {
+    flex: 0 0 auto;
+}
+.pr-block-vertical .pr-step-body {
+    padding-top: 6px;
+}

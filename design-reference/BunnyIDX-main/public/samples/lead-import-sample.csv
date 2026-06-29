@@ -1,0 +1,4 @@
+first_name,last_name,email,phone,source,status,assigned_to,property_interest,budget_min,budget_max,city,state,notes
+John,Smith,john.smith@example.com,+15551234567,Website,new,,Single Family Home,300000,450000,Austin,TX,Interested in 3 bedroom homes
+Sarah,Johnson,sarah.johnson@example.com,+15557654321,Zillow,new,,Condo,250000,350000,Miami,FL,Needs follow up next week
+Michael,Brown,michael.brown@example.com,+15559876543,Referral,new,,Townhouse,400000,550000,Denver,CO,Looking to buy within 60 days
