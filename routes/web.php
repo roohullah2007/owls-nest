@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PropertySearchController;
 use Illuminate\Support\Facades\Route;
 
 // Public marketing site (Inertia pages in resources/js/pages).
@@ -14,6 +15,9 @@ Route::inertia('/communities-projects', 'communities-projects')->name('communiti
 Route::inertia('/neighborhoods', 'neighborhoods')->name('neighborhoods');
 Route::inertia('/contact', 'contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// Public PrimeMLS (Paragon) property search.
+Route::get('/api/primemls/search', [PropertySearchController::class, 'search'])->name('primemls.search');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
