@@ -21,36 +21,24 @@ function themeFooter(block) {
        .join('alt="Owl\'s Nest Real Estate" class="h-10 w-auto [filter:brightness(0)_invert(1)]"');
   b = b.split('class="h-12 w-auto flex-shrink-0"')
        .join('class="h-12 w-auto flex-shrink-0 [filter:brightness(0)_invert(1)]"');
-
   return b;
 }
 
 let changed = 0;
-
 for (const f of files) {
   const p = path.join(dir, f);
   const src = fs.readFileSync(p, 'utf8');
   const start = src.indexOf('<footer');
-
-  if (start === -1) {
-continue;
-}
-
+  if (start === -1) continue;
   const end = src.indexOf('</footer>', start);
-
-  if (end === -1) {
-continue;
-}
-
+  if (end === -1) continue;
   const close = end + '</footer>'.length;
   const block = src.slice(start, close);
   const newBlock = themeFooter(block);
-
   if (newBlock !== block) {
     fs.writeFileSync(p, src.slice(0, start) + newBlock + src.slice(close));
     changed++;
     console.log('themed footer: ' + f);
   }
 }
-
 console.log('Done. Files changed: ' + changed);

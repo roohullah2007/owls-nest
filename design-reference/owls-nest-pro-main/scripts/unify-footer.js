@@ -33,11 +33,9 @@ for (const f of insertTargets) {
   const p = path.join(dir, f);
   let html = fs.readFileSync(p, 'utf8');
   const alreadyHas = /<footer[\s\S]*?<\/footer>/.test(html);
-
   if (!alreadyHas) {
     html = html.replace(/<\/body>/, `\n  ${withComment}\n\n</body>`);
   }
-
   fs.writeFileSync(p, html, 'utf8');
   summary.push(`${f}: inserted=${alreadyHas ? 0 : 1}`);
 }

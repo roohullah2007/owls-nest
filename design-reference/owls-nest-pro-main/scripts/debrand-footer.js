@@ -28,7 +28,6 @@ const luxuryImg = /\s*<img src="https:\/\/media-production\.lp-cdn\.com[^"]*jnym
 const poweredBy = /<span>Powered by <a href="#" class="underline text-gray-200">LUXURY PRESENCE<\/a><\/span>\s*<span class="text-white\/30">\|<\/span>\s*/;
 
 let summary = [];
-
 for (const f of files) {
   const p = path.join(dir, f);
   let html = fs.readFileSync(p, 'utf8');
@@ -52,5 +51,4 @@ for (const f of files) {
   fs.writeFileSync(p, html, 'utf8');
   summary.push(`${f}: ${JSON.stringify(counts)}`);
 }
-
 console.log(summary.join('\n'));

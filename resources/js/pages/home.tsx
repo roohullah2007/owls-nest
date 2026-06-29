@@ -1,7 +1,9 @@
 import { Head } from '@inertiajs/react';
+import { useState } from 'react';
 import { SiteLayout } from '@/layouts/site-layout';
 import { SiteHeader } from '@/components/site/nav/site-header';
 import { Button } from '@/components/site/button';
+import { cn } from '@/lib/utils';
 import { useTypewriter } from '@/hooks/use-typewriter';
 import { FeaturedListings } from '@/components/site/sections/featured-listings';
 import { ImageTextSplit } from '@/components/site/sections/image-text-split';
@@ -15,6 +17,7 @@ import { TestimonialsCarousel } from '@/components/site/sections/testimonials-ca
 import { WorkWithUsBand } from '@/components/site/sections/work-with-us-band';
 import { POPULAR_SEARCHES } from '@/data/popular-searches';
 import { TESTIMONIALS } from '@/data/testimonials';
+import { HERO_SEARCH_TABS } from '@/data/hero-search-tabs';
 
 const ROTATING = [
     "Owl's Nest Resort",
@@ -28,6 +31,9 @@ const ROTATING = [
 // section below is a shared component from components/site/sections.
 export default function Home() {
     const rotating = useTypewriter(ROTATING);
+    const [activeTab, setActiveTab] = useState(0);
+    const [query, setQuery] = useState('');
+    const tab = HERO_SEARCH_TABS[activeTab];
 
     return (
         <SiteLayout showHeader={false}>
@@ -64,10 +70,32 @@ export default function Home() {
                         </span>
                     </p>
 
+                    {/* Hero Search Tabs */}
+                    <div className="mt-4 inline-flex gap-1 self-start rounded-full bg-white/15 p-1 backdrop-blur-sm">
+                        {HERO_SEARCH_TABS.map((t, i) => (
+                            <button
+                                key={t.id}
+                                type="button"
+                                onClick={() => {
+                                    setActiveTab(i);
+                                    setQuery('');
+                                }}
+                                className={cn(
+                                    'rounded-full px-5 py-2.5 text-[13px] font-semibold tracking-[0.1em] uppercase transition-colors sm:px-7',
+                                    i === activeTab
+                                        ? 'bg-white text-navy'
+                                        : 'text-white hover:bg-white/20',
+                                )}
+                            >
+                                {t.label}
+                            </button>
+                        ))}
+                    </div>
+
                     <form
-                        action="/property-search"
+                        action={tab.action}
                         method="get"
-                        className="mt-6 w-full max-w-xl self-start"
+                        className="mt-4 w-full max-w-xl self-start"
                     >
                         <div className="flex items-center gap-3 rounded-full bg-white py-2 pr-2 pl-6 shadow-lg">
                             <svg
@@ -80,7 +108,9 @@ export default function Home() {
                             <input
                                 type="text"
                                 name="q"
-                                placeholder="Search address or city"
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder={tab.placeholder}
                                 className="min-w-0 flex-1 bg-transparent text-sm text-navy placeholder-gray-500 outline-none"
                             />
                             <Button
@@ -89,7 +119,7 @@ export default function Home() {
                                 affordance="arrow"
                                 className="flex-shrink-0"
                             >
-                                Search
+                                {tab.cta}
                             </Button>
                         </div>
                     </form>

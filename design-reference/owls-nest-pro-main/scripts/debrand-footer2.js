@@ -10,7 +10,6 @@ const owlLogo = '<img src="assets/images/logo.png" alt="Owl\'s Nest Real Estate"
 const luxuryImgRe = /\s*<img src="https:\/\/media-production\.lp-cdn\.com[^"]*jnymuan6tigs629jigsz"\s*\n\s*alt="Luxury Presence" class="h-10 w-auto" \/>/;
 
 let summary = [];
-
 for (const f of files) {
   const p = path.join(dir, f);
   let html = fs.readFileSync(p, 'utf8');
@@ -31,5 +30,4 @@ for (const f of files) {
   fs.writeFileSync(p, html, 'utf8');
   summary.push(`${f}: ${JSON.stringify(counts)}`);
 }
-
 console.log(summary.join('\n'));
