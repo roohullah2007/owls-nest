@@ -19,13 +19,17 @@ export default function About() {
                 title="Owl's Nest Real Estate"
                 subtitle="Elevate Your Real Estate Journey with Owl's Nest Real Estate."
                 image="/images/about-hero.webp"
+                scrollTarget="about-story"
             />
 
             <ImageTextSplit
+                id="about-story"
                 image="/images/about-story.webp"
                 imageAlt="A mountain-view home at sunset"
                 eyebrow="About"
                 title="Owl's Nest Real Estate"
+                bodyWeight="normal"
+                headingWeight="semibold"
                 cta={{ label: 'Get Started', href: '/contact' }}
             >
                 <p>
@@ -73,6 +77,7 @@ export default function About() {
             <TestimonialsCarousel testimonials={TESTIMONIALS} />
 
             <WorkWithUsBand
+                variant="band"
                 image="/images/hero-communities.webp"
                 eyebrow="Work With Us"
                 title="Owl's Nest Real Estate"

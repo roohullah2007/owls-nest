@@ -10,6 +10,12 @@ interface WorkWithUsBandProps {
     title: ReactNode;
     description: ReactNode;
     cta: { label: string; href: string };
+    /**
+     * `'fullscreen'` (default) is the home/featured full-height band with a
+     * muted overlay. `'band'` is the shorter about/neighborhoods strip with a
+     * white card and no overlay.
+     */
+    variant?: 'fullscreen' | 'band';
     className?: string;
 }
 
@@ -19,20 +25,31 @@ export function WorkWithUsBand({
     title,
     description,
     cta,
+    variant = 'fullscreen',
     className,
 }: WorkWithUsBandProps) {
+    const band = variant === 'band';
+
     return (
         <section
             className={cn(
-                'relative flex min-h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat py-20',
+                band
+                    ? 'relative flex w-full items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat px-6 py-20 md:py-28'
+                    : 'relative flex min-h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat py-20',
                 className,
             )}
             style={{ backgroundImage: `url('${image}')` }}
         >
-            {/* Dull/muted overlay */}
-            <div className="absolute inset-0 bg-gray-500/30" />
+            {/* Dull/muted overlay (fullscreen only) */}
+            {!band && <div className="absolute inset-0 bg-gray-500/30" />}
 
-            <div className="relative mx-6 w-full max-w-2xl bg-[#e8e8e6]/85 px-6 py-12 text-center backdrop-blur-sm sm:px-12 sm:py-16">
+            <div
+                className={
+                    band
+                        ? 'relative w-full max-w-[680px] bg-white/85 px-8 py-16 text-center backdrop-blur-sm sm:px-16 md:py-20'
+                        : 'relative mx-6 w-full max-w-2xl bg-[#e8e8e6]/85 px-6 py-12 text-center backdrop-blur-sm sm:px-12 sm:py-16'
+                }
+            >
                 <p className="mb-4 text-[12px] leading-[16px] font-semibold tracking-[0.2em] text-navy uppercase">
                     {eyebrow}
                 </p>

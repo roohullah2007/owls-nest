@@ -23,13 +23,17 @@ export default function Buyers() {
                 title="Perfect Home Finder"
                 image="/images/hero-buyers.webp"
                 imageAlt="Waterfront homes at dusk"
+                scrollTarget="buyers-start"
             />
 
             {/* Confidence intro */}
             <ImageTextSplit
+                id="buyers-start"
                 className="py-10 md:py-16"
                 image="/images/64-fairway.webp"
                 imageAlt="A home in the White Mountains region"
+                bodyWeight="normal"
+                imageStyle="card"
                 eyebrow="🏡 Buy with Owl's Nest Real Estate"
                 title={
                     <>

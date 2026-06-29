@@ -1,21 +1,19 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
+import { cn } from '@/lib/utils';
 import { SiteLayout } from '@/layouts/site-layout';
 import { Container } from '@/components/site/primitives';
 import { PageHero } from '@/components/site/sections/page-hero';
-import { ImageTextSplit } from '@/components/site/sections/image-text-split';
 import { CtaBandNavy } from '@/components/site/sections/cta-band-navy';
 import { WorkWithUsBand } from '@/components/site/sections/work-with-us-band';
 import { ValuationTimeline } from '@/components/site/sections/valuation-timeline';
+import { TeamTimeline } from '@/components/site/sections/team-timeline';
 import { CommunityCardOverlay } from '@/components/site/cards/community-card-overlay';
-import { TeamMemberRow } from '@/components/site/cards/team-member-row';
-import { TEAM } from '@/data/team';
 import {
     COMMUNITY_PROJECTS,
     WELCOME_SECTIONS,
+    TEAM_TIMELINE,
     VALUATION_STEPS,
 } from '@/data/communities';
-
-const REALTORS = TEAM.filter((member) => member.id !== 'enzo');
 
 export default function CommunitiesProjects() {
     return (
@@ -31,6 +29,8 @@ export default function CommunitiesProjects() {
                 eyebrow="Areas and Projects"
                 title="Communities & Projects"
                 image="/images/hero-communities.webp"
+                size="tall"
+                scrollTarget="communities"
             />
 
             {/* Areas and current projects grid */}
@@ -48,6 +48,7 @@ export default function CommunitiesProjects() {
                         <CommunityCardOverlay
                             key={community.id}
                             neighborhood={community}
+                            variant="rich"
                             className="h-[320px] w-full"
                         />
                     ))}
@@ -85,42 +86,89 @@ export default function CommunitiesProjects() {
                 </div>
             </section>
 
-            {/* Welcome write-ups for each area */}
-            {WELCOME_SECTIONS.map((section, i) => (
-                <ImageTextSplit
-                    key={section.id}
-                    image={section.image}
-                    imageAlt={section.imageAlt}
-                    eyebrow={section.eyebrow}
-                    title={section.title}
-                    cta={section.cta}
-                    reverse={i % 2 === 1}
-                >
-                    {section.paragraphs.map((paragraph, p) => (
-                        <p key={p}>{paragraph}</p>
-                    ))}
-                </ImageTextSplit>
-            ))}
+            {/* "Welcome to ..." write-ups — text left, photo right; navy or white per area */}
+            {WELCOME_SECTIONS.map((section) => {
+                const navy = section.tone === 'navy';
+                return (
+                    <section
+                        key={section.id}
+                        className={cn(
+                            'py-16 md:py-20',
+                            navy ? 'bg-navy' : 'bg-white',
+                        )}
+                    >
+                        <div className="mx-auto grid w-full max-w-[1500px] items-center gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_465px] lg:gap-16 lg:px-8">
+                            <div>
+                                {section.eyebrow && (
+                                    <p
+                                        className={cn(
+                                            'mb-4 text-[15px] leading-[18px] font-normal tracking-wide uppercase',
+                                            navy ? 'text-gold' : 'text-navy',
+                                        )}
+                                    >
+                                        {section.eyebrow}
+                                    </p>
+                                )}
+                                <h2
+                                    className={cn(
+                                        'text-[clamp(24px,3.8vw,35px)] leading-[clamp(31px,4.6vw,42px)] font-semibold',
+                                        navy ? 'text-white' : 'text-navy',
+                                    )}
+                                >
+                                    {section.title}
+                                </h2>
+                                <div
+                                    className={cn(
+                                        'mt-6 space-y-5 text-[16px] leading-[26px] font-normal',
+                                        navy
+                                            ? 'text-white/85'
+                                            : 'text-[#282828]',
+                                    )}
+                                >
+                                    {section.paragraphs.map((paragraph, p) => (
+                                        <p key={p}>{paragraph}</p>
+                                    ))}
+                                </div>
+                                <Link
+                                    href={section.cta.href}
+                                    className={cn(
+                                        'mt-7 inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.1em] uppercase transition-colors hover:text-gold',
+                                        navy ? 'text-white' : 'text-navy',
+                                    )}
+                                >
+                                    {section.cta.label}
+                                    <svg
+                                        className="h-3.5 w-3.5"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M5 12h14M13 6l6 6-6 6"
+                                        />
+                                    </svg>
+                                </Link>
+                            </div>
+                            <div className="group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                                <img
+                                    src={section.image}
+                                    alt={section.imageAlt}
+                                    className="h-[320px] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 sm:h-[360px] lg:h-[400px]"
+                                />
+                            </div>
+                        </div>
+                    </section>
+                );
+            })}
 
-            {/* Meet our team */}
-            <section className="bg-white pt-16 md:pt-20">
-                <div className="text-center">
-                    <p className="text-[15px] leading-[18px] font-normal tracking-[0.18em] text-navy uppercase">
-                        Our Team
-                    </p>
-                    <h2 className="mt-2 text-[clamp(26px,4.5vw,40px)] leading-[clamp(32px,5vw,44px)] font-semibold text-navy uppercase">
-                        Meet The People Behind Owl's Nest
-                    </h2>
-                </div>
-            </section>
-            {REALTORS.map((member, i) => (
-                <TeamMemberRow
-                    key={member.id}
-                    member={member}
-                    tone={i % 2 === 0 ? 'navy' : 'white'}
-                    reverse={i % 2 === 0}
-                />
-            ))}
+            <TeamTimeline
+                heading="Meet The People Behind Owl's Nest"
+                subheading="Our Team"
+                members={TEAM_TIMELINE}
+            />
 
             <ValuationTimeline
                 heading="How Is A Valuation Performed?"
@@ -134,6 +182,7 @@ export default function CommunitiesProjects() {
             />
 
             <WorkWithUsBand
+                variant="band"
                 image="/images/hero-communities.webp"
                 eyebrow="Work With Us"
                 title="Owl's Nest Real Estate"

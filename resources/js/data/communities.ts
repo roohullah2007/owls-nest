@@ -53,6 +53,8 @@ export interface WelcomeSection {
     cta: { label: string; href: string };
     image: string;
     imageAlt: string;
+    /** `'navy'` renders the section on a navy background with white copy. */
+    tone?: 'light' | 'navy';
 }
 
 export const WELCOME_SECTIONS: WelcomeSection[] = [
@@ -69,6 +71,7 @@ export const WELCOME_SECTIONS: WelcomeSection[] = [
     },
     {
         id: 'rumney-ridge',
+        tone: 'navy',
         eyebrow: 'Communities & Projects',
         title: 'Welcome to Rumney Ridge Trade Center Real Estate',
         paragraphs: [
@@ -96,6 +99,7 @@ export const WELCOME_SECTIONS: WelcomeSection[] = [
     },
     {
         id: 'lakes-region',
+        tone: 'navy',
         title: 'Welcome To Lakes Region Real Estate',
         paragraphs: [
             "Welcome to New Hampshire's stunning Lakes Region, a destination celebrated for its crystal-clear lakes, charming waterfront towns, and unmatched outdoor lifestyle. This sought-after area offers a unique blend of scenic beauty, recreation, and relaxed lakeside living that attracts homeowners from all over the country.",
@@ -104,6 +108,31 @@ export const WELCOME_SECTIONS: WelcomeSection[] = [
         cta: { label: 'Explore Lakes Region', href: '/property-search' },
         image: '/images/nb-lakes-region.webp',
         imageAlt: 'Lakes Region waterfront town',
+    },
+];
+
+/** One person in the "Meet The People Behind Owl's Nest" timeline. */
+export interface TeamTimelineMember {
+    name: string;
+    role: string;
+    blurb: string;
+}
+
+export const TEAM_TIMELINE: TeamTimelineMember[] = [
+    {
+        name: 'Tom DeMatteo',
+        role: 'Broker / Owner',
+        blurb: "Founder of Owl's Nest Real Estate, Tom brings a highly strategic, results-driven approach with deep expertise in land analysis, subdivision feasibility, and new construction across the White Mountains.",
+    },
+    {
+        name: 'Dawn Assencoa',
+        role: 'Realtor®',
+        blurb: 'With a strong background in construction and property maintenance, Dawn offers a practical, client-focused approach and relates closely to buyers relocating from Massachusetts and Rhode Island.',
+    },
+    {
+        name: 'Mattie Boyle',
+        role: 'Realtor®',
+        blurb: 'A local expert in resort markets and short-term rentals, Mattie helps buyers and investors evaluate vacation and income properties throughout the White Mountains.',
     },
 ];
 

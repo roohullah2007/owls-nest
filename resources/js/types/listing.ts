@@ -15,6 +15,12 @@ export interface Listing {
     sqft: string;
     address: string;
     href: string;
+    /**
+     * Long-form blurb shown by the Featured Properties large rows under a
+     * "Property Description" heading. Optional: cards that don't show prose
+     * (e.g. the compact results card) omit it.
+     */
+    description?: string;
 }
 
 /** One slide of the home "Featured Properties" slider: a big card + two thumbnails. */

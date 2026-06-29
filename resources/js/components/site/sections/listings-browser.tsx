@@ -1,12 +1,12 @@
 // Client-side listings browser: address search + neighborhood filter over a
-// `Listing[]`, rendered as a paginated grid of ListingCardCompact. Ports the
-// inline filter/pagination <script> from the original featured-properties.html
-// to React state. The price/sq-ft sliders are presentational (as in the
-// original markup) and the Clear control resets the active text/neighborhood
-// filters.
+// `Listing[]`, rendered as paginated large alternating image/text rows
+// (FeaturedListingRow). Ports the inline filter/pagination <script> from the
+// original featured-properties.html to React state. The price/sq-ft sliders are
+// presentational (as in the original markup) and the Clear control resets the
+// active text/neighborhood filters.
 import { useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { ListingCardCompact } from '@/components/site/cards/listing-card-compact';
+import { FeaturedListingRow } from '@/components/site/cards/featured-listing-row';
 import {
     ChevronDownIcon,
     ChevronLeftIcon,
@@ -58,7 +58,7 @@ function SliderRule({
 
 export function ListingsBrowser({
     listings,
-    perPage = 9,
+    perPage = 3,
     className,
 }: ListingsBrowserProps) {
     const [query, setQuery] = useState('');
@@ -226,13 +226,14 @@ export function ListingsBrowser({
                 </button>
             </div>
 
-            {/* RESULTS GRID */}
+            {/* RESULTS: large alternating image/text rows */}
             {pageItems.length > 0 ? (
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {pageItems.map((listing) => (
-                        <ListingCardCompact
+                <div className="flex flex-col gap-16">
+                    {pageItems.map((listing, index) => (
+                        <FeaturedListingRow
                             key={listing.id}
                             listing={listing}
+                            reverse={index % 2 === 1}
                         />
                     ))}
                 </div>

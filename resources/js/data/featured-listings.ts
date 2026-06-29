@@ -16,6 +16,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '14 Checkerberry Ridge Road, Thornton, NH 03285',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095897/14-Checkerberry-Ridge-Road-Thornton-NH-03285',
+        description:
+            'Located in Thornton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095848',
@@ -28,6 +30,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '3 Full Baths',
         address: '3654 Us Route 3, Thornton, NH 03285',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095848/3654-Us-Route-3-Thornton-NH-03285',
+        description:
+            'Located in Thornton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095804',
@@ -40,6 +44,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '12 Stonegate Court, Gilford, NH 03249',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095804/12-Stonegate-Court-Gilford-NH-03249',
+        description:
+            'Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095713',
@@ -52,6 +58,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '193 New Hebron Road, Plymouth, NH 03264',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095713/193-New-Hebron-Road-Plymouth-NH-03264',
+        description:
+            'Located in Plymouth, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095675',
@@ -64,6 +72,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '4 Varney Point Road, Gilford, NH 03249',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095675/4-Varney-Point-Road-Gilford-NH-03249',
+        description:
+            'Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095643',
@@ -76,6 +86,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '527 North Main Street, Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095643/527-North-Main-Street-Wolfeboro-NH-03894',
+        description:
+            'Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095601',
@@ -88,6 +100,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '365 Middle Road, Tuftonboro, NH 03816',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095601/365-Middle-Road-Tuftonboro-NH-03816',
+        description:
+            'Located in Tuftonboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095595',
@@ -100,6 +114,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '227 Pine Street, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095595/227-Pine-Street-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095565',
@@ -112,6 +128,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '40 Lakewood Drive, Alton, NH 03810',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095565/40-Lakewood-Drive-Alton-NH-03810',
+        description:
+            'Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095557',
@@ -124,6 +142,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '47 Overlook Road (aka Unit 15), Holderness, NH 03245',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095557/47-Overlook-Road-aka-Unit-15-Holderness-NH-03245',
+        description:
+            'Located in Holderness, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095523',
@@ -136,6 +156,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '30 Skyline Drive, Gilford, NH 03249',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095523/30-Skyline-Drive-Gilford-NH-03249',
+        description:
+            'Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095502',
@@ -148,6 +170,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '16 Depot Street, Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095502/16-Depot-Street-Wolfeboro-NH-03894',
+        description:
+            'Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095495',
@@ -160,6 +184,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '103 Main Street, Alton, NH 03809',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095495/103-Main-Street-Alton-NH-03809',
+        description:
+            'Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095439',
@@ -172,6 +198,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '135 Shepard Hill Road, Holderness, NH 03245',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095439/135-Shepard-Hill-Road-Holderness-NH-03245',
+        description:
+            'Located in Holderness, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095373',
@@ -184,6 +212,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '41 Circle Drive, Belmont, NH 03220',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095373/41-Circle-Drive-Belmont-NH-03220',
+        description:
+            'Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095288',
@@ -196,6 +226,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '7 Smith Hill Road, Ashland, NH 03217',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095288/7-Smith-Hill-Road-Ashland-NH-03217',
+        description:
+            'Located in Ashland, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095300',
@@ -208,6 +240,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '200 Paradise Drive, Moultonborough, NH 03254',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095300/200-Paradise-Drive-Moultonborough-NH-03254',
+        description:
+            'Located in Moultonborough, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095244',
@@ -220,6 +254,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '244 Pine Street, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095244/244-Pine-Street-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095250',
@@ -232,6 +268,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '83 Hurricane Road, Belmont, NH 03220',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095250/83-Hurricane-Road-Belmont-NH-03220',
+        description:
+            'Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095257',
@@ -244,6 +282,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '221 School Street, Tilton, NH 03276',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095257/221-School-Street-Tilton-NH-03276',
+        description:
+            'Located in Tilton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095201',
@@ -256,6 +296,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '45 Walker Hill Road, Ossipee, NH 03864',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095201/45-Walker-Hill-Road-Ossipee-NH-03864',
+        description:
+            'Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095217',
@@ -268,6 +310,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '3 Full Baths',
         address: '108 Center Street, Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095217/108-Center-Street-Wolfeboro-NH-03894',
+        description:
+            'Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095195',
@@ -280,6 +324,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '40-24 Harbor Way 24, 24 Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095195/40-24-Harbor-Way-24-Wolfeboro-NH-03894',
+        description:
+            'Located in 24 Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095184',
@@ -292,6 +338,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '162 Morrill Street, Gilford, NH 03249',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095184/162-Morrill-Street-Gilford-NH-03249',
+        description:
+            'Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095175',
@@ -304,6 +352,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '7 Sam Hall Drive, Plymouth, NH 03264',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095175/7-Sam-Hall-Drive-Plymouth-NH-03264',
+        description:
+            'Located in Plymouth, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095131',
@@ -316,6 +366,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '4 Farmhouse Lane, Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095131/4-Farmhouse-Lane-Wolfeboro-NH-03894',
+        description:
+            'Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095137',
@@ -328,6 +380,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '326 Hemlock Drive, Gilmanton, NH 03237',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095137/326-Hemlock-Drive-Gilmanton-NH-03237',
+        description:
+            'Located in Gilmanton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095151',
@@ -340,6 +394,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '29 Bean Road, Center Harbor, NH 03226',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095151/29-Bean-Road-Center-Harbor-NH-03226',
+        description:
+            'Located in Center Harbor, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095087',
@@ -352,6 +408,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '144 Lake Street 20, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095087/144-Lake-Street-20-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095086',
@@ -364,6 +422,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '37 Dewey Circle, Campton, NH 03223',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095086/37-Dewey-Circle-Campton-NH-03223',
+        description:
+            'Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095059',
@@ -376,6 +436,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '9 Horne Road, Belmont, NH 03220',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095059/9-Horne-Road-Belmont-NH-03220',
+        description:
+            'Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095035',
@@ -388,6 +450,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '29 Melissa Way B, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095035/29-Melissa-Way-B-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5095007',
@@ -400,6 +464,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '41 Dixon Street, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095007/41-Dixon-Street-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094985',
@@ -412,6 +478,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '108 Cherry Valley Road 7, Gilford, NH 03249',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094985/108-Cherry-Valley-Road-7-Gilford-NH-03249',
+        description:
+            'Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094956',
@@ -424,6 +492,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '20 Emily Circle, Meredith, NH 03253',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094956/20-Emily-Circle-Meredith-NH-03253',
+        description:
+            'Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094938',
@@ -436,6 +506,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '5 Lloyd Road, Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094938/5-Lloyd-Road-Wolfeboro-NH-03894',
+        description:
+            'Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094945',
@@ -448,6 +520,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '109 Washington Road 41, Freedom, NH 03836',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094945/109-Washington-Road-41-Freedom-NH-03836',
+        description:
+            'Located in Freedom, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094912',
@@ -460,6 +534,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '3 Full Baths',
         address: '76 Woodside Drive, Bridgewater, NH 03222',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094912/76-Woodside-Drive-Bridgewater-NH-03222',
+        description:
+            'Located in Bridgewater, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094887',
@@ -472,6 +548,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '14 Elm St Extension, Ossipee, NH 03864',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094887/14-Elm-St-Extension-Ossipee-NH-03864',
+        description:
+            'Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094886',
@@ -484,6 +562,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '20 Indianhead Lane, Gilmanton, NH 03237',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094886/20-Indianhead-Lane-Gilmanton-NH-03237',
+        description:
+            'Located in Gilmanton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094877',
@@ -496,6 +576,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '60 Wellington Village Drive 5, Bristol, NH 03222',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094877/60-Wellington-Village-Drive-5-Bristol-NH-03222',
+        description:
+            'Located in Bristol, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094847',
@@ -508,6 +590,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '114 Ledgewood Terrace, Bridgewater, NH 03222',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094847/114-Ledgewood-Terrace-Bridgewater-NH-03222',
+        description:
+            'Located in Bridgewater, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094801',
@@ -520,6 +604,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '38 & 16 Valley Road, Tuftonboro, NH 03816',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094801/38--16-Valley-Road-Tuftonboro-NH-03816',
+        description:
+            'Located in Tuftonboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094784',
@@ -532,6 +618,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '24 Condo Road 2, Campton, NH 03223',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094784/24-Condo-Road-2-Campton-NH-03223',
+        description:
+            'Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094793',
@@ -544,6 +632,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '307 Calef Hill Road, Sanbornton, NH 03269',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094793/307-Calef-Hill-Road-Sanbornton-NH-03269',
+        description:
+            'Located in Sanbornton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094744',
@@ -556,6 +646,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '224 King Road, Alexandria, NH 03222',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094744/224-King-Road-Alexandria-NH-03222',
+        description:
+            'Located in Alexandria, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094734',
@@ -568,6 +660,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '39 Chestnut Street, Tilton, NH 03276',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094734/39-Chestnut-Street-Tilton-NH-03276',
+        description:
+            'Located in Tilton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094728',
@@ -580,6 +674,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '85 Fairway Drive 3, Ashland, NH 03217',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094728/85-Fairway-Drive-3-Ashland-NH-03217',
+        description:
+            'Located in Ashland, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094714',
@@ -592,6 +688,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '95 Hundred Acre Wood Road 9, Bristol, NH 03222',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094714/95-Hundred-Acre-Wood-Road-9-Bristol-NH-03222',
+        description:
+            'Located in Bristol, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094715',
@@ -604,6 +702,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '71 Oak Hill Road, Northfield, NH 03276',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094715/71-Oak-Hill-Road-Northfield-NH-03276',
+        description:
+            'Located in Northfield, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094704',
@@ -616,6 +716,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '4 Wolfeboro Common 4, Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094704/4-Wolfeboro-Common-4-Wolfeboro-NH-03894',
+        description:
+            'Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094674',
@@ -628,6 +730,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '125 Woodland Avenue, Gilford, NH 03249',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094674/125-Woodland-Avenue-Gilford-NH-03249',
+        description:
+            'Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094614',
@@ -640,6 +744,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '178 Treetop Circle 1034, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094614/178-Treetop-Circle-1034-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094602',
@@ -652,6 +758,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '14 Parker Road 5, Campton, NH 03223',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094602/14-Parker-Road-5-Campton-NH-03223',
+        description:
+            'Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094572',
@@ -664,6 +772,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '13 Haley Drive, Campton, NH 03223',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094572/13-Haley-Drive-Campton-NH-03223',
+        description:
+            'Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094570',
@@ -676,6 +786,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '4 Anagance Lane, Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094570/4-Anagance-Lane-Wolfeboro-NH-03894',
+        description:
+            'Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094554',
@@ -688,6 +800,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '191 Court Street, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094554/191-Court-Street-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094558',
@@ -700,6 +814,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '11 Highcrest Drive, Belmont, NH 03220',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094558/11-Highcrest-Drive-Belmont-NH-03220',
+        description:
+            'Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094539',
@@ -712,6 +828,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '12 Forest Rim Way E2, Waterville Valley, NH 03215',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094539/12-Forest-Rim-Way-E2-Waterville-Valley-NH-03215',
+        description:
+            'Located in Waterville Valley, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094538',
@@ -724,6 +842,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '7 Baker Avenue 6, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094538/7-Baker-Avenue-6-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094540',
@@ -736,6 +856,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '163 Maple Ridge Road, Sandwich, NH 03259',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094540/163-Maple-Ridge-Road-Sandwich-NH-03259',
+        description:
+            'Located in Sandwich, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094179',
@@ -748,6 +870,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '7 Barnard Ridge Road, Meredith, NH 03253',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094179/7-Barnard-Ridge-Road-Meredith-NH-03253',
+        description:
+            'Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093899',
@@ -760,6 +884,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '35 Walker Hill Road, Ossipee, NH 03864',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093899/35-Walker-Hill-Road-Ossipee-NH-03864',
+        description:
+            'Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094535',
@@ -772,6 +898,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '53 Broadview Drive 1, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094535/53-Broadview-Drive-1-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094123',
@@ -784,6 +912,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '46 Weeks Road 70-2, 2 Sanbornton, NH 03269',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094123/46-Weeks-Road-70-2-Sanbornton-NH-03269',
+        description:
+            'Located in 2 Sanbornton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093599',
@@ -796,6 +926,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '13 Stonehenge Circle 3, Northfield, NH 03276',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093599/13-Stonehenge-Circle-3-Northfield-NH-03276',
+        description:
+            'Located in Northfield, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093066',
@@ -808,6 +940,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '21 Tall Pines Way, Meredith, NH 03253',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093066/21-Tall-Pines-Way-Meredith-NH-03253',
+        description:
+            'Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093583',
@@ -820,6 +954,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '3 Full Baths',
         address: '16 Palm Lane, Alton, NH 03809',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093583/16-Palm-Lane-Alton-NH-03809',
+        description:
+            'Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093056',
@@ -832,6 +968,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '21 Tall Pines Way, Meredith, NH 03253',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093056/21-Tall-Pines-Way-Meredith-NH-03253',
+        description:
+            'Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094478',
@@ -844,6 +982,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '8 Our Way 431, Freedom, NH 03836',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094478/8-Our-Way-431-Freedom-NH-03836',
+        description:
+            'Located in Freedom, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094446',
@@ -856,6 +996,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '30 Greenleaf Trail, Gilford, NH 03249',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094446/30-Greenleaf-Trail-Gilford-NH-03249',
+        description:
+            'Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5092930',
@@ -868,6 +1010,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '13 Pear Street, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5092930/13-Pear-Street-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094391',
@@ -880,6 +1024,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '48 Independence Drive, Freedom, NH 03836',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094391/48-Independence-Drive-Freedom-NH-03836',
+        description:
+            'Located in Freedom, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094342',
@@ -892,6 +1038,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '33 Sanborn Road, Plymouth, NH 03264',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094342/33-Sanborn-Road-Plymouth-NH-03264',
+        description:
+            'Located in Plymouth, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093700',
@@ -904,6 +1052,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '3-5 Firehouse Lane, Lane New Hampton, NH 03256',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093700/3-5-Firehouse-Lane-New-Hampton-NH-03256',
+        description:
+            'Located in Lane New Hampton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094191',
@@ -916,6 +1066,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '193 New Durham Road, Alton, NH 03809',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094191/193-New-Durham-Road-Alton-NH-03809',
+        description:
+            'Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094258',
@@ -928,6 +1080,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '46 Depot Street, Belmont, NH 03220',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094258/46-Depot-Street-Belmont-NH-03220',
+        description:
+            'Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094256',
@@ -940,6 +1094,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '177 Alton Shores Road, Alton, NH 03810',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094256/177-Alton-Shores-Road-Alton-NH-03810',
+        description:
+            'Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094190',
@@ -952,6 +1108,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: 'Lot 38 Smoke Rise Road, New Hampton, NH 03256',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094190/Lot-38-Smoke-Rise-Road-New-Hampton-NH-03256',
+        description:
+            'Located in New Hampton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094177',
@@ -964,6 +1122,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: 'Lot 35 Smoke Rise Road, New Hampton, NH 03256',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094177/Lot-35-Smoke-Rise-Road-New-Hampton-NH-03256',
+        description:
+            'Located in New Hampton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094110',
@@ -976,6 +1136,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '48 Forest Hill Road, Meredith, NH 03253',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094110/48-Forest-Hill-Road-Meredith-NH-03253',
+        description:
+            'Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094062',
@@ -988,6 +1150,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '40 White Pond Road, Ossipee, NH 03864',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094062/40-White-Pond-Road-Ossipee-NH-03864',
+        description:
+            'Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094065',
@@ -1000,6 +1164,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '65 Lakeview Avenue, Bristol, NH 03222',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094065/65-Lakeview-Avenue-Bristol-NH-03222',
+        description:
+            'Located in Bristol, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5094021',
@@ -1012,6 +1178,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '29 Wooley Pasture Road, Plymouth, NH 03264',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094021/29-Wooley-Pasture-Road-Plymouth-NH-03264',
+        description:
+            'Located in Plymouth, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093936',
@@ -1024,6 +1192,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '175 Tate Road, Gilford, NH 03249',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093936/175-Tate-Road-Gilford-NH-03249',
+        description:
+            'Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093907',
@@ -1036,6 +1206,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '21 Pine Arden Drive 76, Ashland, NH 03217',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093907/21-Pine-Arden-Drive-76-Ashland-NH-03217',
+        description:
+            'Located in Ashland, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093871',
@@ -1048,6 +1220,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '92 Mallard Drive, Alton, NH 03809',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093871/92-Mallard-Drive-Alton-NH-03809',
+        description:
+            'Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093748',
@@ -1060,6 +1234,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '26 Sawyer Road, Ossipee, NH 03864',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093748/26-Sawyer-Road-Ossipee-NH-03864',
+        description:
+            'Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093738',
@@ -1072,6 +1248,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '78 Wood Drive, Gilmanton, NH 03237',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093738/78-Wood-Drive-Gilmanton-NH-03237',
+        description:
+            'Located in Gilmanton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093733',
@@ -1084,6 +1262,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '6 Mudgett Drive, Freedom, NH 03836',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093733/6-Mudgett-Drive-Freedom-NH-03836',
+        description:
+            'Located in Freedom, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093730',
@@ -1096,6 +1276,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '3 Oak Hill Road, Northfield, NH 03276',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093730/3-Oak-Hill-Road-Northfield-NH-03276',
+        description:
+            'Located in Northfield, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093704',
@@ -1108,6 +1290,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '160 Browns Ridge Road, Ossipee, NH 03864',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093704/160-Browns-Ridge-Road-Ossipee-NH-03864',
+        description:
+            'Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093699',
@@ -1120,6 +1304,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '20 Baldwin Street, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093699/20-Baldwin-Street-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093640',
@@ -1132,6 +1318,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '58 Millstone Drive 56, Northfield, NH 03276',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093640/58-Millstone-Drive-56-Northfield-NH-03276',
+        description:
+            'Located in Northfield, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093565',
@@ -1144,6 +1332,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '62 Mansfield Woods Way, New Hampton, NH 03256',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093565/62-Mansfield-Woods-Way-New-Hampton-NH-03256',
+        description:
+            'Located in New Hampton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093557',
@@ -1156,6 +1346,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '77 Whitehouse Circle, Campton, NH 03223',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093557/77-Whitehouse-Circle-Campton-NH-03223',
+        description:
+            'Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093505',
@@ -1168,6 +1360,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '1 Full Baths',
         address: '40 Paugus Street, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093505/40-Paugus-Street-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5092843',
@@ -1180,6 +1374,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '3 Full Baths',
         address: '7 Loon Street, Wolfeboro, NH 03894',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5092843/7-Loon-Street-Wolfeboro-NH-03894',
+        description:
+            'Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093417',
@@ -1192,6 +1388,8 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '0 Full Baths',
         address: '1026 Weirs Boulevard, Laconia, NH 03246',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093417/1026-Weirs-Boulevard-Laconia-NH-03246',
+        description:
+            'Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
     {
         id: '5093383',
@@ -1204,5 +1402,7 @@ export const FEATURED_LISTINGS: Listing[] = [
         sqft: '2 Full Baths',
         address: '189 Lynn Avenue, Alexandria, NH 03222',
         href: 'https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093383/189-Lynn-Avenue-Alexandria-NH-03222',
+        description:
+            'Located in Alexandria, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing.',
     },
 ];

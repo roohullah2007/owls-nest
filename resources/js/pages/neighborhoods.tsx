@@ -16,6 +16,8 @@ export default function Neighborhoods() {
             <PageHero
                 title="Neighborhoods"
                 image="/images/hero-communities.webp"
+                size="tall"
+                scrollTarget="areas"
             />
 
             {/* Areas and Current Projects grid */}
@@ -61,6 +63,7 @@ export default function Neighborhoods() {
             </section>
 
             <WorkWithUsBand
+                variant="band"
                 image="/images/hero-communities.webp"
                 eyebrow="Work With Us"
                 title="Owl's Nest Real Estate"

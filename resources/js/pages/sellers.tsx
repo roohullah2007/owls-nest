@@ -33,11 +33,15 @@ export default function Sellers() {
                 }
                 image="/images/cta-home.webp"
                 imageAlt="Elegantly furnished living room"
+                scrollTarget="sellers-start"
             />
 
             <ImageTextSplit
+                id="sellers-start"
                 image="/images/sellers-confidence.webp"
                 imageAlt="A modern home for sale"
+                bodyWeight="normal"
+                imageStyle="card"
                 eyebrow="Sell Your Home With Confidence"
                 title={
                     <>
@@ -114,6 +118,8 @@ export default function Sellers() {
                 image="/images/sellers-benefits.webp"
                 imageAlt="A realtor meeting clients at a home"
                 reverse
+                bodyWeight="normal"
+                imageStyle="card"
                 title={
                     <>
                         The Benefits Of Working With A Realtor&reg;

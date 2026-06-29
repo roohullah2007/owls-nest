@@ -1,6 +1,5 @@
-// Generic full-width navy CTA band: optional eyebrow + heading + outline-light
-// button. Reused by inner pages (about / buyers / sellers / communities) that
-// end with a "get in touch" prompt on a navy background.
+// Full-width navy CTA strip: heading on the left, outline-light button on the
+// right. Reused by the about + communities pages ("Start Your Home Search").
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/site/button';
@@ -24,21 +23,22 @@ export function CtaBandNavy({
     className,
 }: CtaBandNavyProps) {
     return (
-        <section className={cn('bg-navy py-20', className)}>
-            <Container className="flex flex-col items-center text-center">
-                {eyebrow && (
-                    <Eyebrow tone="light" className="mb-4">
-                        {eyebrow}
-                    </Eyebrow>
-                )}
-                <DisplayHeading className="text-[clamp(34px,5vw,52px)] text-white">
-                    {title}
-                </DisplayHeading>
+        <section className={cn('bg-navy', className)}>
+            <Container className="flex flex-col items-center justify-between gap-8 py-16 md:flex-row md:py-20">
+                <div className="text-center md:text-left">
+                    {eyebrow && (
+                        <Eyebrow tone="light" className="mb-4 block">
+                            {eyebrow}
+                        </Eyebrow>
+                    )}
+                    <DisplayHeading className="text-[clamp(30px,5vw,52px)] text-white">
+                        {title}
+                    </DisplayHeading>
+                </div>
                 <Button
                     variant="outline-light"
                     href={cta.href}
-                    affordance="line"
-                    className="mt-8 gap-3"
+                    className="px-10 py-4 text-[13px] tracking-[0.1em] whitespace-nowrap"
                 >
                     {cta.label}
                 </Button>
