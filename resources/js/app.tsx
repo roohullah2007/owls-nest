@@ -12,14 +12,16 @@ createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     layout: (name) => {
         switch (true) {
-            case name === 'welcome':
-                return null;
             case name.startsWith('auth/'):
                 return AuthLayout;
             case name.startsWith('settings/'):
                 return [AppLayout, SettingsLayout];
-            default:
+            case name === 'dashboard':
                 return AppLayout;
+            default:
+                // Public marketing pages provide their own <SiteLayout>; they
+                // must NOT be wrapped in the dashboard AppLayout (sidebar/header).
+                return null;
         }
     },
     strictMode: true,
