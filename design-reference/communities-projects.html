@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communities &amp; Projects — Owl's Nest Real Estate</title>
+  <meta name="description" content="Explore the areas and current projects where Owl's Nest Real Estate specializes across New Hampshire's White Mountains and Lakes Region." />
+  <!-- Tailwind via CDN — just open this file in a browser, no build needed. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: { xs: '480px' },
+          colors: {
+            black: '#04345c', navy: '#04345c', navydark: '#062a4a', navydeep: '#01182b',
+            gold: '#b5832a', golddk: '#a0731f', white: '#ffffff',
+            brand: '#227AD5', ink: '#333366', forest: '#2f4733', sage: '#7d8c6f',
+            sand: '#f4f1ea', clay: '#b08d57', seanavy: '#04345c',
+          },
+          fontFamily: {
+            roboto: ['Soleil', 'sans-serif'], soleil: ['Soleil', 'sans-serif'],
+            display: ['"Soleil Bold"', 'Soleil', "'Segoe UI'", 'Arial', 'sans-serif'],
+            heading: ['Soleil', "'Segoe UI'", 'Arial', 'sans-serif'],
+            body: ["'Segoe UI'", '-apple-system', 'BlinkMacSystemFont', 'Roboto', "'Helvetica Neue'", 'Arial', 'sans-serif'],
+            poppins: ['Poppins', "'Segoe UI'", 'Arial', 'sans-serif'],
+          },
+          keyframes: { marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } } },
+          animation: { marquee: 'marquee 25s linear infinite' },
+          maxWidth: { container: '1200px' },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @font-face { font-family:"Soleil"; src:url("./assets/fonts/SoleilRegular.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Soleil"; src:url("./assets/fonts/SoleilBold.ttf") format("truetype"); font-weight:600 700; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Soleil Bold"; src:url("./assets/fonts/SoleilBold.ttf") format("truetype"); font-weight:400 700; font-style:normal; font-display:swap; }
+  </style>
+  <!-- RESPONSIVE-GUARD -->
+  <style>
+    html,body{overflow-x:hidden;}
+    img{max-width:100%;height:auto;}
+    img.absolute{height:100%;}
+  </style>
+  <!-- FONT-UNIFY: unify all body text to Soleil sitewide -->
+  <style>
+    @font-face{font-family:Soleil;src:url(assets/fonts/SoleilRegular.ttf) format(truetype);font-weight:400 500;font-style:normal;font-display:swap;}
+    @font-face{font-family:Soleil;src:url(assets/fonts/SoleilBold.ttf) format(truetype);font-weight:600 800;font-style:normal;font-display:swap;}
+    body, .font-body, .font-poppins, .font-barlow, .font-inter, .font-roboto, .font-robotoflex{font-family:Soleil,sans-serif !important;}
+  </style>
+  <!-- IMG-HOVER: elegant zoom + shadow on content images sitewide -->
+  <style>
+    .overflow-hidden > img:not(.absolute){transition:transform .7s cubic-bezier(.2,.8,.2,1);will-change:transform;}
+    .overflow-hidden:has(> img:not(.absolute)){transition:box-shadow .5s ease;}
+    .overflow-hidden:hover > img:not(.absolute),
+    .group:hover .overflow-hidden > img:not(.absolute){transform:scale(1.07);}
+    .overflow-hidden:hover:has(> img:not(.absolute)),
+    .group:hover .overflow-hidden:has(> img:not(.absolute)){box-shadow:0 18px 40px rgba(4,52,92,.28);}
+  </style>
+</head>
+<body class="font-body text-ink antialiased">
+
+  <!-- ===================== HEADER (synced with home) ===================== -->
+    <!-- NAVBAR -->
+    <nav class="relative z-20 bg-black/95 w-full">
+      <div class="max-w-[1400px] mx-auto flex items-center px-6 lg:px-10 py-4 gap-6">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex-shrink-0">
+          <img src="assets/images/logo.png" alt="Owl's Nest Real Estate" class="h-10 w-auto [filter:brightness(0)_invert(1)]" />
+        </a>
+
+        <!-- Menu Items -->
+        <ul class="hidden lg:flex items-center ml-auto gap-6 text-white font-normal text-[13px] leading-[19px] tracking-wide">
+          <li><a href="property-search.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Property Search</a></li>
+          <li><a href="featured-properties.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Featured Properties</a></li>
+          <li><a href="buyers.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Buyers</a></li>
+          <li><a href="sellers.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Sellers</a></li>
+          <li><a href="about.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">About</a></li>
+          <li class="relative group">
+            <a href="communities-projects.html" class="flex items-center gap-1 cursor-pointer hover:text-gray-300 transition-colors uppercase whitespace-nowrap">
+              <span>Communities &amp; Projects</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </a>
+            <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-150 absolute left-0 top-full pt-3 w-64 z-30">
+              <div class="bg-white border border-white shadow-lg">
+                <a href="neighborhoods.html" class="block px-5 py-3 text-[13px] tracking-wide uppercase text-gray-800 transition-colors hover:bg-navy hover:text-white">Neighborhoods</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="contact.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Contact</a></li>
+        </ul>
+
+        <!-- Phone Button -->
+        <div class="flex items-center gap-3 ml-auto lg:ml-0">
+          <a href="tel:4016485308"
+             class="hidden md:inline-flex items-center justify-center border border-white bg-white text-navy rounded-full px-6 py-3 text-sm font-semibold hover:bg-navy hover:text-white transition-colors">
+            401-648-5308
+          </a>
+</div>
+      </div>
+    </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative w-full h-[70vh] min-h-[520px] overflow-hidden">
+    <img src="./assets/images/hero-communities.jpg" alt="New Hampshire White Mountains" class="absolute inset-0 w-full h-full object-cover object-center" />
+    <div class="absolute inset-0 bg-black/15"></div>
+    <div class="relative z-10 h-full flex items-end justify-center pb-0">
+      <div class="bg-black/95 w-full max-w-[760px] px-12 pt-16 pb-12 flex flex-col items-center">
+        <p class="text-[15px] font-normal uppercase leading-[18px] tracking-[0.25em] text-white text-center mb-4">Areas and Projects</p>
+        <h1 class="font-normal text-[clamp(30px,5vw,52px)] leading-[1.15] uppercase text-white text-center tracking-wide">Communities &amp; Projects</h1>
+        <a href="#communities" class="mt-8 w-14 h-14 rounded-full border border-white flex items-center justify-center text-white hover:bg-white hover:text-navy transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMMUNITIES GRID ===================== -->
+  <section id="communities" class="bg-white pb-16 md:pb-20">
+    <div class="pt-16 text-center md:pt-20">
+      <p class="font-heading text-[15px] font-normal uppercase leading-[18px] tracking-[0.18em] text-navy">Our Featured</p>
+      <h2 class="mt-2 font-display text-[clamp(26px,4.5vw,40px)] font-semibold uppercase leading-[clamp(32px,5vw,44px)] text-navy">Areas and Current Projects</h2>
+    </div>
+    <div class="mx-auto mt-12 grid w-full max-w-[1400px] grid-cols-1 gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3 lg:px-10">
+        <a href="property-search.html" class="group relative flex h-[320px] items-center justify-center overflow-hidden">
+          <img src="https://owlsnestrealestate.com/wp-content/uploads/2026/05/owl-s-nest-resort.jpg" alt="Owl's Nest Resort" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/45 transition-colors group-hover:bg-black/55"></div>
+          <div class="relative flex flex-col items-center px-4 text-center text-white">
+            <h3 class="font-display text-[clamp(22px,3vw,30px)] font-semibold leading-[36px] drop-shadow">Owl's Nest Resort</h3>
+            <p class="mt-2 font-heading text-[13px] font-normal uppercase leading-[18px] tracking-[0.18em] text-white/85">Owl's Nest Real Estate</p>
+            <span class="mt-5 inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-2.5 font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-navy">Explore Listings</span>
+          </div>
+        </a>
+        <a href="property-search.html" class="group relative flex h-[320px] items-center justify-center overflow-hidden">
+          <img src="https://owlsnestrealestate.com/wp-content/uploads/2026/05/file_000000005a2471fd9de364c15aa7385c.png" alt="Rumney Ridge Trade Center" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/45 transition-colors group-hover:bg-black/55"></div>
+          <div class="relative flex flex-col items-center px-4 text-center text-white">
+            <h3 class="font-display text-[clamp(22px,3vw,30px)] font-semibold leading-[36px] drop-shadow">Rumney Ridge Trade Center</h3>
+            <p class="mt-2 font-heading text-[13px] font-normal uppercase leading-[18px] tracking-[0.18em] text-white/85">Owl's Nest Real Estate</p>
+            <span class="mt-5 inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-2.5 font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-navy">Explore Listings</span>
+          </div>
+        </a>
+        <a href="property-search.html" class="group relative flex h-[320px] items-center justify-center overflow-hidden">
+          <img src="https://owlsnestrealestate.com/wp-content/uploads/2026/05/Waterville_Valley_Town_Square_Village_Rd_New_Hampshire_-_panoramio-scaled.jpg" alt="Waterville Valley" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/45 transition-colors group-hover:bg-black/55"></div>
+          <div class="relative flex flex-col items-center px-4 text-center text-white">
+            <h3 class="font-display text-[clamp(22px,3vw,30px)] font-semibold leading-[36px] drop-shadow">Waterville Valley</h3>
+            <p class="mt-2 font-heading text-[13px] font-normal uppercase leading-[18px] tracking-[0.18em] text-white/85">Owl's Nest Real Estate</p>
+            <span class="mt-5 inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-2.5 font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-navy">Explore Listings</span>
+          </div>
+        </a>
+        <a href="property-search.html" class="group relative flex h-[320px] items-center justify-center overflow-hidden">
+          <img src="https://owlsnestrealestate.com/wp-content/uploads/2026/05/Lakes-Region-NH.png" alt="Lakes Region" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/45 transition-colors group-hover:bg-black/55"></div>
+          <div class="relative flex flex-col items-center px-4 text-center text-white">
+            <h3 class="font-display text-[clamp(22px,3vw,30px)] font-semibold leading-[36px] drop-shadow">Lakes Region</h3>
+            <p class="mt-2 font-heading text-[13px] font-normal uppercase leading-[18px] tracking-[0.18em] text-white/85">Owl's Nest Real Estate</p>
+            <span class="mt-5 inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-2.5 font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-navy">Explore Listings</span>
+          </div>
+        </a>
+        <a href="index.html#featured" class="group relative flex h-[320px] items-center justify-center overflow-hidden">
+          <img src="./assets/images/hero-communities.jpg" alt="Featured Properties" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/45 transition-colors group-hover:bg-black/55"></div>
+          <div class="relative flex flex-col items-center px-4 text-center text-white">
+            <h3 class="font-display text-[clamp(22px,3vw,30px)] font-semibold leading-[36px] drop-shadow">Featured Properties</h3>
+            <p class="mt-2 font-heading text-[13px] font-normal uppercase leading-[18px] tracking-[0.18em] text-white/85">Owl's Nest Real Estate</p>
+            <span class="mt-5 inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-2.5 font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-navy">Explore Listings</span>
+          </div>
+        </a>
+        <a href="property-search.html" class="group relative flex h-[320px] items-center justify-center overflow-hidden">
+          <img src="./assets/images/hero-owls-nest-resort.jpg" alt="Investment Opportunities" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/45 transition-colors group-hover:bg-black/55"></div>
+          <div class="relative flex flex-col items-center px-4 text-center text-white">
+            <h3 class="font-display text-[clamp(22px,3vw,30px)] font-semibold leading-[36px] drop-shadow">Investment Opportunities</h3>
+            <p class="mt-2 font-heading text-[13px] font-normal uppercase leading-[18px] tracking-[0.18em] text-white/85">Owl's Nest Real Estate</p>
+            <span class="mt-5 inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-2.5 font-heading text-[12px] font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-navy">Explore Listings</span>
+          </div>
+        </a>
+    </div>
+  </section>
+
+  <!-- ===================== DESCRIPTION ===================== -->
+  <section class="bg-navy py-16 md:py-20">
+    <div class="mx-auto max-w-[880px] px-6 text-center">
+      <p class="font-heading text-[15px] font-normal uppercase leading-[18px] tracking-[0.18em] text-gold">About Our Areas</p>
+      <h2 class="mt-2 font-display text-[clamp(24px,3.8vw,35px)] font-semibold uppercase leading-[clamp(31px,4.6vw,42px)] text-white">Communities Built Around Lifestyle</h2>
+      <div class="mx-auto mt-6 max-w-[760px] space-y-5 font-heading text-[16px] font-normal leading-[27px] text-white/85">
+        <p>From four-season resort living at Owl's Nest to the lakeside charm of the Lakes Region and the mountain village of Waterville Valley, Owl's Nest Real Estate represents some of the most sought-after communities and development projects across New Hampshire's White Mountains.</p>
+        <p>Each area offers its own distinct lifestyle — whether you're looking for a primary residence, a vacation getaway, an investment property, or a commercial development opportunity. Our team brings deep local knowledge and a hands-on, strategic approach to help you find the right fit and make a confident, informed decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMMUNITY DETAILS (from area pages) ===================== -->
+  <!-- ===================== WELCOME ===================== -->
+  <section class="bg-white py-16 md:py-20">
+    <div class="mx-auto grid w-full max-w-[1500px] items-center gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_465px] lg:gap-16 lg:px-8">
+      <div>
+        <h2 class="font-display text-[clamp(24px,3.8vw,35px)] font-semibold leading-[clamp(31px,4.6vw,42px)] text-black">Welcome To Owl's Nest Resort Real Estate</h2>
+        <div class="mt-6 space-y-5 font-heading text-[16px] font-normal leading-[26px] text-[#282828]">
+          <p>
+            Welcome to Owl's Nest Resort, one of New Hampshire's premier luxury resort communities nestled in<br class="hidden lg:block" />
+            the heart of the White Mountains. Known for its breathtaking mountain views, upscale residences, and<br class="hidden lg:block" />
+            world-class amenities, Owl's Nest Resort offers an unmatched lifestyle for homeowners seeking both<br class="hidden lg:block" />
+            relaxation and adventure. Whether you're looking for a vacation retreat, full-time residence, or<br class="hidden lg:block" />
+            investment opportunity, this vibrant resort community delivers exceptional value and lifestyle appeal.
+          </p>
+          <p>
+            As your trusted real estate partner, we're here to help you navigate the Owl's Nest Resort real estate<br class="hidden lg:block" />
+            market with confidence. From elegant townhomes to luxury vacation properties, we'll guide you in<br class="hidden lg:block" />
+            finding the perfect home to fit your goals and lifestyle.
+          </p>
+        </div>
+        <a href="property-search.html" class="mt-7 inline-flex items-center gap-2 font-heading text-[13px] font-semibold uppercase tracking-[0.1em] text-navy transition-colors hover:text-gold">
+          Explore Owl's Nest Resort
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+        <img src="./assets/images/hero-owls-nest-resort.jpg" alt="Aerial view of Owl's Nest Resort" class="h-[320px] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WELCOME ===================== -->
+  <section class="bg-navy py-16 md:py-20">
+    <div class="mx-auto grid w-full max-w-[1290px] items-center gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_500px] lg:gap-16 lg:px-8">
+      <div>
+        <p class="mb-4 font-heading text-[15px] font-normal uppercase leading-[18px] tracking-wide text-gold">Communities &amp; Projects</p>
+        <h2 class="font-display text-[clamp(24px,3.8vw,35px)] font-semibold leading-[clamp(31px,4.6vw,42px)] text-white">Welcome to Rumney Ridge Trade Center Real Estate</h2>
+        <div class="mt-6 space-y-5 font-heading text-[16px] font-normal leading-[26px] text-white/85">
+          <p>Welcome to Rumney Ridge Trade Center, a growing and strategically located area offering excellent opportunities for residential and commercial real estate investment. Positioned near key travel routes and surrounded by scenic New Hampshire beauty, this area appeals to business owners, investors, and homebuyers alike seeking convenience and future growth.</p>
+          <p>Whether you're exploring nearby residential opportunities or investment properties in the surrounding area, Rumney Ridge Trade Center offers a unique blend of accessibility and development potential.</p>
+        </div>
+        <a href="property-search.html" class="mt-7 inline-flex items-center gap-2 font-heading text-[13px] font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:text-gold">
+          Explore Rumney Ridge Trade Center
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+        <img src="./assets/images/rumney-welcome.avif" alt="Rumney Ridge Trade Center development" class="h-[300px] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 sm:h-[360px] lg:h-[400px]" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WELCOME ===================== -->
+  <section class="bg-white py-16 md:py-20">
+    <div class="mx-auto grid w-full max-w-[1290px] items-center gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_500px] lg:gap-16 lg:px-8">
+      <div>
+        <p class="mb-4 font-heading text-[15px] font-normal uppercase leading-[18px] tracking-wide text-[#04345c]">Communities &amp; Projects</p>
+        <h2 class="font-display text-[clamp(24px,3.8vw,35px)] font-semibold leading-[clamp(31px,4.6vw,42px)] text-black">Welcome to Waterville Valley Real Estate</h2>
+        <div class="mt-6 space-y-5 font-heading text-[16px] font-normal leading-[26px] text-[#282828]">
+          <p>Welcome to Waterville Valley, a beloved mountain town known for its year-round recreation, charming alpine atmosphere, and incredible natural surroundings. Tucked within the White Mountains, Waterville Valley offers residents and visitors a perfect blend of outdoor adventure, scenic beauty, and small-town community living.</p>
+          <p>Whether you're searching for a mountain getaway, ski condo, or full-time residence, Waterville Valley offers a wide range of properties to suit every lifestyle.</p>
+        </div>
+        <a href="property-search.html" class="mt-7 inline-flex items-center gap-2 font-heading text-[13px] font-semibold uppercase tracking-[0.1em] text-navy transition-colors hover:text-gold">
+          Explore Waterville Valley
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+        <img src="./assets/images/wv-hero.jpg" alt="Waterville Valley Town Square resort village" class="h-[300px] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 sm:h-[360px] lg:h-[400px]" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WELCOME ===================== -->
+  <section class="bg-navy py-16 md:py-20">
+    <div class="mx-auto grid w-full max-w-[1500px] items-center gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_465px] lg:gap-16 lg:px-8">
+      <div>
+        <h2 class="font-display text-[clamp(24px,3.8vw,35px)] font-semibold leading-[clamp(31px,4.6vw,42px)] text-white">Welcome To Lakes Region Real Estate</h2>
+        <div class="mt-6 space-y-5 font-heading text-[16px] font-normal leading-[26px] text-white/85">
+          <p>
+            Welcome to New Hampshire's stunning Lakes Region, a destination celebrated for its crystal-clear<br class="hidden lg:block" />
+            lakes, charming waterfront towns, and unmatched outdoor lifestyle. This sought-after area offers a<br class="hidden lg:block" />
+            unique blend of scenic beauty, recreation, and relaxed lakeside living that attracts homeowners from<br class="hidden lg:block" />
+            all over the country.
+          </p>
+          <p>
+            From waterfront estates to cozy lake cottages and luxury retreats, the Lakes Region offers real estate<br class="hidden lg:block" />
+            opportunities for every kind of buyer.
+          </p>
+        </div>
+        <a href="property-search.html" class="mt-7 inline-flex items-center gap-2 font-heading text-[13px] font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:text-gold">
+          Explore Lakes Region
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+        <img src="https://owlsnestrealestate.com/wp-content/uploads/2026/05/Lakes-Region-NH.png" alt="Lakes Region waterfront town" class="h-[320px] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MEET OUR TEAM (timeline) ===================== -->
+  <section class="bg-white py-16 md:py-20">
+    <div class="text-center">
+      <p class="font-heading text-[15px] font-normal uppercase leading-[18px] tracking-[0.18em] text-navy">Our Team</p>
+      <h2 class="mt-2 font-display text-[clamp(26px,4.5vw,40px)] font-semibold uppercase leading-[clamp(32px,5vw,44px)] text-navy">Meet The People Behind Owl's Nest</h2>
+    </div>
+    <div class="relative mx-auto mt-14 max-w-[1080px] px-6">
+      <div class="absolute left-1/2 top-2 bottom-2 hidden w-px -translate-x-1/2 bg-navy/25 md:block"></div>
+      <div class="relative mb-12 grid items-center gap-6 last:mb-0 md:grid-cols-2 md:gap-16">
+        <div class="flex md:justify-end">
+          <span class="inline-block bg-navy px-8 py-4 font-display text-[16px] font-semibold uppercase tracking-[0.08em] text-white">Tom DeMatteo</span>
+        </div>
+        <div class="md:pl-4">
+          <h3 class="font-display text-[clamp(20px,2.6vw,26px)] font-semibold leading-[30px] text-navy">Broker / Owner</h3>
+          <p class="mt-3 font-heading text-[15px] font-normal leading-[24px] text-[#444]">Founder of Owl's Nest Real Estate, Tom brings a highly strategic, results-driven approach with deep expertise in land analysis, subdivision feasibility, and new construction across the White Mountains.</p>
+        </div>
+        <span class="absolute left-1/2 top-1/2 hidden h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-navy ring-4 ring-white md:block"></span>
+      </div>
+
+      <div class="relative mb-12 grid items-center gap-6 last:mb-0 md:grid-cols-2 md:gap-16">
+        <div class="md:order-1 md:pr-4 md:text-right">
+          <h3 class="font-display text-[clamp(20px,2.6vw,26px)] font-semibold leading-[30px] text-navy">Realtor®</h3>
+          <p class="mt-3 font-heading text-[15px] font-normal leading-[24px] text-[#444]">With a strong background in construction and property maintenance, Dawn offers a practical, client-focused approach and relates closely to buyers relocating from Massachusetts and Rhode Island.</p>
+        </div>
+        <div class="flex md:order-2 md:justify-start">
+          <span class="inline-block bg-navy px-8 py-4 font-display text-[16px] font-semibold uppercase tracking-[0.08em] text-white">Dawn Assencoa</span>
+        </div>
+        <span class="absolute left-1/2 top-1/2 hidden h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-navy ring-4 ring-white md:block"></span>
+      </div>
+
+      <div class="relative mb-12 grid items-center gap-6 last:mb-0 md:grid-cols-2 md:gap-16">
+        <div class="flex md:justify-end">
+          <span class="inline-block bg-navy px-8 py-4 font-display text-[16px] font-semibold uppercase tracking-[0.08em] text-white">Mattie Boyle</span>
+        </div>
+        <div class="md:pl-4">
+          <h3 class="font-display text-[clamp(20px,2.6vw,26px)] font-semibold leading-[30px] text-navy">Realtor®</h3>
+          <p class="mt-3 font-heading text-[15px] font-normal leading-[24px] text-[#444]">A local expert in resort markets and short-term rentals, Mattie helps buyers and investors evaluate vacation and income properties throughout the White Mountains.</p>
+        </div>
+        <span class="absolute left-1/2 top-1/2 hidden h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-navy ring-4 ring-white md:block"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IS A VALUATION PERFORMED ===================== -->
+  <section id="how" class="bg-white py-16 md:py-24">
+    <div class="text-center">
+      <h2 class="font-display text-[clamp(28px,5vw,48px)] font-semibold uppercase leading-[1.1] tracking-wide text-navy">How Is A Valuation Performed?</h2>
+      <p class="mt-4 font-heading text-[16px] font-normal text-[#555]">Two Accurate Ways to Perform Home Valuations</p>
+    </div>
+    <div class="relative mx-auto mt-16 max-w-[1120px] px-6">
+      <div class="absolute left-1/2 top-2 bottom-2 hidden w-px -translate-x-1/2 bg-navy/25 md:block"></div>
+      <div class="relative mb-12 grid items-start gap-6 last:mb-0 md:grid-cols-2 md:gap-16">
+        <div class="flex md:justify-end">
+          <span class="inline-block bg-navy px-8 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.08em] text-white">Market Analysis</span>
+        </div>
+        <div class="md:pl-4">
+          <h3 class="font-display text-[clamp(20px,2.8vw,28px)] font-semibold uppercase leading-[1.2] text-navy">Comparative Market Analysis</h3>
+          <p class="mt-4 font-heading text-[15px] font-normal leading-[25px] text-[#444]">A Comparative Market Analysis (CMA) is a tool used by real estate agents to value a home. It evaluates similar homes that have recently sold in the same area. Agents find comparable sales and use them to conduct a sales comparison. In most cases, an agent will find three homes that have recently sold and are as similar to and located as close to the home being valued as possible. Each one is then analyzed to pinpoint differences between it and the home being valued. Once these differences are priced out, the price of each comp is adjusted to see what it would cost if it was identical to the home being valued were it to be sold in the current market.</p>
+        </div>
+        <span class="absolute left-1/2 top-7 hidden h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-navy ring-4 ring-white md:block"></span>
+      </div>
+
+      <div class="relative mb-12 grid items-start gap-6 last:mb-0 md:grid-cols-2 md:gap-16">
+        <div class="md:order-1 md:pr-4 md:text-right">
+          <h3 class="font-display text-[clamp(20px,2.8vw,28px)] font-semibold uppercase leading-[1.2] text-navy">Based on a Professional's Opinion</h3>
+          <p class="mt-4 font-heading text-[15px] font-normal leading-[25px] text-[#444]">An appraisal is an unbiased valuation of a home based on a professional's opinion. This is usually what mortgage companies use for home purchases and refinances. A lender usually orders a home appraisal and the cost of the appraisal, sometimes up to $500, is paid by the homeowner. An appraiser does a complete visual inspection of the interior and exterior and considers recent sales of similar properties and market trends. The appraiser then compiles a detailed report including building sketches, a street map, photographs, square footage calculations, and other relevant documentation.</p>
+        </div>
+        <div class="flex md:order-2 md:justify-start">
+          <span class="inline-block bg-navy px-8 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.08em] text-white">Appraisals</span>
+        </div>
+        <span class="absolute left-1/2 top-7 hidden h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-navy ring-4 ring-white md:block"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== START YOUR HOME SEARCH ===================== -->
+  <section class="bg-navy">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-16 md:py-20 flex flex-col md:flex-row items-center justify-between gap-8">
+      <h2 class="text-white font-normal text-[clamp(30px,5vw,52px)] leading-[1.1] tracking-wide uppercase text-center md:text-left [font-variation-settings:&#39;opsz&#39;_144,&#39;wdth&#39;_100]">Start Your Home Search</h2>
+      <a href="property-search.html" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full border border-white text-white uppercase text-[13px] tracking-[0.1em] font-semibold px-10 py-4 hover:bg-white hover:text-navy transition-colors whitespace-nowrap">Browse Homes</a>
+    </div>
+  </section>
+
+  <!-- ===================== WORK WITH US ===================== -->
+  <section class="relative flex items-center justify-center overflow-hidden px-6 py-20 md:py-28">
+    <img src="./assets/images/hero-communities.jpg" alt="New Hampshire White Mountains" class="absolute inset-0 h-full w-full object-cover object-center" />
+    <div class="relative w-full max-w-[680px] bg-white/85 backdrop-blur-sm px-8 sm:px-16 py-16 md:py-20 text-center">
+      <p class="text-navy font-semibold uppercase text-[13px] leading-[16px] tracking-[0.2em]">Work With Us</p>
+      <span class="block mx-auto mt-4 mb-8 w-12 h-px bg-navy/60"></span>
+      <h2 class="text-navy font-normal text-[clamp(30px,5vw,56px)] leading-[1.1] tracking-wide uppercase [font-variation-settings:'opsz'_144,'wdth'_100]">Owl's Nest Real Estate</h2>
+      <p class="mx-auto mt-8 max-w-[500px] text-[16px] leading-[26px] font-normal text-[#333]">Whether you're buying, selling, or investing, our team brings deep local knowledge and personalized service to help you make the right move with confidence across New Hampshire's White Mountains and Lakes Region.</p>
+      <a href="contact.html" class="mt-10 inline-flex items-center gap-3 rounded-full border border-navy text-navy uppercase text-[13px] tracking-[0.1em] font-semibold px-8 py-3.5 hover:bg-navy hover:text-white transition-colors">Contact Us<span class="w-8 h-px bg-current"></span></a>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER (synced with home) ===================== -->
+  <!-- FOOTER SECTION -->
+  <footer class="bg-navy pt-20 pb-8 font-light">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+
+      <!-- Top row: logo + social icons -->
+      <div class="flex justify-between items-start mb-10">
+        <img src="assets/images/logo.png"
+             alt="Owl's Nest Real Estate" class="h-10 w-auto [filter:brightness(0)_invert(1)]" />
+
+        <div class="flex items-center gap-3">
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692V11.09h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.797.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.616h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="X" class="w-9 h-9 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact + Office + Navigation row -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 mb-12">
+        <div class="sm:pr-8">
+          <p class="uppercase tracking-[0.15em] mb-3 font-light text-[12px] leading-[16px] text-white">Contact</p>
+          <a href="tel:+14016485308" class="block underline mb-1 font-light text-[14px] leading-[20px] text-white">401-648-5308</a>
+          <a href="mailto:TomDeMatteo.ONR@gmail.com" class="block uppercase underline font-light text-[14px] leading-[20px] text-white">TOMDEMATTEO.ONR@GMAIL.COM</a>
+        </div>
+        <div class="sm:border-l sm:border-white/20 sm:px-8">
+          <p class="uppercase tracking-[0.15em] mb-3 font-light text-[12px] leading-[16px] text-white">Office</p>
+          <p class="uppercase font-light text-[14px] leading-[20px] text-white">399 NH Route 49</p>
+          <p class="uppercase font-light text-[14px] leading-[20px] text-white">Campton, NH 03223</p>
+        </div>
+        <div class="sm:border-l sm:border-white/20 sm:pl-8">
+          <p class="uppercase tracking-[0.15em] mb-3 font-light text-[12px] leading-[16px] text-white">Navigation</p>
+          <nav class="flex flex-col gap-2">
+            <a href="featured-properties.html" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Featured Properties</a>
+            <a href="property-search.html" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Home Search</a>
+            <a href="#" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Home Valuation</a>
+            <a href="neighborhoods.html" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Neighborhoods</a>
+            <a href="contact.html" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Contact Us</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-white/20 mb-6"></div>
+
+      <!-- Disclaimer paragraph -->
+      <p class="mb-8 font-light text-[14px] leading-[20px] text-white">
+        Copyright 2026 PrimeMLS, Inc. All rights reserved. This information is deemed reliable, but not guaranteed. The data relating to real estate displayed on this Site comes in part from the IDX Program of PrimeMLS. The information being provided is for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. This display of listings may or may not be the entire Compilation from the PrimeMLS database, and PrimeMLS does not guarantee the accuracy of such information. The listing broker's offer of compensation is made only to other real estate licensees who are participant members of the PrimeMLS.
+      </p>
+
+      <!-- Bottom row: Realtor + EHO logo (left) + copyright (right) -->
+      <div class="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between gap-6">
+        <!-- Realtor + EHO logo -->
+        <img src="https://res.cloudinary.com/luxuryp/images/f_auto,q_auto/g5qzbyky8ifp5w0ex0ik/realtor-eho-logo-07232021-update-dark"
+             alt="Realtor and Equal Housing Opportunity" class="h-12 w-auto flex-shrink-0 [filter:brightness(0)_invert(1)]" />
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-light text-[14px] leading-[20px] text-gray-200">
+          <span>&copy; 2026 Owl's Nest Real Estate. All rights reserved</span>
+          <span class="text-white/30">|</span>
+          <a href="#" class="underline uppercase text-gray-200">Privacy Policy</a>
+          <span class="text-white/30">|</span>
+          <a href="sitemap.html" class="underline uppercase text-gray-200">Sitemap</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn && btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  </script>
+
+  <!-- Header nav scripts (synced with home) -->
+  <script>
+    (function() {
+      const toggle = document.getElementById('propertiesToggle');
+      const dropdown = document.getElementById('propertiesDropdown');
+      if (!toggle || !dropdown) return;
+      toggle.addEventListener('click', (e) => { e.stopPropagation(); dropdown.classList.toggle('hidden'); });
+      document.addEventListener('click', (e) => { if (!dropdown.contains(e.target) && !toggle.contains(e.target)) dropdown.classList.add('hidden'); });
+    })();
+  </script>
+  <script>
+    (function() {
+      const track  = document.getElementById('testimonialSlides');
+      if (!track) return;
+      const slides = track.querySelectorAll('[data-slide]');
+      let idx = 0;
+      let timer;
+
+      function show(i) {
+        idx = (i + slides.length) % slides.length;
+        slides.forEach(function(s, n) {
+          var active = (n === idx);
+          // Only the active slide stays in layout, so the section height fits the
+          // current testimonial instead of reserving space for the longest one.
+          s.style.display = active ? 'flex' : 'none';
+          s.style.visibility = active ? 'visible' : 'hidden';
+          s.style.opacity = active ? '1' : '0';
+          s.style.pointerEvents = active ? 'auto' : 'none';
+        });
+      }
+      function next() { show(idx + 1); restart(); }
+      function prev() { show(idx - 1); restart(); }
+      function restart() {
+        clearInterval(timer);
+        timer = setInterval(() => show(idx + 1), 6000);
+      }
+
+      window.nextTestimonial = next;
+      window.prevTestimonial = prev;
+      show(0);
+      restart();
+    })();
+  </script>
+</body>
+</html>

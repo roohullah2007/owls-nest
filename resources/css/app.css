@@ -1,0 +1,328 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------------------
+   Soleil — self-hosted brand typeface (design contract). Files in public/.
+--------------------------------------------------------------------------- */
+@font-face {
+    font-family: 'Soleil';
+    src: url('/assets/fonts/SoleilRegular.ttf') format('truetype');
+    font-weight: 400 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Soleil';
+    src: url('/assets/fonts/SoleilBold.ttf') format('truetype');
+    font-weight: 600 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --font-sans:
+        'Soleil', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Owl's Nest brand palette (design contract) */
+    --color-navy: #04345c;
+    --color-navydark: #062a4a;
+    --color-navydeep: #01182b;
+    --color-gold: #b5832a;
+    --color-golddk: #a0731f;
+    --color-sand: #f4f1ea;
+
+    /* Custom breakpoint from the original design */
+    --breakpoint-xs: 480px;
+
+    /* Marquee keyframes carried over from the original config */
+    --animate-marquee: marquee 25s linear infinite;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.87 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.87 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.269 0 0);
+    --ring: oklch(0.439 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.985 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0 0);
+    --sidebar-ring: oklch(0.439 0 0);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   Global behaviors carried over verbatim from the original design contract.
+   These are sitewide and intentionally NOT duplicated per component.
+--------------------------------------------------------------------------- */
+
+/* Prevent horizontal scroll + keep images fluid (RESPONSIVE-GUARD) */
+html,
+body {
+    overflow-x: hidden;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+img.absolute {
+    height: 100%;
+}
+
+/* Elegant zoom + shadow on content images sitewide (IMG-HOVER) */
+.overflow-hidden > img:not(.absolute) {
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+.overflow-hidden:has(> img:not(.absolute)) {
+    transition: box-shadow 0.5s ease;
+}
+.overflow-hidden:hover > img:not(.absolute),
+.group:hover .overflow-hidden > img:not(.absolute) {
+    transform: scale(1.07);
+}
+.overflow-hidden:hover:has(> img:not(.absolute)),
+.group:hover .overflow-hidden:has(> img:not(.absolute)) {
+    box-shadow: 0 18px 40px rgba(4, 52, 92, 0.28);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===================== Property Search ===================== */
+/* Leaflet base styles (replaces the CDN <link> from the static page). */
+@import 'leaflet/dist/leaflet.css';
+
+/* Map price-badge marker + the modal-detail image hover suppression, ported
+   verbatim from design-reference/property-search.html. */
+.ps-price-pin span {
+    background: #16a34a;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 14px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+    display: inline-block;
+}
+.leaflet-popup-content {
+    font-size: 13px;
+    margin: 10px 12px;
+}
+.leaflet-container {
+    font-family: inherit;
+}
+.leaflet-bar {
+    border: none !important;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25) !important;
+}
+.leaflet-bar a {
+    color: #374151 !important;
+    border-radius: 8px !important;
+}
+
+/* Dual-range slider used by the filter panels (thumb styling needs raw CSS). */
+.fp-range {
+    margin-top: 6px;
+}
+.fp-hist {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 46px;
+    margin-bottom: 2px;
+}
+.fp-hist i {
+    flex: 1;
+    background: rgba(4, 52, 92, 0.4);
+    border-radius: 2px 2px 0 0;
+    min-height: 3px;
+}
+.fp-slider {
+    position: relative;
+    height: 22px;
+}
+.fp-rail {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    transform: translateY(-50%);
+    background: #e5e7eb;
+    border-radius: 999px;
+}
+.fp-fill {
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    transform: translateY(-50%);
+    background: #04345c;
+    border-radius: 999px;
+}
+.fp-r {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 22px;
+    margin: 0;
+    background: transparent;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.fp-r:focus {
+    outline: none;
+}
+.fp-r::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #04345c;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    pointer-events: auto;
+}
+.fp-r::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #04345c;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    pointer-events: auto;
+}

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Featured Properties - Owl's Nest Real Estate</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          black: '#04345c',
+          navy: '#04345c',
+          navydark: '#062a4a',
+          navydeep: '#01182b',
+          gold: '#b5832a',
+          golddk: '#a0731f',
+          white: '#ffffff',
+        },
+        fontFamily: {
+          roboto: ['"Roboto Flex"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+  <!-- FONT-UNIFY: unify all body text to Soleil sitewide -->
+  <style>
+    @font-face{font-family:Soleil;src:url(assets/fonts/SoleilRegular.ttf) format(truetype);font-weight:400 500;font-style:normal;font-display:swap;}
+    @font-face{font-family:Soleil;src:url(assets/fonts/SoleilBold.ttf) format(truetype);font-weight:600 800;font-style:normal;font-display:swap;}
+    body, .font-body, .font-poppins, .font-barlow, .font-inter, .font-roboto, .font-robotoflex{font-family:Soleil,sans-serif !important;}
+  </style>
+  <!-- IMG-HOVER: elegant zoom + shadow on content images sitewide -->
+  <style>
+    .overflow-hidden > img:not(.absolute){transition:transform .7s cubic-bezier(.2,.8,.2,1);will-change:transform;}
+    .overflow-hidden:has(> img:not(.absolute)){transition:box-shadow .5s ease;}
+    .overflow-hidden:hover > img:not(.absolute),
+    .group:hover .overflow-hidden > img:not(.absolute){transform:scale(1.07);}
+    .overflow-hidden:hover:has(> img:not(.absolute)),
+    .group:hover .overflow-hidden:has(> img:not(.absolute)){box-shadow:0 18px 40px rgba(4,52,92,.28);}
+  </style>
+</head>
+<body class="font-roboto bg-black overflow-x-hidden">
+
+  <!-- NAVBAR -->
+    <nav class="relative z-20 bg-black/95 w-full">
+      <div class="max-w-[1400px] mx-auto flex items-center px-6 lg:px-10 py-4 gap-6">
+
+        <!-- Logo -->
+        <a href="#" class="flex-shrink-0">
+          <img src="assets/images/logo.png" alt="Owl's Nest Real Estate" class="h-10 w-auto [filter:brightness(0)_invert(1)]" />
+        </a>
+
+        <!-- Menu Items -->
+        <ul class="hidden lg:flex items-center ml-auto gap-6 text-white font-normal text-[13px] leading-[19px] tracking-wide">
+          <li><a href="property-search.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Property Search</a></li>
+          <li><a href="featured-properties.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Featured Properties</a></li>
+          <li><a href="buyers.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Buyers</a></li>
+          <li><a href="sellers.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Sellers</a></li>
+          <li><a href="about.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">About</a></li>
+          <li class="relative">
+            <button id="propertiesToggle" type="button" class="flex items-center gap-1 cursor-pointer hover:text-gray-300 transition-colors uppercase whitespace-nowrap">
+              <span>Communities &amp; Projects</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div id="propertiesDropdown" class="hidden absolute left-0 top-full mt-3 w-64 bg-white shadow-lg py-2 z-30">
+              <a href="neighborhoods.html" class="block px-5 py-3 text-[13px] tracking-wide uppercase text-gray-800 hover:bg-gray-100">All Communities</a>
+            </div>
+          </li>
+          <li><a href="contact.html" class="hover:text-gray-300 transition-colors uppercase whitespace-nowrap">Contact</a></li>
+        </ul>
+
+        <!-- Phone Button + Hamburger -->
+        <div class="flex items-center gap-3 ml-auto lg:ml-0">
+          <a href="tel:4016485308"
+             class="hidden md:inline-flex items-center justify-center border border-white bg-white text-navy rounded-full px-6 py-3 text-sm font-semibold hover:bg-navy hover:text-white transition-colors">
+            401-648-5308
+          </a>
+          <button id="megaMenuToggle" type="button" onclick="document.getElementById('megaMenu').classList.remove('hidden'); document.body.style.overflow='hidden';" class="relative z-[100] flex w-12 h-12 rounded-full border border-white items-center justify-center text-white hover:bg-white hover:text-navy transition-colors cursor-pointer">
+            <svg class="w-5 h-5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+  <!-- MEGA MENU OVERLAY -->
+  <div id="megaMenu" class="fixed inset-0 z-50 hidden">
+    <div class="flex h-full w-full">
+
+      <!-- LEFT PANEL: Logo + Image + Search/Let's Connect -->
+      <aside class="hidden md:flex flex-col w-[280px] flex-shrink-0 bg-white border-r border-gray-200">
+        <!-- Logo -->
+        <div class="bg-black flex items-center justify-center py-6">
+          <img src="assets/images/logo.png" alt="Owl's Nest Real Estate" class="h-10 w-auto [filter:brightness(0)_invert(1)]" />
+        </div>
+        <!-- Image -->
+        <div class="flex-1 overflow-hidden">
+          <img
+            src="assets/images/hero-owls-nest-resort.jpg"
+            alt="New Hampshire"
+            class="w-full h-full object-cover" />
+        </div>
+        <!-- Search + Let's Connect -->
+        <div class="bg-white flex items-center gap-3 px-6 py-5">
+          <button aria-label="Search" class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+            </svg>
+          </button>
+          <button class="flex items-center gap-3 bg-black text-white rounded-full px-6 py-3 hover:bg-gray-800 transition-colors uppercase tracking-widest font-semibold text-[12px]">
+            Let's Connect
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- RIGHT PANEL: Menu Items + Footer -->
+      <div class="flex-1 bg-black text-white overflow-y-auto relative">
+
+        <!-- Close Button -->
+        <button id="megaMenuClose" aria-label="Close menu"
+                onclick="document.getElementById('megaMenu').classList.add('hidden'); document.body.style.overflow='';"
+                class="absolute top-6 right-8 w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-gray-200 transition-colors z-10">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M6 18L18 6"/>
+          </svg>
+        </button>
+
+        <!-- Menu Grid -->
+        <div class="px-6 sm:px-10 pt-24 pb-12">
+          <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-10">
+
+            <!-- Column 1 -->
+            <div class="space-y-8">
+              <div>
+                <a href="index.html" class="flex items-start gap-3 group">
+                  <span class="text-white text-xs font-light pt-2">01</span>
+                  <span class="uppercase group-hover:text-gray-300 transition-colors font-light text-[24px] leading-[28px] text-white">Home</span>
+                </a>
+              </div>
+              <div>
+                <div class="flex items-start gap-3 mb-3">
+                  <span class="text-white text-xs font-light pt-2">02</span>
+                  <span class="uppercase font-light text-[24px] leading-[28px] text-white">About</span>
+                </div>
+                <ul class="ml-7 space-y-2">
+                  <li><a href="index.html" class="uppercase underline hover:text-white font-light text-[14px] leading-[20px] text-white">Meet The Team</a></li>
+                  <li><a href="#" class="uppercase underline hover:text-white font-light text-[14px] leading-[20px] text-white">Testimonials</a></li>
+                </ul>
+              </div>
+              <div>
+                <a href="#" class="flex items-start gap-3 group">
+                  <span class="text-white text-xs font-light pt-2">03</span>
+                  <span class="uppercase group-hover:text-gray-300 transition-colors font-light text-[24px] leading-[28px] text-white">Home<br/>Search</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="space-y-8">
+              <div>
+                <div class="flex items-start gap-3 mb-3">
+                  <span class="text-white text-xs font-light pt-2">04</span>
+                  <span class="uppercase font-light text-[24px] leading-[28px] text-white">Properties</span>
+                </div>
+                <ul class="ml-7 space-y-2">
+                  <li><a href="featured-properties.html" class="uppercase underline hover:text-white font-light text-[14px] leading-[20px] text-white">Featured Properties</a></li>
+                  <li><a href="property-search.html" class="uppercase underline hover:text-white font-light text-[14px] leading-[20px] text-white">Property Search</a></li>
+                </ul>
+              </div>
+              <div>
+                <a href="#" class="flex items-start gap-3 group">
+                  <span class="text-white text-xs font-light pt-2">05</span>
+                  <span class="uppercase group-hover:text-gray-300 transition-colors font-light text-[24px] leading-[28px] text-white">Home<br/>Valuation</span>
+                </a>
+              </div>
+              <div>
+                <a href="#" class="flex items-start gap-3 group">
+                  <span class="text-white text-xs font-light pt-2">06</span>
+                  <span class="uppercase group-hover:text-gray-300 transition-colors font-light text-[24px] leading-[28px] text-white">Neighborhoods</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="space-y-8">
+              <div>
+                <a href="#" class="flex items-start gap-3 group">
+                  <span class="text-white text-xs font-light pt-2">07</span>
+                  <span class="uppercase group-hover:text-gray-300 transition-colors font-light text-[24px] leading-[28px] text-white">Blog</span>
+                </a>
+              </div>
+              <div>
+                <a href="contact.html" class="flex items-start gap-3 group">
+                  <span class="text-white text-xs font-light pt-2">08</span>
+                  <span class="uppercase group-hover:text-gray-300 transition-colors font-light text-[24px] leading-[28px] text-white">Contact Us</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="space-y-8">
+              <div>
+                <a href="#" class="flex items-start gap-3 group">
+                  <span class="text-white text-xs font-light pt-2">10</span>
+                  <span class="uppercase group-hover:text-gray-300 transition-colors font-light text-[24px] leading-[28px] text-white">My Search<br/>Portal</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Divider -->
+          <div class="border-t border-gray-700 mt-16 mb-10"></div>
+
+          <!-- Footer Row: Contact / Office / Follow Us -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+            <div>
+              <p class="uppercase tracking-[0.15em] mb-4 font-semibold text-[12px] text-white">Contact</p>
+              <p class="uppercase mb-1 font-light text-[14px] leading-[20px] text-white">Owl's Nest Real Estate</p>
+              <a href="tel:4016485308" class="block underline mb-1 font-light text-[14px] leading-[20px] text-white">401-648-5308</a>
+              <a href="mailto:TomDeMatteo.ONR@gmail.com" class="block underline font-light text-[14px] leading-[20px] text-white">TomDeMatteo.ONR@gmail.com</a>
+            </div>
+
+            <div>
+              <p class="uppercase tracking-[0.15em] mb-4 font-semibold text-[12px] text-white">Office</p>
+              <p class="uppercase font-light text-[14px] leading-[20px] text-white">399 NH Route 49</p>
+              <p class="uppercase font-light text-[14px] leading-[20px] text-white">Campton, NH 03223</p>
+            </div>
+
+            <div>
+              <p class="uppercase tracking-[0.15em] mb-4 font-semibold text-[12px] text-white">Follow Us</p>
+              <div class="flex flex-wrap gap-3">
+                <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692V11.09h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.797.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.616h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                </a>
+                <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="#" aria-label="X" class="w-9 h-9 rounded-full border border-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+    <!-- FEATURED PROPERTIES HERO BANNER -->
+  <section class="relative w-full h-[300px] sm:h-[360px] lg:h-[420px] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1920&q=80"
+      alt="Featured Properties"
+      class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="relative z-10 h-full flex items-end justify-center pb-0">
+      <div class="bg-navy/95 w-full max-w-[700px] px-8 sm:px-10 py-7 sm:py-8 flex flex-col items-center text-center">
+        <h2 class="font-normal text-[clamp(24px,4vw,40px)] tracking-[0.04em] leading-tight text-white">
+          FEATURED PROPERTIES
+        </h2>
+        <a href="#featuredPropertiesList"
+           class="mt-6 w-10 h-10 rounded-full border border-white/60 flex items-center justify-center text-white hover:bg-white hover:text-navy hover:border-white transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROPERTIES LISTING SECTION -->
+  <section id="featuredPropertiesList" class="bg-white pt-16 pb-20">
+    <div class="max-w-[1300px] mx-auto px-6 lg:px-12">
+
+      <!-- FILTER BAR -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <!-- Search by address -->
+        <div class="flex items-center bg-gray-100 rounded-full px-5 py-3 gap-3">
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+          </svg>
+          <input type="text" placeholder="Search by address" class="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-500 font-light text-[14px]" />
+        </div>
+        <!-- Neighborhood -->
+        <button class="flex items-center justify-between bg-gray-100 rounded-full px-5 py-3 font-light text-[14px] text-black">
+          <span>Select neighborhood</span>
+          <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <!-- Rental availability (disabled) -->
+        <button class="flex items-center justify-between bg-gray-100 rounded-full px-5 py-3 opacity-60 cursor-not-allowed font-light text-[14px] text-black">
+          <span>Rental availability</span>
+          <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+      </div>
+
+      <!-- Sliders row -->
+      <div class="flex flex-wrap items-center gap-8 pb-6 border-b border-gray-200 mb-10">
+        <!-- Sales Price -->
+        <div class="flex items-center gap-4 flex-1 min-w-[300px]">
+          <span class="text-black uppercase tracking-wide font-normal text-[13px]">Sales Price</span>
+          <span class="font-light text-[13px] text-black">&lt;$1 M</span>
+          <div class="relative flex-1 h-px bg-black">
+            <span class="absolute -left-1 -top-1.5 w-3 h-3 rounded-full bg-black"></span>
+            <span class="absolute -right-1 -top-1.5 w-3 h-3 rounded-full bg-black"></span>
+          </div>
+          <span class="font-light text-[13px] text-black">$25 M+</span>
+        </div>
+        <div class="w-px h-8 bg-gray-300 hidden md:block"></div>
+        <!-- Sq Ft -->
+        <div class="flex items-center gap-4 flex-1 min-w-[300px]">
+          <span class="text-black uppercase tracking-wide font-normal text-[13px]">Sq. Ft.</span>
+          <span class="font-light text-[13px] text-black">&lt;500</span>
+          <div class="relative flex-1 h-px bg-black">
+            <span class="absolute -left-1 -top-1.5 w-3 h-3 rounded-full bg-black"></span>
+            <span class="absolute -right-1 -top-1.5 w-3 h-3 rounded-full bg-black"></span>
+          </div>
+          <span class="font-light text-[13px] text-black">10 K+</span>
+        </div>
+        <!-- Clear -->
+        <button class="flex items-center gap-2 text-black uppercase tracking-widest font-normal text-[13px]">
+          Clear
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- PROPERTY LISTINGS -->
+      <div id="listingsContainer" class="flex flex-col gap-16"></div>
+
+      <!-- PAGINATION -->
+      <div id="pagination" class="flex flex-wrap items-center justify-center gap-2 mt-16"></div>
+    </div>
+
+  </section>
+
+  <!-- WORK WITH US SECTION -->
+  <section class="relative w-full h-screen bg-no-repeat bg-center flex items-center justify-center bg-[url('https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85/https://media-production.lp-cdn.com/media/86bbaba7-9587-4299-976a-8be65b6733d0')] bg-[length:100%_100%]">
+    <div class="absolute inset-0 bg-gray-500/30"></div>
+    <div class="relative bg-[#e8e8e6]/85 backdrop-blur-sm max-w-2xl w-full mx-6 px-12 py-16 text-center">
+      <p class="uppercase tracking-[0.2em] text-black mb-4 font-semibold text-[12px] leading-[16px]">
+        Work With Us
+      </p>
+      <div class="w-16 h-px bg-black mx-auto mb-8"></div>
+      <h2 class="text-black uppercase mb-8 font-normal text-[52px] leading-[60px] tracking-[0.02em]">
+        Owl's Nest Real Estate
+      </h2>
+      <p class="mb-10 max-w-md mx-auto font-light text-[16px] leading-[22px] text-[rgb(26,26,26)]">
+        Their work ethic and enthusiasm are grounded in a corporate sales discipline and hospitality industry background. They routinely go above and beyond to exceed their clients' expectations in the New Hampshire residential real estate market.
+      </p>
+      <a href="#" class="inline-flex items-center gap-3 border border-black text-black rounded-full px-8 py-3 hover:bg-black hover:text-white transition-colors uppercase tracking-widest font-semibold text-[12px]">
+        Contact Us
+        <span class="w-8 h-px bg-current"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM SECTION -->
+  <section class="bg-white pt-20 pb-0">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-16 text-center">
+      <div class="flex justify-center mb-6">
+        <a href="https://instagram.com/owlsnestrealestate" target="_blank" class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:bg-gray-800 transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="uppercase tracking-[0.2em] mb-4 font-semibold text-[12px] leading-[16px] text-black">
+        Follow Us On Instagram
+      </p>
+      <h2 class="mb-12 font-normal text-[52px] leading-[60px] text-black">
+        @OwlsNestRE
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <a href="https://instagram.com/owlsnestrealestate" target="_blank" class="aspect-square overflow-hidden">
+          <img
+            src="assets/images/ig-1.jpg"
+            alt="Instagram post"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </a>
+        <a href="https://instagram.com/owlsnestrealestate" target="_blank" class="aspect-square overflow-hidden">
+          <img
+            src="assets/images/ig-2.jpg"
+            alt="Instagram post"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </a>
+        <a href="https://instagram.com/owlsnestrealestate" target="_blank" class="aspect-square overflow-hidden">
+          <img
+            src="assets/images/ig-3.jpg"
+            alt="Instagram post"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </a>
+        <a href="https://instagram.com/owlsnestrealestate" target="_blank" class="aspect-square overflow-hidden">
+          <img
+            src="assets/images/ig-4.jpg"
+            alt="Instagram post"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </a>
+        <a href="https://instagram.com/owlsnestrealestate" target="_blank" class="aspect-square overflow-hidden">
+          <img
+            src="assets/images/ig-5.jpg"
+            alt="Instagram post"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </a>
+        <a href="https://instagram.com/owlsnestrealestate" target="_blank" class="aspect-square overflow-hidden">
+          <img
+            src="assets/images/ig-6.jpg"
+            alt="Instagram post"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer class="bg-navy pt-20 pb-8 font-light">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+
+      <!-- Top row: logo + social icons -->
+      <div class="flex justify-between items-start mb-10">
+        <img src="assets/images/logo.png"
+             alt="Owl's Nest Real Estate" class="h-10 w-auto [filter:brightness(0)_invert(1)]" />
+
+        <div class="flex items-center gap-3">
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692V11.09h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.797.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.616h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="X" class="w-9 h-9 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-navy transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact + Office + Navigation row -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 mb-12">
+        <div class="sm:pr-8">
+          <p class="uppercase tracking-[0.15em] mb-3 font-light text-[12px] leading-[16px] text-white">Contact</p>
+          <a href="tel:+14016485308" class="block underline mb-1 font-light text-[14px] leading-[20px] text-white">401-648-5308</a>
+          <a href="mailto:TomDeMatteo.ONR@gmail.com" class="block uppercase underline font-light text-[14px] leading-[20px] text-white">TOMDEMATTEO.ONR@GMAIL.COM</a>
+        </div>
+        <div class="sm:border-l sm:border-white/20 sm:px-8">
+          <p class="uppercase tracking-[0.15em] mb-3 font-light text-[12px] leading-[16px] text-white">Office</p>
+          <p class="uppercase font-light text-[14px] leading-[20px] text-white">399 NH Route 49</p>
+          <p class="uppercase font-light text-[14px] leading-[20px] text-white">Campton, NH 03223</p>
+        </div>
+        <div class="sm:border-l sm:border-white/20 sm:pl-8">
+          <p class="uppercase tracking-[0.15em] mb-3 font-light text-[12px] leading-[16px] text-white">Navigation</p>
+          <nav class="flex flex-col gap-2">
+            <a href="featured-properties.html" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Featured Properties</a>
+            <a href="property-search.html" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Home Search</a>
+            <a href="#" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Home Valuation</a>
+            <a href="neighborhoods.html" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Neighborhoods</a>
+            <a href="contact.html" class="uppercase underline font-light text-[14px] leading-[20px] text-white tracking-[0.1em]">Contact Us</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-white/20 mb-6"></div>
+
+      <!-- Disclaimer paragraph -->
+      <p class="mb-8 font-light text-[14px] leading-[20px] text-white">
+        Copyright 2026 PrimeMLS, Inc. All rights reserved. This information is deemed reliable, but not guaranteed. The data relating to real estate displayed on this Site comes in part from the IDX Program of PrimeMLS. The information being provided is for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. This display of listings may or may not be the entire Compilation from the PrimeMLS database, and PrimeMLS does not guarantee the accuracy of such information. The listing broker's offer of compensation is made only to other real estate licensees who are participant members of the PrimeMLS.
+      </p>
+
+      <!-- Bottom row: Realtor + EHO logo (left) + copyright (right) -->
+      <div class="flex flex-col items-start sm:flex-row sm:items-center sm:justify-between gap-6">
+        <!-- Realtor + EHO logo -->
+        <img src="https://res.cloudinary.com/luxuryp/images/f_auto,q_auto/g5qzbyky8ifp5w0ex0ik/realtor-eho-logo-07232021-update-dark"
+             alt="Realtor and Equal Housing Opportunity" class="h-12 w-auto flex-shrink-0 [filter:brightness(0)_invert(1)]" />
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-light text-[14px] leading-[20px] text-gray-200">
+          <span>&copy; 2026 Owl's Nest Real Estate. All rights reserved</span>
+          <span class="text-white/30">|</span>
+          <a href="#" class="underline uppercase text-gray-200">Privacy Policy</a>
+          <span class="text-white/30">|</span>
+          <a href="sitemap.html" class="underline uppercase text-gray-200">Sitemap</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const toggle = document.getElementById('propertiesToggle');
+      const dropdown = document.getElementById('propertiesDropdown');
+      if (!toggle || !dropdown) return;
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('hidden');
+      });
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
+          dropdown.classList.add('hidden');
+        }
+      });
+    })();
+
+    (function() {
+      const listings = [
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095897/0/0/0/509d211e71eb545bddbf1209787369e2/0/c43161fd064d98b44950cfcbf66830ad/5095897-C35F1CA9-A6A4-4C40-BB5C-4C828478839C.JPG", address: "14 Checkerberry Ridge Road, Thornton, NH 03285", price: "$449,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095897/14-Checkerberry-Ridge-Road-Thornton-NH-03285", desc: "Located in Thornton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095848/0/0/0/31b8c059ae43f87b95219a3f9d676867/0/209c749cc3c2385d9f569bca785470a9/5095848-047953b9-1302-4920-8533-1acb6fac89f3.JPG", address: "3654 Us Route 3, Thornton, NH 03285", price: "$749,500", beds: "4 Beds", baths: "4 Baths", sqft: "3 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095848/3654-Us-Route-3-Thornton-NH-03285", desc: "Located in Thornton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095804/0/0/0/4defa2ea63508c97267e70e555cbf0dd/0/a08583d21863d19c35582a856470fa2d/5095804-da9dea6c-241f-4feb-bcd6-5df546ad6749.JPG", address: "12 Stonegate Court, Gilford, NH 03249", price: "$645,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095804/12-Stonegate-Court-Gilford-NH-03249", desc: "Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095713/0/0/0/c9557bca5eadd069b25e1bf26f274fc6/0/bbc4a3d36a9b7d1642c793f26d1db43e/5095713-ff5c51ae-0950-4875-b919-f8bec0241f55.JPG", address: "193 New Hebron Road, Plymouth, NH 03264", price: "$539,000", beds: "4 Beds", baths: "3 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095713/193-New-Hebron-Road-Plymouth-NH-03264", desc: "Located in Plymouth, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095675/0/0/0/e175a7803b5ecbaf224edd9fa8d9dec9/0/6e92f8ff9964627993f7480c1431a002/5095675-b7d62f44-df7f-43bb-ae4d-d8cf48929a8b.JPG", address: "4 Varney Point Road, Gilford, NH 03249", price: "$599,000", beds: "2 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095675/4-Varney-Point-Road-Gilford-NH-03249", desc: "Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095643/0/0/0/9783fe0d86ee51d78241a1ff317fb8b7/0/e1b853b7cb03c00af6700082d050a8ba/5095643-33b74e45-5b4b-4fdb-aace-31299a5c88f7.JPG", address: "527 North Main Street, Wolfeboro, NH 03894", price: "$499,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095643/527-North-Main-Street-Wolfeboro-NH-03894", desc: "Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095601/0/0/0/cb152e6d4d812c21209b91578ea02724/0/50d86f8d2faa669e3fb2a6fbaa31f9b1/5095601-80ca4796-a1fc-4b00-9265-1bc1100df3a6.JPG", address: "365 Middle Road, Tuftonboro, NH 03816", price: "$239,900", beds: "0 Beds", baths: "1 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095601/365-Middle-Road-Tuftonboro-NH-03816", desc: "Located in Tuftonboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095595/0/0/0/4ea42f246a9033ce13585e6702ba2d9b/0/d74d3048e1ca15cbe4265547d68a57c9/5095595-7787a1f0-b98a-41e5-8e62-fab42d1a4d70.JPG", address: "227 Pine Street, Laconia, NH 03246", price: "$389,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095595/227-Pine-Street-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095565/0/0/0/57794a4f88804d6fe198b90fe9d4b149/0/514d489d6ce936ea4f52e1d9f873b464/5095565-f7c876e0-e121-4868-b3b8-e6894c8d8ae3.JPG", address: "40 Lakewood Drive, Alton, NH 03810", price: "$739,900", beds: "3 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095565/40-Lakewood-Drive-Alton-NH-03810", desc: "Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095557/0/0/0/27bab6678799f2927b80020f88071fff/0/ff96e06e52bba5798f9a114e3b720fe9/5095557-ec04c689-e051-42dc-8594-1b3e0de2f26f.JPG", address: "47 Overlook Road (aka Unit 15), Holderness, NH 03245", price: "$250,000", beds: "1 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095557/47-Overlook-Road-aka-Unit-15-Holderness-NH-03245", desc: "Located in Holderness, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095523/0/0/0/d256c108e1a301d8443f82946b84dd8b/0/04e9d9ccb839c63e72e27cc740ed0cea/5095523-5e98e3e1-7654-44fa-9725-a5cdc793d2ea.JPG", address: "30 Skyline Drive, Gilford, NH 03249", price: "$715,000", beds: "2 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095523/30-Skyline-Drive-Gilford-NH-03249", desc: "Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095502/0/0/0/43f44d4aa9e99c792da41f2f9e816c2b/0/9daf92094c5380a08ea2630985222449/5095502-69f4d732-c39b-4ebc-aec4-cf906e52e3aa.JPG", address: "16 Depot Street, Wolfeboro, NH 03894", price: "$665,000", beds: "3 Beds", baths: "2 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095502/16-Depot-Street-Wolfeboro-NH-03894", desc: "Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095495/0/0/0/9ea18208d47f5e8118930e786b221eda/0/fb8529a739363cc76f635833bd400abb/5095495-278fda5b-f3dd-4dfa-87d8-0748b106c754.JPG", address: "103 Main Street, Alton, NH 03809", price: "$624,900", beds: "4 Beds", baths: "4 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095495/103-Main-Street-Alton-NH-03809", desc: "Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095439/0/0/0/ec03d48851e0617601aebd8bb15f40b9/0/e1c779bdda1ed98e99771af71596b310/5095439-f6a9f4c0-f471-403c-b05e-912ae0612131.JPG", address: "135 Shepard Hill Road, Holderness, NH 03245", price: "$749,900", beds: "4 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095439/135-Shepard-Hill-Road-Holderness-NH-03245", desc: "Located in Holderness, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095373/0/0/0/add60ff7c4c99cd6d731e9cccf139a55/0/0bcd655724d52667f0e3cbd8a678b5bf/5095373-ba831235-53d6-4ace-9cba-e5b3808c3082.JPG", address: "41 Circle Drive, Belmont, NH 03220", price: "$235,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095373/41-Circle-Drive-Belmont-NH-03220", desc: "Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095288/0/0/0/f54ec02394d02fbd8709ed16ce406751/0/58745b61a6e132bc8a09a0dfb54aba0d/5095288-1DE9AD72-1F9B-492A-B5E2-D7F40CE808BE.JPG", address: "7 Smith Hill Road, Ashland, NH 03217", price: "$599,900", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095288/7-Smith-Hill-Road-Ashland-NH-03217", desc: "Located in Ashland, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095300/0/0/0/eaa03e2242bf566ec1af82a788370fde/0/00332af83c2f74ea7114c50d5f5bd73e/5095300-ef78e05e-34cc-42b1-8d90-6b48267194eb.JPG", address: "200 Paradise Drive, Moultonborough, NH 03254", price: "$349,000", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095300/200-Paradise-Drive-Moultonborough-NH-03254", desc: "Located in Moultonborough, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095244/0/0/0/394602cff9035985ef0eed1fd25c68f4/0/657dedda056f5ea6a2fa18927af4e6ae/5095244-e2d0fe2b-b853-4840-b548-908c4a33c898.JPG", address: "244 Pine Street, Laconia, NH 03246", price: "$395,000", beds: "4 Beds", baths: "3 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095244/244-Pine-Street-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095250/0/0/0/a999134d0beaf6b251498de24ae6941e/0/339581a8f41f8cbe11520e45e0b34548/5095250-04d2fd83-0cd7-4418-bde1-58b91850a6fb.JPG", address: "83 Hurricane Road, Belmont, NH 03220", price: "$349,900", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095250/83-Hurricane-Road-Belmont-NH-03220", desc: "Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095257/0/0/0/c7033d95e2ec0d5eed61aced81918351/0/1ad6b91f53ba91f67b489b17ec3c58bf/5095257-df44a86c-240b-4cce-8a81-3333e71679fd.JPG", address: "221 School Street, Tilton, NH 03276", price: "$425,000", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095257/221-School-Street-Tilton-NH-03276", desc: "Located in Tilton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095201/0/0/0/c55f130cc8a2f5683cd55cc863bbacb0/0/8fba41cdbd18dc68e73040c0752a5434/5095201-6a236947-048d-4b68-b3cc-68bf1c7b3322.JPG", address: "45 Walker Hill Road, Ossipee, NH 03864", price: "$615,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095201/45-Walker-Hill-Road-Ossipee-NH-03864", desc: "Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095217/0/0/0/65630f4a35e34a0922f77442764e4459/0/36c85d286342f35929d85f69f207401e/5095217-4C161C47-5AFC-4C19-ACD0-5C2D3A75E59A.JPG", address: "108 Center Street, Wolfeboro, NH 03894", price: "$699,000", beds: "3 Beds", baths: "3 Baths", sqft: "3 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095217/108-Center-Street-Wolfeboro-NH-03894", desc: "Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095195/0/0/0/6ea66e217b26b72460db293cce82b091/0/f82d150803b0f8f6d3e66e512f759606/5095195-d928aebb-3fba-4a2e-a3d7-b0de4a112890.JPG", address: "40-24 Harbor Way 24, 24 Wolfeboro, NH 03894", price: "$779,000", beds: "3 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095195/40-24-Harbor-Way-24-Wolfeboro-NH-03894", desc: "Located in 24 Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095184/0/0/0/97a86fb475c6e7ecd35a143c685f00fd/0/247662dd981e35f0a9149c3769d44355/5095184-3822b62d-bee7-4f38-ae3e-b02767666051.JPG", address: "162 Morrill Street, Gilford, NH 03249", price: "$600,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095184/162-Morrill-Street-Gilford-NH-03249", desc: "Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095175/0/0/0/8fbe6fb2a8dd47330cc01ac902ad887b/0/b6148d0bf3edf799fd52df7ec8539d32/5095175-6c35b069-c68a-49f4-813e-6dac8cc88579.JPG", address: "7 Sam Hall Drive, Plymouth, NH 03264", price: "$365,000", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095175/7-Sam-Hall-Drive-Plymouth-NH-03264", desc: "Located in Plymouth, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095131/0/0/0/588d68e1faf216ac0fa45b3cedae4a61/0/cf682ea6d2dd8488c14e9212b003ab7c/5095131-0a13d6cb-dca0-466d-b9f9-671cc87772a4.JPG", address: "4 Farmhouse Lane, Wolfeboro, NH 03894", price: "$539,000", beds: "2 Beds", baths: "3 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095131/4-Farmhouse-Lane-Wolfeboro-NH-03894", desc: "Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095137/0/0/0/d0ee95d03fec528ee1c62b2a581fb67f/0/c35ee1d55ba61bc2fdb3e88143e3e10c/5095137-387c81ee-1942-4a4b-be37-ae2698425bcc.JPG", address: "326 Hemlock Drive, Gilmanton, NH 03237", price: "$499,400", beds: "2 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095137/326-Hemlock-Drive-Gilmanton-NH-03237", desc: "Located in Gilmanton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095151/0/0/0/c9ba7af37d56a77348dfed61d17c942d/0/ca30b500bd7b09fad03091269d1add5c/5095151-74f68ce9-5613-458c-a0f1-d520c74a8c09.JPG", address: "29 Bean Road, Center Harbor, NH 03226", price: "$469,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095151/29-Bean-Road-Center-Harbor-NH-03226", desc: "Located in Center Harbor, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095087/0/0/0/e4b0c6245d158416944b0da52f096865/0/0c23e4f23f3cd465f747b27a247aec23/5095087-924078ee-b2dc-4b66-8fc7-0cdc030784de.JPG", address: "144 Lake Street 20, Laconia, NH 03246", price: "$499,000", beds: "1 Beds", baths: "2 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095087/144-Lake-Street-20-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095086/0/0/0/aad79c0ba8b4a774b229da1df0ac8e03/0/f491675986122019d356849c327cb0e3/5095086-b212b910-f23f-4795-b41c-ce82e1c90bb1.JPG", address: "37 Dewey Circle, Campton, NH 03223", price: "$625,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095086/37-Dewey-Circle-Campton-NH-03223", desc: "Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095059/0/0/0/d6708692747455f1292a80d8033aa001/0/3a2cca504ae437acee9bc583cc7c4fd5/5095059-957a0384-4c61-41bf-8e55-423617f2fd2e.JPG", address: "9 Horne Road, Belmont, NH 03220", price: "$425,000", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095059/9-Horne-Road-Belmont-NH-03220", desc: "Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095035/0/0/0/bafe5e9aff88cbcd4b0e2d71bb95b36b/0/10c80fab4cf1e230de76b02bed384b6f/5095035-8c487ead-4711-42a2-aee6-289ec20b264f.JPG", address: "29 Melissa Way B, Laconia, NH 03246", price: "$369,900", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095035/29-Melissa-Way-B-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5095007/0/0/0/c56a824687f1bcae7e7a222fdf6831ad/0/abb1d9821574298c23b3f3cdd42c27d7/5095007-e88d668e-0481-47b8-802a-0c1a0ae7879e.JPG", address: "41 Dixon Street, Laconia, NH 03246", price: "$339,900", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5095007/41-Dixon-Street-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094985/0/0/0/5f74d26bf8ca83250a0fdf08c2e279e6/0/8f938e18f412df4050c905781fb6852a/5094985-b1ee34c2-99bc-4e77-8e46-cb6b789a45f6.JPG", address: "108 Cherry Valley Road 7, Gilford, NH 03249", price: "$225,000", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094985/108-Cherry-Valley-Road-7-Gilford-NH-03249", desc: "Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094956/0/0/0/0cdcaf08ba068f34226ee038c2bf9f98/0/50a98725778609738960e443e0bb8ac7/5094956-dccd8f34-3044-4f1a-bf71-89450f8c356b.JPG", address: "20 Emily Circle, Meredith, NH 03253", price: "$599,000", beds: "2 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094956/20-Emily-Circle-Meredith-NH-03253", desc: "Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094938/0/0/0/82f7df880f09c0ee3bf843e1f25f675f/0/149f83713e9b9fc0c59b12b33384bf2a/5094938-57593b16-be05-4756-9b5b-c2462dad8c48.JPG", address: "5 Lloyd Road, Wolfeboro, NH 03894", price: "$750,000", beds: "3 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094938/5-Lloyd-Road-Wolfeboro-NH-03894", desc: "Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094945/0/0/0/5b154d4b6ed87a251ee04d2fc78cc4bf/0/9fcf5ef9d163bea6a2994a29f8f0685e/5094945-6613647c-61c3-4b70-9d2f-71fd529a11c2.JPG", address: "109 Washington Road 41, Freedom, NH 03836", price: "$319,000", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094945/109-Washington-Road-41-Freedom-NH-03836", desc: "Located in Freedom, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094912/0/0/0/041065bb15cd826005cdf7ab25142204/0/6a078e721aad843b469cedefaf832e5f/5094912-c1bd3530-39c9-4e23-8dea-cbe3358dcc4e.JPG", address: "76 Woodside Drive, Bridgewater, NH 03222", price: "$739,999", beds: "3 Beds", baths: "3 Baths", sqft: "3 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094912/76-Woodside-Drive-Bridgewater-NH-03222", desc: "Located in Bridgewater, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094887/0/0/0/b4936f2375cf5318be2e7c08139d5a8c/0/ce13c46780ff9b8fb2dcf2a9346d60c8/5094887-8b9f1f5d-7f6f-47c8-81d2-305463a81e78.JPG", address: "14 Elm St Extension, Ossipee, NH 03864", price: "$425,000", beds: "3 Beds", baths: "1 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094887/14-Elm-St-Extension-Ossipee-NH-03864", desc: "Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094886/0/0/0/292fdf3e3f5f3e8517ce1f1848a85e4c/0/79f64bdb6f6c89ed3ae54396c886ac98/5094886-5f7e3345-f78a-429b-9610-b234296036c5.JPG", address: "20 Indianhead Lane, Gilmanton, NH 03237", price: "$510,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094886/20-Indianhead-Lane-Gilmanton-NH-03237", desc: "Located in Gilmanton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094877/0/0/0/605cd86fc4229a2ba0361adf7408304e/0/f62d04149b4c93b232a2a88d33943ed8/5094877-80e3f670-f571-4d3f-bb83-e1437a3340e0.JPG", address: "60 Wellington Village Drive 5, Bristol, NH 03222", price: "$489,000", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094877/60-Wellington-Village-Drive-5-Bristol-NH-03222", desc: "Located in Bristol, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094847/0/0/0/1f7b23fe2430d65ff78b2e94b0ae5f07/0/4cb6d93c775253d5260b872ecfd372e2/5094847-c77c2ee0-2331-4229-b37b-5c0cc8c82740.JPG", address: "114 Ledgewood Terrace, Bridgewater, NH 03222", price: "$549,900", beds: "4 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094847/114-Ledgewood-Terrace-Bridgewater-NH-03222", desc: "Located in Bridgewater, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094801/0/0/0/a245d2445562fd7a70c1edac9cfa5426/0/e27164960ce95e53ee5ee5b709a9bf61/5094801-6984db2f-5973-4d24-9a92-126838bd31a2.JPG", address: "38 &amp;amp; 16 Valley Road, Tuftonboro, NH 03816", price: "$689,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094801/38--16-Valley-Road-Tuftonboro-NH-03816", desc: "Located in Tuftonboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094784/0/0/0/2fba7b684ce58a970afc6729e4e7e728/0/ba230c0e4bf11b8a51c4289f80fbbf31/5094784-C2FE452F-EC7B-410C-98EA-C24069400CF1.JPG", address: "24 Condo Road 2, Campton, NH 03223", price: "$339,900", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094784/24-Condo-Road-2-Campton-NH-03223", desc: "Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094793/0/0/0/05e1066409f921187376152560b659db/0/e6f333100f02ed2c9c2d0c689a92318d/5094793-2f38a33e-daa2-4d17-8077-dda49419a0d6.JPG", address: "307 Calef Hill Road, Sanbornton, NH 03269", price: "$629,900", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094793/307-Calef-Hill-Road-Sanbornton-NH-03269", desc: "Located in Sanbornton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094744/0/0/0/2dfaf34d8cd5e257c83ed353258bb6db/0/c04266e95901960808070bd322712bce/5094744-965a53ee-a05d-4510-9257-da6163b45cdb.JPG", address: "224 King Road, Alexandria, NH 03222", price: "$499,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094744/224-King-Road-Alexandria-NH-03222", desc: "Located in Alexandria, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094734/0/0/0/c82ad48669aba7f7b2449d0e565a0486/0/ee5d72d16183ca0ce0a9fc8b2cee1045/5094734-3083e00e-750b-4896-8414-a15ab95232a5.JPG", address: "39 Chestnut Street, Tilton, NH 03276", price: "$369,900", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094734/39-Chestnut-Street-Tilton-NH-03276", desc: "Located in Tilton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094728/0/0/0/d53dfa201717d3cbbd75fc5d01fd1923/0/4b8a2d5462fc1d5e1fdca9a5102d4422/5094728-d41ef4d6-08bd-405e-be3c-5b67e78bdce9.JPG", address: "85 Fairway Drive 3, Ashland, NH 03217", price: "$339,000", beds: "2 Beds", baths: "4 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094728/85-Fairway-Drive-3-Ashland-NH-03217", desc: "Located in Ashland, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094714/0/0/0/e658b16a89ca5f12e99fd2664c661608/0/470e80882de03372e7ed532c2bfbad32/5094714-2cee6b51-2263-4f3a-af5c-044540679816.JPG", address: "95 Hundred Acre Wood Road 9, Bristol, NH 03222", price: "$499,900", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094714/95-Hundred-Acre-Wood-Road-9-Bristol-NH-03222", desc: "Located in Bristol, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094715/0/0/0/4aeadfe1edde220d5b7ef837fa4946f2/0/b00de8034a093d560853a9b97c53b757/5094715-2c77a207-b238-4956-9e15-706fb92b0434.JPG", address: "71 Oak Hill Road, Northfield, NH 03276", price: "$575,000", beds: "3 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094715/71-Oak-Hill-Road-Northfield-NH-03276", desc: "Located in Northfield, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094704/0/0/0/9871b8bb56438ba433f9e9babec01606/0/28b73cb5981f1b60a73b5841d1d44dd1/5094704-bcbad326-be81-40db-8acd-b2b8df9b125a.JPG", address: "4 Wolfeboro Common 4, Wolfeboro, NH 03894", price: "$310,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094704/4-Wolfeboro-Common-4-Wolfeboro-NH-03894", desc: "Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094674/0/0/0/7ed583f6d44c1a864f0ff4641547249e/0/df1e419606640f0a79354e90cc246909/5094674-5d53518b-1a0e-4415-a124-3334976efb94.JPG", address: "125 Woodland Avenue, Gilford, NH 03249", price: "$399,900", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094674/125-Woodland-Avenue-Gilford-NH-03249", desc: "Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094614/0/0/0/cb1877e12829f87d91dbfc3500a1867d/0/5cd8ca128399ce35859630c7dc4dc1ed/5094614-1a7b6b69-f824-41e9-9d4d-d7373e0ec730.JPG", address: "178 Treetop Circle 1034, Laconia, NH 03246", price: "$285,000", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094614/178-Treetop-Circle-1034-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094602/0/0/0/105b3603f00338c5ab0c440225a21a0c/0/7bb0fc326ce9721bfde3856ccc60cb6d/5094602-a3bcbbc8-ba1d-4ca6-9e5e-b95abbe8f71d.JPG", address: "14 Parker Road 5, Campton, NH 03223", price: "$309,000", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094602/14-Parker-Road-5-Campton-NH-03223", desc: "Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094572/0/0/0/a1cee88aceab7b15af7940111c159f96/0/4c3123e30ec68db7b3ce7dc3401822fb/5094572-4de1654f-f5e7-4f4f-85ff-053142e84968.JPG", address: "13 Haley Drive, Campton, NH 03223", price: "$569,000", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094572/13-Haley-Drive-Campton-NH-03223", desc: "Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094570/0/0/0/96bb1c33ffb1560afeb5299a43205664/0/e8d5da97cdc6786e307b43ae0649b8f9/5094570-3c07cccb-1cb9-4788-835f-36ddf6ed2bd0.JPG", address: "4 Anagance Lane, Wolfeboro, NH 03894", price: "$549,000", beds: "3 Beds", baths: "2 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094570/4-Anagance-Lane-Wolfeboro-NH-03894", desc: "Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094554/0/0/0/f66e0c24996d3958f6447bb25cba6220/0/4e5997b6fa7cd7c1687a8feb88142a2c/5094554-fca27cd2-6675-4b75-a657-9a691d7bd053.JPG", address: "191 Court Street, Laconia, NH 03246", price: "$250,000", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094554/191-Court-Street-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094558/0/0/0/92d5386a484638c726a8f33c01c9783d/0/4b2bfb126d7c0d3e1b170d35b7d25491/5094558-7b8bfc27-63b7-4802-b53d-161e762dca40.JPG", address: "11 Highcrest Drive, Belmont, NH 03220", price: "$485,000", beds: "3 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094558/11-Highcrest-Drive-Belmont-NH-03220", desc: "Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094539/0/0/0/c86d6e7e31c8cfa6183be385f0fc83ba/0/d474b4dc27cb75092b1fc7675dd7404c/5094539-f450433a-0e87-484a-a79b-2c37062dfa59.JPG", address: "12 Forest Rim Way E2, Waterville Valley, NH 03215", price: "$558,000", beds: "2 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094539/12-Forest-Rim-Way-E2-Waterville-Valley-NH-03215", desc: "Located in Waterville Valley, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094538/0/0/0/ef478508ba0171754db1ee58dffb39cc/0/52333b387b4232a87360f4784257c05f/5094538-c99e80e2-9a9d-4e61-838e-d416c531d372.JPG", address: "7 Baker Avenue 6, Laconia, NH 03246", price: "$236,000", beds: "2 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094538/7-Baker-Avenue-6-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094540/0/0/0/7e2d1b8b20228485a21867d457865295/0/7c801b63e65ceb19c5655a29cd826816/5094540-45A6B0F6-DE0B-4BCE-AC98-269E7A67B12F.JPG", address: "163 Maple Ridge Road, Sandwich, NH 03259", price: "$729,000", beds: "4 Beds", baths: "4 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094540/163-Maple-Ridge-Road-Sandwich-NH-03259", desc: "Located in Sandwich, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094179/0/0/0/b885e709ef5893b5e34a316164e81ff0/0/43de04badcf32d0dc94189afbee2fe8b/5094179-3dca2aad-a90f-4b4f-928c-d418e7cdfe76.JPG", address: "7 Barnard Ridge Road, Meredith, NH 03253", price: "$699,000", beds: "3 Beds", baths: "3 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094179/7-Barnard-Ridge-Road-Meredith-NH-03253", desc: "Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093899/0/0/0/c232465639ed3357058f563d739d0da3/0/3d67da42233b2d986c41b9bb908374c1/5093899-e4c2a4e6-a39d-456a-a3e1-e87e8bd9aa47.JPG", address: "35 Walker Hill Road, Ossipee, NH 03864", price: "$379,700", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093899/35-Walker-Hill-Road-Ossipee-NH-03864", desc: "Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094535/0/0/0/c5481a2adf63210cdcbee68da2129344/0/b6192fb7f02b1bef7829436dfbcb00bf/5094535-AB24B6A4-7312-419D-863E-51ADB21888B9.JPG", address: "53 Broadview Drive 1, Laconia, NH 03246", price: "$769,900", beds: "2 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094535/53-Broadview-Drive-1-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094123/0/0/0/a5640aa1ce996b490bbc41c3fd35cb52/0/5e991d5eed22cfb91174b06d30caf7e0/5094123-50c3a002-92ce-44fd-ba20-3b138f26344b.JPG", address: "46 Weeks Road 70-2, 2 Sanbornton, NH 03269", price: "$599,900", beds: "3 Beds", baths: "3 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094123/46-Weeks-Road-70-2-Sanbornton-NH-03269", desc: "Located in 2 Sanbornton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093599/0/0/0/28375237497133f1b9b19fd1e5482a52/0/b948d3014c31e95f01eaf81844c716d6/5093599-0e8c52a1-c443-42be-9afb-d21e32f3c260.JPG", address: "13 Stonehenge Circle 3, Northfield, NH 03276", price: "$449,000", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093599/13-Stonehenge-Circle-3-Northfield-NH-03276", desc: "Located in Northfield, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093066/0/0/0/bbcb119ebbbec232bb2d713e80dad27e/0/ba0b6cef339afac171043d71376cbfcd/5093066-2037C87B-AA4E-4E67-849A-AFA39E62D0B8.JPG", address: "21 Tall Pines Way, Meredith, NH 03253", price: "$769,000", beds: "2 Beds", baths: "1 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093066/21-Tall-Pines-Way-Meredith-NH-03253", desc: "Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093583/0/0/0/8621bb19debf6e40d31bf99067dc9e4c/0/e0de8e747e6f808e3b2449bef2a943ba/5093583-4c81db0b-37e3-42e5-bfab-7d14c6a48ef0.JPG", address: "16 Palm Lane, Alton, NH 03809", price: "$675,000", beds: "3 Beds", baths: "3 Baths", sqft: "3 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093583/16-Palm-Lane-Alton-NH-03809", desc: "Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093056/0/0/0/926501dc5f211729a264017df4ce06bf/0/c09f8367b59c2b3a80a61bfe41947388/5093056-ADCB5E76-8E42-4AD2-AB89-7AFE3F05363B.JPG", address: "21 Tall Pines Way, Meredith, NH 03253", price: "$769,000", beds: "2 Beds", baths: "1 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093056/21-Tall-Pines-Way-Meredith-NH-03253", desc: "Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094478/0/0/0/a85f51473e35867d6510545a3a823f62/0/af4e01529a25234d926a9f8c1fdedcc4/5094478-30a3b168-4e9c-4d79-bf30-36ca62050725.JPG", address: "8 Our Way 431, Freedom, NH 03836", price: "$240,000", beds: "2 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094478/8-Our-Way-431-Freedom-NH-03836", desc: "Located in Freedom, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094446/0/0/0/f59dd9aaebc2277e53d67871d92d1a35/0/28a67109329161237fd39839cfbe514f/5094446-56cd5d9b-761b-4b7e-9799-ab3279582b36.JPG", address: "30 Greenleaf Trail, Gilford, NH 03249", price: "$695,000", beds: "2 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094446/30-Greenleaf-Trail-Gilford-NH-03249", desc: "Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5092930/0/0/0/a8cd57fb15f1cf14e6dbf48a50a68738/0/fb4f68f798a0beee665d43ac9697b599/5092930-93cd274a-8c7d-4697-9fc0-1c226f379380.JPG", address: "13 Pear Street, Laconia, NH 03246", price: "$389,900", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5092930/13-Pear-Street-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094391/0/0/0/c16b7a3877a10af9bd2964a36651a934/0/72f312ae4454057d4d893f90d4b53200/5094391-fad1b35b-b2e5-4c69-8b84-de46104fd6cc.JPG", address: "48 Independence Drive, Freedom, NH 03836", price: "$565,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094391/48-Independence-Drive-Freedom-NH-03836", desc: "Located in Freedom, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094342/0/0/0/ca8dc741f5d33dc69d0508b0b79cccfe/0/e94693e2026c635035e7a4951610191e/5094342-fba6d9d2-6e61-456a-b248-c7adf06eae21.JPG", address: "33 Sanborn Road, Plymouth, NH 03264", price: "$224,900", beds: "2 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094342/33-Sanborn-Road-Plymouth-NH-03264", desc: "Located in Plymouth, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093700/0/0/0/1e6c83e476ff8205bf27c439dc87fc00/0/a51f5dcf0b96a9104b35a006e38f89c8/5093700-1a5791cc-b7dc-43bc-8fbd-06b607a6aa57.JPG", address: "3-5 Firehouse Lane, Lane New Hampton, NH 03256", price: "$624,000", beds: "4 Beds", baths: "3 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093700/3-5-Firehouse-Lane-New-Hampton-NH-03256", desc: "Located in Lane New Hampton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094191/0/0/0/4aafebb8db547c8ded1f92e75dbd2e1b/0/d3d87f1f88d32540f221104f4fccdc7a/5094191-60ab3b94-39ed-4707-8149-38b51d1a648e.JPG", address: "193 New Durham Road, Alton, NH 03809", price: "$450,000", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094191/193-New-Durham-Road-Alton-NH-03809", desc: "Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094258/0/0/0/3d72e1629f091b6777985f14e4b66f4e/0/3b85283bcd59a3c4298ea437c81dc1ad/5094258-df6d1055-6de2-48d1-8e8f-1abad6b41e74.JPG", address: "46 Depot Street, Belmont, NH 03220", price: "$380,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094258/46-Depot-Street-Belmont-NH-03220", desc: "Located in Belmont, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094256/0/0/0/a17ae6e744f1aac4b961f70660afb030/0/3283e0669902960b0196d88100600133/5094256-fbdacbfe-b311-4caf-8546-ada1b739fee4.JPG", address: "177 Alton Shores Road, Alton, NH 03810", price: "$385,000", beds: "3 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094256/177-Alton-Shores-Road-Alton-NH-03810", desc: "Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094190/0/0/0/a4235ae05f98339858b97e4b4bb61ebd/0/41d8444f7194ea20e9401fe060614e7f/5094190-fcfd925e-fdfd-48fd-868d-60b6815a2cc6.JPG", address: "Lot 38 Smoke Rise Road, New Hampton, NH 03256", price: "$799,000", beds: "3 Beds", baths: "3 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094190/Lot-38-Smoke-Rise-Road-New-Hampton-NH-03256", desc: "Located in New Hampton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094177/0/0/0/ed3981e8437eb2a2d6d576dd1771def8/0/9851a4685e48c4eebc3b48937f140b5c/5094177-0760ef9b-21f2-41ef-8e20-d8457c0bb291.JPG", address: "Lot 35 Smoke Rise Road, New Hampton, NH 03256", price: "$799,000", beds: "3 Beds", baths: "3 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094177/Lot-35-Smoke-Rise-Road-New-Hampton-NH-03256", desc: "Located in New Hampton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094110/0/0/0/dc0834f47bfa29cdebd8d1e743ae4ad6/0/9fc9950ae17dd3ae5fa7253c962bb177/5094110-f6177b04-91ff-460c-95df-b6e349153066.JPG", address: "48 Forest Hill Road, Meredith, NH 03253", price: "$649,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094110/48-Forest-Hill-Road-Meredith-NH-03253", desc: "Located in Meredith, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094062/0/0/0/2201378ce72094b898eee85e678e455f/0/8cdd7f014cc0dacd592b6ff54b1343a0/5094062-0619e8fa-ab41-4de8-a3bb-298104a7acbe.JPG", address: "40 White Pond Road, Ossipee, NH 03864", price: "$365,000", beds: "1 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094062/40-White-Pond-Road-Ossipee-NH-03864", desc: "Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094065/0/0/0/cf5fbe7b7538e6f69d3089af6d3f9664/0/a434b373141047f81b27a5ff689da7d7/5094065-4518eea3-1bf6-425d-ac6b-292875403bf2.JPG", address: "65 Lakeview Avenue, Bristol, NH 03222", price: "$385,000", beds: "2 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094065/65-Lakeview-Avenue-Bristol-NH-03222", desc: "Located in Bristol, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5094021/0/0/0/f59cf6c3d3d39f98891e90c6d4e07f18/0/1d06877e5f11b222331a6d93bb9eae22/5094021-7f41033d-f053-4e86-909d-e44c5ee8adcb.JPG", address: "29 Wooley Pasture Road, Plymouth, NH 03264", price: "$789,900", beds: "5 Beds", baths: "3 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5094021/29-Wooley-Pasture-Road-Plymouth-NH-03264", desc: "Located in Plymouth, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093936/0/0/0/64d39893234a601528af2bbd309066c7/0/a0dfeb062742741cb807494732a315a0/5093936-e6dc39aa-0dfb-4ce9-b45e-40dcc7ee42a6.JPG", address: "175 Tate Road, Gilford, NH 03249", price: "$495,000", beds: "2 Beds", baths: "2 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093936/175-Tate-Road-Gilford-NH-03249", desc: "Located in Gilford, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093907/0/0/0/7054f720f0a2815a3988ca7858761b3d/0/2fde20575e58fa28af2921c06f3e9094/5093907-c5a451ba-f38a-45f7-a23c-96b1f3dd1a0e.JPG", address: "21 Pine Arden Drive 76, Ashland, NH 03217", price: "$345,000", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093907/21-Pine-Arden-Drive-76-Ashland-NH-03217", desc: "Located in Ashland, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093871/0/0/0/8969c7756bb0105f13fe434628d193d0/0/c44a5b89dc7906d3be9158a69f7dc831/5093871-90bc477c-0923-492e-99f9-cf20d55ef995.JPG", address: "92 Mallard Drive, Alton, NH 03809", price: "$749,900", beds: "4 Beds", baths: "4 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093871/92-Mallard-Drive-Alton-NH-03809", desc: "Located in Alton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093748/0/0/0/2147ac6fcf4393c016e8730d190ed422/0/205f8cf295d1ca68b18db1a66d235ce7/5093748-03a97a80-4d30-4ae1-b304-9ef75a4a3090.JPG", address: "26 Sawyer Road, Ossipee, NH 03864", price: "$450,000", beds: "2 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093748/26-Sawyer-Road-Ossipee-NH-03864", desc: "Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093738/0/0/0/f06f983181650766151fe78bb08f44aa/0/762f709f0b22b8a97412afddff643ea5/5093738-c27a7a5c-aabf-4563-82a8-ce102cd4de83.JPG", address: "78 Wood Drive, Gilmanton, NH 03237", price: "$469,900", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093738/78-Wood-Drive-Gilmanton-NH-03237", desc: "Located in Gilmanton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093733/0/0/0/b9c07d98b9eba1e1ff5877ea96202d45/0/531b3d16a7c13b3ff719b4ce321d6e7d/5093733-d6124a9a-0725-4e49-b0ce-0446f2fbec7a.JPG", address: "6 Mudgett Drive, Freedom, NH 03836", price: "$374,900", beds: "3 Beds", baths: "1 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093733/6-Mudgett-Drive-Freedom-NH-03836", desc: "Located in Freedom, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093730/0/0/0/166ab0fbec2fb8ff5435b38251a1f5b5/0/3ea5c36e17fa1d6fa5bd3f71e3073d9a/5093730-37bd815d-d859-49f2-af3e-38a1810c72d8.JPG", address: "3 Oak Hill Road, Northfield, NH 03276", price: "$399,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093730/3-Oak-Hill-Road-Northfield-NH-03276", desc: "Located in Northfield, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093704/0/0/0/f0ab512be5c26daf9dfb972142fecfc7/0/7b3f9bae310aad54a9e01b2c479a5f02/5093704-57dd1e07-fa58-47ec-afbf-9dc081103d69.JPG", address: "160 Browns Ridge Road, Ossipee, NH 03864", price: "$475,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093704/160-Browns-Ridge-Road-Ossipee-NH-03864", desc: "Located in Ossipee, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093699/0/0/0/07500d704d67b8dab8051d7c437472fd/0/12c9d1fecc1f0e5fb84368b4c0bbbc16/5093699-9e955149-5c2e-4ff6-8893-c0f194246af7.JPG", address: "20 Baldwin Street, Laconia, NH 03246", price: "$315,000", beds: "3 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093699/20-Baldwin-Street-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093640/0/0/0/711bd8df7f3e3126328e7ea946fdf542/0/cc0c359a5e8f7b5d2579053548f9d3e3/5093640-0315B9B7-201B-4E74-BDB7-5E1A861C0656.JPG", address: "58 Millstone Drive 56, Northfield, NH 03276", price: "$524,900", beds: "2 Beds", baths: "2 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093640/58-Millstone-Drive-56-Northfield-NH-03276", desc: "Located in Northfield, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093565/0/0/0/274c410173783ea26bc82a81cf199bc5/0/ee9891bf386e1405fab4114e974d7190/5093565-c9536469-0cec-4f04-92f6-aa8cd1e5ad61.JPG", address: "62 Mansfield Woods Way, New Hampton, NH 03256", price: "$319,000", beds: "2 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093565/62-Mansfield-Woods-Way-New-Hampton-NH-03256", desc: "Located in New Hampton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093557/0/0/0/cb7c1d867b0f9c34e2cc2b7a04d80e3d/0/2b6c359792cdfb0533eb52123d26782c/5093557-14aae78f-3e90-43a1-bf05-0b3f5eecbe89.JPG", address: "77 Whitehouse Circle, Campton, NH 03223", price: "$730,000", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093557/77-Whitehouse-Circle-Campton-NH-03223", desc: "Located in Campton, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093505/0/0/0/75a47601d85319e38083aa8907142619/0/fc7528245b02f9813b6c9bb1f71f013d/5093505-f774cc0d-bc9e-4160-8d17-9da1e2561fce.JPG", address: "40 Paugus Street, Laconia, NH 03246", price: "$499,000", beds: "2 Beds", baths: "1 Baths", sqft: "1 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093505/40-Paugus-Street-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5092843/0/0/0/1c4b60c5bacfc7dad19edfa3d5feea7e/0/87840f05ec3c03b7e209f8cb4a050850/5092843-AE6A66B9-2BC7-43FB-8DA7-12DFD837D0C3.JPG", address: "7 Loon Street, Wolfeboro, NH 03894", price: "$799,000", beds: "3 Beds", baths: "3 Baths", sqft: "3 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5092843/7-Loon-Street-Wolfeboro-NH-03894", desc: "Located in Wolfeboro, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093417/0/0/0/64ab0737032230576230947145b78026/0/0e110cc1ade253a1ccb5b44544a34278/5093417-92fbcc38-53e2-4790-802b-d1925665fa85.JPG", address: "1026 Weirs Boulevard, Laconia, NH 03246", price: "$425,000", beds: "1 Beds", baths: "1 Baths", sqft: "0 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093417/1026-Weirs-Boulevard-Laconia-NH-03246", desc: "Located in Laconia, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." },
+        { img: "https://zimg.paragon.ice.com/ParagonImages/Property/PO/PRIMEMLS/5093383/0/0/0/93ba9cf97e94db76851181155a3ef1fa/0/4dccf1627eeee1c7668c1c9b92e8a202/5093383-cbc1f53b-f851-484c-b04a-c40eedb2d8ad.JPG", address: "189 Lynn Avenue, Alexandria, NH 03222", price: "$249,900", beds: "3 Beds", baths: "2 Baths", sqft: "2 Full Baths", url: "https://owlsnestrealestate.idxbroker.com/idx/details/listing/b027/5093383/189-Lynn-Avenue-Alexandria-NH-03222", desc: "Located in Alexandria, New Hampshire. Contact Owl’s Nest Real Estate for full listing details and to schedule a private showing." }
+      ];
+
+      const container = document.getElementById('listingsContainer');
+      const pager = document.getElementById('pagination');
+      const PER_PAGE = 3;
+      const totalPages = Math.max(1, Math.ceil(listings.length / PER_PAGE));
+      let currentPage = 1;
+      const PREV_SVG = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>';
+      const NEXT_SVG = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>';
+
+      function listingHTML(p, imageRight) {
+        const imgBlock = `<div class="relative w-full h-[420px] overflow-hidden ${imageRight ? 'md:order-2 order-1' : ''}">
+            <img src="${p.img}" alt="${p.address}" class="w-full h-full object-cover" />
+            <span class="absolute top-5 left-5 bg-black uppercase tracking-widest px-4 py-2 rounded-full font-light text-[14px] leading-[20px] text-white">For Sale</span>
+          </div>`;
+        const textBlock = `<div class="pt-2 ${imageRight ? 'md:order-1 order-2' : ''}">
+            <p class="uppercase mb-4 font-light text-[14px] leading-[20px] text-black tracking-[0.04em]">${p.address}</p>
+            <p class="mb-6 font-light text-[36px] leading-[40px] text-black">${p.price}</p>
+            <div class="flex flex-wrap gap-3 mb-8">
+              <span class="inline-flex items-center gap-2 bg-black text-white rounded-full px-4 py-2 uppercase tracking-widest font-semibold text-[11px]">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 12v6a2 2 0 002 2h14a2 2 0 002-2v-6M3 12V6a2 2 0 012-2h14a2 2 0 012 2v6"/></svg>${p.beds}
+              </span>
+              <span class="inline-flex items-center gap-2 bg-black text-white rounded-full px-4 py-2 uppercase tracking-widest font-semibold text-[11px]">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10V6a2 2 0 012-2h2v6M4 10h16M4 10v8a2 2 0 002 2h12a2 2 0 002-2v-8"/></svg>${p.baths}
+              </span>
+              <span class="inline-flex items-center gap-2 bg-black text-white rounded-full px-4 py-2 uppercase tracking-widest font-semibold text-[11px]">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>${p.sqft}
+              </span>
+            </div>
+            <div class="border-t border-gray-200 pt-6">
+              <p class="uppercase mb-4 font-normal text-[12px] leading-[16px] text-[rgb(120,120,120)] tracking-[0.18em]">Property Description</p>
+              <p class="mb-8 font-light text-[14px] leading-[26px] text-black [display:-webkit-box] [-webkit-line-clamp:4] [line-clamp:4] [-webkit-box-orient:vertical] [overflow:hidden]">${p.desc}</p>
+              <a href="${p.url}" target="_blank" rel="noopener" class="inline-flex items-center justify-center border border-black rounded-full px-8 py-3 hover:bg-black hover:text-white transition-colors uppercase tracking-widest font-light text-[16px] leading-[22px] text-black">Property Details</a>
+            </div>
+          </div>`;
+        return `<article class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">${imageRight ? textBlock + imgBlock : imgBlock + textBlock}</article>`;
+      }
+
+      function renderPage(n, doScroll) {
+        currentPage = Math.min(Math.max(1, n), totalPages);
+        const start = (currentPage - 1) * PER_PAGE;
+        const data = listings.slice(start, start + PER_PAGE);
+        container.innerHTML = data.map((p, i) => listingHTML(p, i % 2 === 1)).join('');
+        renderPager();
+        if (doScroll) {
+          const sec = document.getElementById('featuredPropertiesList');
+          if (sec) window.scrollTo({ top: sec.offsetTop - 20, behavior: 'smooth' });
+        }
+      }
+      function pillBtn(label, page, active) {
+        const cls = active ? 'bg-navy text-white font-semibold' : 'text-gray-600 hover:bg-gray-100';
+        return '<button data-goto="' + page + '" class="w-10 h-10 rounded-full flex items-center justify-center text-[14px] transition-colors ' + cls + '">' + label + '</button>';
+      }
+      function arrowBtn(svg, page, disabled) {
+        return '<button data-goto="' + page + '" ' + (disabled ? 'disabled' : '') + ' class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:border-navy hover:text-navy transition-colors disabled:opacity-30 disabled:hover:border-gray-300 disabled:hover:text-gray-600">' + svg + '</button>';
+      }
+      function renderPager() {
+        if (!pager) return;
+        let html = arrowBtn(PREV_SVG, currentPage - 1, currentPage === 1);
+        const nums = [];
+        for (let i = 1; i <= totalPages; i++) {
+          if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) nums.push(i);
+        }
+        let prev = 0;
+        for (const n of nums) {
+          if (n - prev > 1) html += '<span class="w-10 h-10 flex items-center justify-center text-gray-400 select-none">…</span>';
+          html += pillBtn(String(n), n, n === currentPage);
+          prev = n;
+        }
+        html += arrowBtn(NEXT_SVG, currentPage + 1, currentPage === totalPages);
+        pager.innerHTML = html;
+        pager.querySelectorAll('[data-goto]').forEach(function(b) {
+          b.addEventListener('click', function() {
+            const g = parseInt(b.dataset.goto, 10);
+            if (g >= 1 && g <= totalPages) renderPage(g, true);
+          });
+        });
+      }
+
+      renderPage(1, false);
+    })();
+  </script>
+
+
+  <!-- Mega menu toggle handlers -->
+  <script>
+    (function() {
+      var megaToggle = document.getElementById('megaMenuToggle');
+      var megaMenu = document.getElementById('megaMenu');
+      var megaClose = document.getElementById('megaMenuClose');
+      if (megaToggle && megaMenu && megaClose) {
+        megaToggle.addEventListener('click', function() {
+          megaMenu.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        });
+        megaClose.addEventListener('click', function() {
+          megaMenu.classList.add('hidden');
+          document.body.style.overflow = '';
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && !megaMenu.classList.contains('hidden')) {
+            megaMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
