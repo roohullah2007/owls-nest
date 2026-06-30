@@ -101,6 +101,15 @@ export function SiteHeader() {
 
                 {/* Phone button (the one in §3 PhoneButton) */}
                 <div className="ml-auto flex items-center gap-3 lg:ml-0">
+                    <Link
+                        href="/login"
+                        className={cn(
+                            'hidden items-center justify-center rounded-full border border-white px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-navy md:inline-flex',
+                        )}
+                    >
+                        Login
+                    </Link>
+
                     <a
                         href={SITE.phoneHref}
                         className="hidden items-center justify-center rounded-full border border-white bg-white px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-navy hover:text-white md:inline-flex"
@@ -170,7 +179,16 @@ export function SiteHeader() {
                                 ))}
                             </li>
                         ))}
-                        <li className="pt-4">
+                        <li className="flex flex-wrap items-center gap-3 pt-4">
+                            <Link
+                                href="/login"
+                                className={cn(
+                                    'inline-flex items-center justify-center rounded-full border border-white px-6 py-3 text-sm font-semibold text-white',
+                                )}
+                                onClick={() => setMobileOpen(false)}
+                            >
+                                Login
+                            </Link>
                             <a
                                 href={SITE.phoneHref}
                                 className="inline-flex items-center justify-center rounded-full border border-white bg-white px-6 py-3 text-sm font-semibold text-navy"
