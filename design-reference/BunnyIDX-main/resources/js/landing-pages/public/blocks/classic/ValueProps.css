@@ -1,6 +1,0 @@
-.lp-vp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 48px; }
-.lp-vp-card { background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 28px; text-align: center; }
-.lp-vp-icon { width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center; margin: 0 auto 16px; background: color-mix(in srgb, var(--accent) 12%, #fff); color: var(--accent); }
-.lp-vp-card h3 { font-size: 18px; font-weight: 600; }
-.lp-vp-card p { color: var(--muted); font-size: 15px; margin-top: 8px; }
-@media (max-width: 760px) { .lp-vp-grid { grid-template-columns: 1fr; gap: 16px; } }

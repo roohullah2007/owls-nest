@@ -1,7 +1,0 @@
-.lp-steps { background: #fff; }
-.lp-steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 48px; }
-.lp-step { text-align: center; background: var(--soft); border-radius: 16px; padding: 34px 26px; }
-.lp-step-num { width: 46px; height: 46px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; font-size: 18px; display: grid; place-items: center; margin: 0 auto 16px; }
-.lp-step h3 { font-size: 18px; font-weight: 600; }
-.lp-step p { color: var(--muted); font-size: 15px; margin-top: 8px; }
-@media (max-width: 760px) { .lp-steps-grid { grid-template-columns: 1fr; gap: 22px; } }

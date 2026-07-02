@@ -1,7 +1,0 @@
-.lp-video { background: var(--soft); }
-.lp-video-frame { max-width: 860px; margin: 44px auto 0; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: #0c1117; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(16,24,40,.12); }
-.lp-video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-.lp-video-ph { width: 100%; height: 100%; display: grid; place-items: center; color: rgba(255,255,255,.5); position: relative; background-size: cover; background-position: center; }
-.lp-video-ph .play { width: 76px; height: 76px; border-radius: 999px; background: rgba(255,255,255,.92); display: grid; place-items: center; color: var(--accent); }
-.lp-video-cta { text-align: center; margin-top: 28px; }
-.lp-video-cta .lp-btn { width: auto; padding: 13px 30px; }

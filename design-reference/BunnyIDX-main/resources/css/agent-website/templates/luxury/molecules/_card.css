@@ -1,6 +1,0 @@
-/* Generic card pattern (bordered, hover shadow) */
-.contact-form {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 48px;
-}

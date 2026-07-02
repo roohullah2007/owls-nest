@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64">
-  <rect width="200" height="64" rx="8" fill="#111315"/>
-  <g transform="translate(14 12)">
-    <path d="M20 4 L36 18 L36 38 L4 38 L4 18 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
-    <path d="M16 38 L16 26 L24 26 L24 38" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
-  </g>
-  <text x="64" y="29" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="700" font-size="18" fill="#FFFFFF" letter-spacing="1.5">DEMO</text>
-  <text x="64" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="500" font-size="11" fill="#7C8590" letter-spacing="2">MLS</text>
-</svg>

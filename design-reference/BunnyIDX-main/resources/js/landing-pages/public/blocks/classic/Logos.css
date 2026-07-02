@@ -1,9 +1,0 @@
-.lp-logos { padding: 40px 0; background: var(--soft); border-bottom: 1px solid var(--line); }
-.lp-logos-title { text-align: center; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
-.lp-logos-track { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.lp-logos-row { display: flex; align-items: center; gap: 56px; width: max-content; animation: lp-marquee 28s linear infinite; }
-.lp-logos:hover .lp-logos-row { animation-play-state: paused; }
-@keyframes lp-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.lp-logo { flex-shrink: 0; height: 30px; display: flex; align-items: center; color: #8b9096; font-size: 21px; font-weight: 600; letter-spacing: -.01em; opacity: .75; }
-.lp-logo img { height: 30px; width: auto; object-fit: contain; filter: grayscale(1); opacity: .8; }
-@media (max-width: 760px) { .lp-logos-row { gap: 38px; } .lp-logo { font-size: 18px; } }
