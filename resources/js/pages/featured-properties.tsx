@@ -5,7 +5,6 @@ import { ChevronDownIcon } from '@/components/site/icons';
 import { ListingsBrowser } from '@/components/site/sections/listings-browser';
 import { InstagramGrid } from '@/components/site/sections/instagram-grid';
 import { WorkWithUsBand } from '@/components/site/sections/work-with-us-band';
-import { FEATURED_LISTINGS } from '@/data/featured-listings';
 import type { Listing } from '@/types';
 
 const HERO_IMAGE =
@@ -13,14 +12,13 @@ const HERO_IMAGE =
 const WORK_WITH_US_IMAGE = '/images/featured-work-with-us.webp';
 
 export default function FeaturedProperties({
-    listings,
+    listings = [],
 }: {
     listings?: Listing[];
 }) {
-    // Live MLS results from the admin-configured Featured Listings settings;
-    // fall back to the static fixtures when none are available.
-    const featured =
-        listings && listings.length > 0 ? listings : FEATURED_LISTINGS;
+    // Live PrimeMLS results from the admin-configured Featured Listings settings
+    // (see FeaturedPropertiesController). No static fixtures.
+    const featured = listings;
 
     return (
         <SiteLayout>

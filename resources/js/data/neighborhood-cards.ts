@@ -50,6 +50,6 @@ export const NEIGHBORHOOD_CARDS: NeighborhoodCard[] = [
         image: '/images/hero-communities.webp',
         description:
             'Browse our latest active listings across the White Mountains and Lakes Region, hand-picked by our team.',
-        href: '/#featured',
+        href: '/featured-properties',
     },
 ];

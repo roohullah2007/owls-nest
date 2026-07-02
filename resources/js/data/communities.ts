@@ -34,7 +34,7 @@ export const COMMUNITY_PROJECTS: Neighborhood[] = [
         id: 'featured-properties',
         name: 'Featured Properties',
         image: '/images/hero-communities.webp',
-        href: '/#featured',
+        href: '/featured-properties',
     },
     {
         id: 'investment-opportunities',

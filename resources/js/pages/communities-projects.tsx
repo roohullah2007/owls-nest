@@ -89,6 +89,7 @@ export default function CommunitiesProjects() {
             {/* "Welcome to ..." write-ups — text left, photo right; navy or white per area */}
             {WELCOME_SECTIONS.map((section) => {
                 const navy = section.tone === 'navy';
+
                 return (
                     <section
                         key={section.id}

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string|null $search_query
+ * @property array<int,string>|null $mls_numbers
  * @property array<int,string>|null $mls_slugs
  * @property string|null $agent_id
  * @property string|null $office_id
@@ -22,6 +23,7 @@ class FeaturedListingSetting extends Model
 {
     protected $fillable = [
         'search_query',
+        'mls_numbers',
         'mls_slugs',
         'agent_id',
         'office_id',
@@ -41,6 +43,7 @@ class FeaturedListingSetting extends Model
     protected function casts(): array
     {
         return [
+            'mls_numbers' => 'array',
             'mls_slugs' => 'array',
             'is_active' => 'boolean',
             'result_limit' => 'integer',

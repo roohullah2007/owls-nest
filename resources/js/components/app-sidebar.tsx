@@ -24,7 +24,14 @@ const mainNavItems: NavItem[] = [
     },
 ];
 
+// Admins get their own dashboard (the broker overview at /admin) in place of
+// the default one, plus the IDX management screens.
 const adminNavItems: NavItem[] = [
+    {
+        title: 'Dashboard',
+        href: '/admin',
+        icon: LayoutGrid,
+    },
     {
         title: 'IDX Featured Listings',
         href: '/admin/idx-settings/featured-listings',
@@ -47,9 +54,9 @@ const footerNavItems: NavItem[] = [
 
 export function AppSidebar() {
     const { auth } = usePage<{ auth: Auth }>().props;
-    const items = auth.user?.is_admin
-        ? [...mainNavItems, ...adminNavItems]
-        : mainNavItems;
+    // Admins see only the admin nav (its own Dashboard → /admin replaces the
+    // default one); everyone else gets the standard dashboard nav.
+    const items = auth.user?.is_admin ? adminNavItems : mainNavItems;
 
     return (
         <Sidebar collapsible="icon" variant="inset">

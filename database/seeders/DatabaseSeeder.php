@@ -21,5 +21,15 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // IDX / PrimeMLS wiring. Order matters: providers first (the connection
+        // seeder looks up the primemls provider), then flip the ADMIN_EMAIL
+        // account to admin, then upsert the single-broker PrimeMLS connection.
+        // All three are idempotent and non-destructive.
+        $this->call([
+            MlsProviderSeeder::class,
+            AdminUserSeeder::class,
+            PrimeMlsConnectionSeeder::class,
+        ]);
     }
 }

@@ -8,17 +8,17 @@ import {
 } from '@/components/site/primitives';
 import { ListingCardSlideUp } from '@/components/site/cards/listing-card-slide-up';
 import { useCarousel } from '@/hooks/use-carousel';
-import { FEATURED_PROPERTY_SLIDES } from '@/data/home-listings';
 import type { PropertySlide } from '@/types/listing';
 
 interface FeaturedPropertiesSliderProps {
     heading?: string;
-    slides?: PropertySlide[];
+    /** Slides derived from live PrimeMLS listings on the home page. */
+    slides: PropertySlide[];
 }
 
 export function FeaturedPropertiesSlider({
     heading = 'FEATURED PROPERTIES',
-    slides = FEATURED_PROPERTY_SLIDES,
+    slides,
 }: FeaturedPropertiesSliderProps) {
     const { index, next, prev } = useCarousel(slides.length);
 

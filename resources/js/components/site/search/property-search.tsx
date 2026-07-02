@@ -1,22 +1,24 @@
 // Property Search feature: owns all client-side state (filters, pagination,
 // map/grid view, the open filter panel, and the detail modal) and lays out the
-// filter bar + results map + results grid + detail modal. Data comes from the
-// typed fixtures module; nothing is hardcoded in JSX.
-import { useEffect, useMemo, useState } from 'react';
+// filter bar + results map + results grid + detail modal. Listings are LIVE
+// PrimeMLS results — the controller seeds page one, then this re-queries
+// /api/primemls/search as filters/page change. No static data.
+import { router, usePage } from '@inertiajs/react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronDownIcon } from '@/components/site/icons';
-import { ListingCardCompact } from '@/components/site/cards/listing-card-compact';
-import { SEARCH_LISTINGS } from '@/data/search-listings';
+import { ListingCardSearch } from '@/components/site/cards/listing-card-search';
+import type { Auth } from '@/types';
 import type { SearchListing } from '@/types/search-listing';
 import { FilterBar } from './filter-bar';
 import { FilterPanels } from './filter-panels';
 import type { PanelKey } from './filter-panels';
 import { ResultsMap } from './results-map';
-import { PropertyDetailModal } from './property-detail-modal';
+import { StatusBar } from './status-bar';
 import {
     DEFAULT_FILTERS,
+    PROPERTY_TYPE_OPTIONS,
     countActiveFilters,
-    filterListings,
 } from './use-property-filters';
 import type {
     FilterState,
@@ -26,6 +28,16 @@ import type {
 } from './use-property-filters';
 
 const PER_PAGE = 20;
+
+// Map-marker colour per selected status (sold red, expired gray, price-changed
+// blue, active/all green) — mirrors the reference map.
+const STATUS_MARKER_COLOR: Record<StatusKey, string> = {
+    all: '#16a34a',
+    active: '#16a34a',
+    sold: '#dc2626',
+    expired: '#6b7280',
+    changed: '#1e40af',
+};
 
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
     { key: 'recommended', label: 'Recommended' },
@@ -41,6 +53,80 @@ const TOURS: { key: TourKey; label: string }[] = [
     { key: 'open', label: 'Open House' },
 ];
 
+// Map the client FilterState + page into the snake_case query the PrimeMLS
+// search endpoint (MlsQuery::fromArray) understands.
+function buildSearchParams(f: FilterState, page: number): string {
+    const p = new URLSearchParams();
+    p.set('per_page', String(PER_PAGE));
+    p.set('page', String(page));
+
+    if (f.q) {
+        p.set('query', f.q);
+    }
+
+    if (f.priceMin != null) {
+        p.set('min_price', String(f.priceMin));
+    }
+
+    if (f.priceMax != null) {
+        p.set('max_price', String(f.priceMax));
+    }
+
+    if (f.beds) {
+        p.set('min_beds', String(f.beds));
+    }
+
+    if (f.baths) {
+        p.set('min_baths', String(f.baths));
+    }
+
+    if (f.sqftMin != null) {
+        p.set('min_sqft', String(f.sqftMin));
+    }
+
+    if (f.sqftMax != null) {
+        p.set('max_sqft', String(f.sqftMax));
+    }
+
+    if (f.builtMin != null) {
+        p.set('min_year_built', String(f.builtMin));
+    }
+
+    if (f.builtMax != null) {
+        p.set('max_year_built', String(f.builtMax));
+    }
+
+    // Map each selected Type label to its real RESO value(s) — some are
+    // PropertySubType, some (Multi-Family / Land) are top-level PropertyType.
+    for (const label of f.types) {
+        const opt = PROPERTY_TYPE_OPTIONS.find((o) => o.label === label);
+        opt?.subtypes?.forEach((v) => p.append('property_subtypes[]', v));
+        opt?.types?.forEach((v) => p.append('property_types[]', v));
+    }
+
+    if (f.status === 'active') {
+        p.append('statuses[]', 'Active');
+    } else if (f.status === 'sold') {
+        p.append('statuses[]', 'Closed');
+    } else if (f.status === 'expired') {
+        p.append('statuses[]', 'Expired');
+    }
+
+    const sortMap: Record<SortKey, string> = {
+        recommended: 'newest',
+        'price-asc': 'price_asc',
+        'price-desc': 'price_desc',
+        beds: 'beds_desc',
+        year: 'newest',
+    };
+    p.set('sort', sortMap[f.sort]);
+
+    return p.toString();
+}
+
+// Sold/closed listings are gated behind login for logged-out visitors.
+const isSold = (l: SearchListing) => /sold|closed/i.test(l.status);
+
 // Compressed pager: first, last, and current ±2 with ellipsis gaps.
 function pageWindow(current: number, total: number): number[] {
     const nums: number[] = [];
@@ -54,24 +140,38 @@ function pageWindow(current: number, total: number): number[] {
     return nums;
 }
 
-export function PropertySearch() {
-    const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
+// Seed the free-text filter from the landing URL (?q= from the home hero
+// search, ?query= from the detail page's SEO links) so those searches actually
+// filter the results instead of being dropped.
+function initialFilters(): FilterState {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q') ?? params.get('query') ?? '';
+
+    return q ? { ...DEFAULT_FILTERS, q } : DEFAULT_FILTERS;
+}
+
+export function PropertySearch({
+    listings = [],
+}: {
+    listings?: SearchListing[];
+}) {
+    const [filters, setFilters] = useState<FilterState>(initialFilters);
     const [lotRange, setLotRange] = useState<[number, number]>([0, 5]);
     const [openPanel, setOpenPanel] = useState<PanelKey | null>(null);
     const [anchor, setAnchor] = useState<DOMRect | null>(null);
     const [page, setPage] = useState(1);
     const [view, setView] = useState<'map' | 'grid'>('map');
-    const [selected, setSelected] = useState<SearchListing | null>(null);
     const [sortOpen, setSortOpen] = useState(false);
+    const { auth } = usePage<{ auth: Auth }>().props;
+    const loggedOut = !auth.user;
+    // Live PrimeMLS results for the current page, seeded by the controller.
+    const [results, setResults] = useState<SearchListing[]>(listings);
+    const [total, setTotal] = useState(listings.length);
+    const [loading, setLoading] = useState(false);
 
-    const results = useMemo(
-        () => filterListings(SEARCH_LISTINGS, filters),
-        [filters],
-    );
     const filterCount = countActiveFilters(filters);
 
-    // Every filter mutation flows through here so results always reset to the
-    // first page (matches the original page's behaviour) without an effect.
+    // Every filter mutation flows through here so results always reset to page 1.
     function applyFilters(
         update: FilterState | ((f: FilterState) => FilterState),
     ) {
@@ -79,11 +179,50 @@ export function PropertySearch() {
         setPage(1);
     }
 
-    const totalPages = Math.max(1, Math.ceil(results.length / PER_PAGE));
+    // Re-query the live MLS endpoint whenever filters or the page change
+    // (debounced so typing in the search box doesn't spam the API).
+    useEffect(() => {
+        const controller = new AbortController();
+        const handle = setTimeout(() => {
+            setLoading(true);
+            fetch(`/api/primemls/search?${buildSearchParams(filters, page)}`, {
+                signal: controller.signal,
+                headers: { Accept: 'application/json' },
+            })
+                .then((r) => r.json())
+                .then((data) => {
+                    setResults(data.listings ?? []);
+                    setTotal(data.total ?? 0);
+                })
+                .catch(() => {
+                    /* aborted / network error — keep previous results */
+                })
+                .finally(() => setLoading(false));
+        }, 300);
+
+        return () => {
+            clearTimeout(handle);
+            controller.abort();
+        };
+    }, [filters, page]);
+
+    // "Price Changed" can't be filtered by PrimeMLS server-side (the feed's
+    // PriceChangeTimestamp isn't filterable), so refine the fetched page to
+    // listings that actually moved in price.
+    const priceChangedOnly = filters.status === 'changed';
+    const viewItems = priceChangedOnly
+        ? results.filter((r) => r.priceChange)
+        : results;
+    const displayTotal = priceChangedOnly ? viewItems.length : total;
+    const totalPages = priceChangedOnly
+        ? 1
+        : Math.max(1, Math.ceil(total / PER_PAGE));
     const start = (page - 1) * PER_PAGE;
-    const pageItems = results.slice(start, start + PER_PAGE);
-    const from = results.length ? start + 1 : 0;
-    const to = Math.min(start + PER_PAGE, results.length);
+    const pageItems = viewItems;
+    const from = displayTotal ? (priceChangedOnly ? 1 : start + 1) : 0;
+    const to = priceChangedOnly
+        ? viewItems.length
+        : Math.min(start + results.length, total);
 
     // Close any open panel on outside click / scroll / resize.
     useEffect(() => {
@@ -145,18 +284,6 @@ export function PropertySearch() {
         SORT_OPTIONS.find((o) => o.key === filters.sort)?.label ??
         'Recommended';
 
-    const statusPills: { key: StatusKey; label: string }[] = [
-        { key: 'active', label: 'Active' },
-        { key: 'all', label: 'All' },
-        { key: 'sold', label: 'Sold' },
-        { key: 'changed', label: 'Price Changed' },
-    ];
-
-    const gridClass =
-        view === 'grid'
-            ? 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-            : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3';
-
     return (
         <>
             <FilterBar
@@ -175,45 +302,36 @@ export function PropertySearch() {
                 anchor={anchor}
                 filters={filters}
                 setFilters={applyFilters}
-                resultCount={results.length}
+                resultCount={total}
                 onClose={() => setOpenPanel(null)}
                 onResetAll={clearAll}
                 lotRange={lotRange}
                 setLotRange={setLotRange}
             />
 
-            <div className="flex flex-col bg-white lg:h-[calc(100vh-72px)] lg:flex-row lg:overflow-hidden">
+            <div className="flex min-h-0 flex-1 flex-col bg-white lg:flex-row lg:overflow-hidden">
                 {/* MAP */}
                 <div
                     className={cn(
-                        'relative w-full lg:h-full lg:w-1/2',
+                        'relative w-full lg:h-full lg:w-[57%]',
                         view === 'grid' && 'hidden',
                     )}
                 >
-                    <div className="absolute top-3 left-6 z-[500] flex flex-wrap items-center gap-2 text-[13px] lg:left-10">
-                        {statusPills.map((p) => {
-                            const on = filters.status === p.key;
-
-                            return (
-                                <button
-                                    key={p.key}
-                                    type="button"
-                                    onClick={() => setStatus(p.key)}
-                                    className={cn(
-                                        'inline-flex items-center justify-center rounded-full border px-4 py-1.5 font-medium shadow-sm',
-                                        on
-                                            ? 'border-navy bg-navy text-white'
-                                            : 'border-gray-300 bg-white text-gray-600',
-                                    )}
-                                >
-                                    {p.label}
-                                </button>
-                            );
-                        })}
+                    <div className="absolute top-3 left-4 z-[500] lg:top-4">
+                        <StatusBar
+                            value={filters.status}
+                            onChange={setStatus}
+                        />
                     </div>
+                    {/* Draw-on-map search is not implemented yet — the control
+                        stays visible per the design but is disabled with a
+                        reason instead of silently doing nothing. */}
                     <button
                         type="button"
-                        className="absolute top-3 right-6 z-[500] flex items-center gap-1 rounded-full border border-gray-300 bg-white px-3 py-1.5 text-[13px] text-gray-700 shadow-sm lg:right-10"
+                        disabled
+                        aria-disabled="true"
+                        title="Draw-on-map search is coming soon"
+                        className="absolute top-3 right-4 z-[500] flex h-9 items-center gap-1.5 rounded-xl border border-gray-300 bg-white px-4 text-xs font-semibold text-gray-800 shadow-sm hover:bg-gray-50 disabled:cursor-not-allowed lg:top-4"
                     >
                         <svg
                             className="h-3.5 w-3.5"
@@ -232,9 +350,11 @@ export function PropertySearch() {
                     </button>
                     <div className="h-[55vh] w-full lg:h-full">
                         <ResultsMap
-                            listings={results}
-                            onSelect={setSelected}
+                            listings={viewItems}
+                            onSelect={(l) => router.visit(l.href)}
                             active={view === 'map'}
+                            markerColor={STATUS_MARKER_COLOR[filters.status]}
+                            locked={loggedOut}
                         />
                     </div>
                 </div>
@@ -242,12 +362,12 @@ export function PropertySearch() {
                 {/* LISTINGS */}
                 <div
                     className={cn(
-                        'w-full bg-white px-5 py-6 lg:h-full lg:overflow-y-auto lg:px-8',
-                        view === 'grid' ? 'lg:w-full' : 'lg:w-1/2',
+                        'w-full border-l border-gray-200 bg-white px-5 py-6 lg:h-full lg:overflow-y-auto',
+                        view === 'grid' ? 'lg:w-full' : 'lg:w-[43%]',
                     )}
                 >
                     <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
-                        <h2 className="text-[24px] font-semibold text-navy">
+                        <h2 className="text-[20px] font-bold text-navy">
                             All Listings
                         </h2>
                         <div className="flex items-center gap-2 text-[14px] text-gray-500">
@@ -292,38 +412,75 @@ export function PropertySearch() {
                             </div>
                             <span className="text-gray-300">|</span>
                             <span>
-                                <span className="font-medium text-navy">
-                                    {results.length}
-                                </span>{' '}
-                                results
+                                {loading ? (
+                                    'Searching…'
+                                ) : (
+                                    <>
+                                        <span className="font-medium text-navy">
+                                            {displayTotal.toLocaleString()}
+                                        </span>{' '}
+                                        results
+                                    </>
+                                )}
                             </span>
                         </div>
                     </div>
 
-                    <div className="mb-6 flex flex-wrap gap-2 text-[13px]">
-                        {TOURS.map((t) => (
-                            <label
-                                key={t.key}
-                                className="flex cursor-pointer items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-navy"
-                            >
-                                <input
-                                    type="checkbox"
-                                    className="h-4 w-4 accent-navy"
-                                    checked={filters.tours.includes(t.key)}
-                                    onChange={() => toggleTour(t.key)}
-                                />
-                                {t.label}
-                            </label>
-                        ))}
+                    <div className="mb-6 flex flex-wrap gap-2">
+                        {TOURS.map((t) => {
+                            const on = filters.tours.includes(t.key);
+
+                            return (
+                                <button
+                                    key={t.key}
+                                    type="button"
+                                    aria-pressed={on}
+                                    onClick={() => toggleTour(t.key)}
+                                    className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 text-xs font-semibold text-gray-800 transition-colors hover:bg-gray-50"
+                                >
+                                    <span
+                                        className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-sm text-white"
+                                        style={
+                                            on
+                                                ? {
+                                                      border: '1.5px solid #04345c',
+                                                      backgroundColor:
+                                                          '#04345c',
+                                                  }
+                                                : {
+                                                      border: '1.5px solid #9ca3af',
+                                                      backgroundColor:
+                                                          'transparent',
+                                                  }
+                                        }
+                                    >
+                                        {on && (
+                                            <svg
+                                                className="h-2.5 w-2.5"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="3"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            >
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        )}
+                                    </span>
+                                    {t.label}
+                                </button>
+                            );
+                        })}
                     </div>
 
                     {pageItems.length ? (
-                        <div className={gridClass}>
+                        <div className="listings-grid">
                             {pageItems.map((listing) => (
-                                <ListingCardCompact
+                                <ListingCardSearch
                                     key={listing.id}
                                     listing={listing}
-                                    onSelect={() => setSelected(listing)}
+                                    locked={loggedOut && isSold(listing)}
                                 />
                             ))}
                         </div>
@@ -342,7 +499,8 @@ export function PropertySearch() {
                     )}
 
                     <p className="mt-3 text-center text-[13px] text-gray-500">
-                        Showing {from}–{to} of {results.length} listings
+                        Showing {from}–{to} of {displayTotal.toLocaleString()}{' '}
+                        listings
                     </p>
 
                     <div className="mt-10 border-t border-gray-200 pt-6">
@@ -371,14 +529,6 @@ export function PropertySearch() {
                     </div>
                 </div>
             </div>
-
-            <PropertyDetailModal
-                key={selected?.id ?? 'none'}
-                listing={selected}
-                allListings={SEARCH_LISTINGS}
-                onClose={() => setSelected(null)}
-                onSelect={setSelected}
-            />
         </>
     );
 }

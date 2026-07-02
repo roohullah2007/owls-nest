@@ -8,12 +8,14 @@ use App\Actions\Fortify\CreateNewUser;
 /* @end-chisel-registration */
 use App\Actions\Fortify\ResetUserPassword;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
+use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 
@@ -24,7 +26,20 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // After login, admins land on the admin dashboard (/admin); everyone
+        // else falls back to config('fortify.home'). Bound here because Fortify
+        // resolves LoginResponse from the container.
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse
+        {
+            public function toResponse($request)
+            {
+                $target = $request->user()?->is_admin ? '/admin' : config('fortify.home');
+
+                return $request->wantsJson()
+                    ? new JsonResponse('', 204)
+                    : redirect()->intended($target);
+            }
+        });
     }
 
     /**

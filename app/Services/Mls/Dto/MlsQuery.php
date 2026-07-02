@@ -44,6 +44,13 @@ final readonly class MlsQuery
     public function __construct(
         // ── Free-text + identity ────────────────────────────────────────
         public ?string $query = null,
+        /**
+         * Specific MLS listing numbers (RESO ListingId) to pin — the admin's
+         * hand-picked "feature exactly these" list. Matched OR-wise, exact.
+         *
+         * @var string[]
+         */
+        public array $listingIds = [],
 
         // ── 1. Geographic (multi-value canonical — singular forms are
         //     input-only aliases merged in fromArray) ───────────────────
@@ -170,6 +177,7 @@ final readonly class MlsQuery
         // callers can't accidentally pass both and end up with AND-of-different-values.
         $known = [
             'query',
+            'listing_ids', 'listing_id',
             // Geographic
             'cities', 'city', 'zips', 'zip', 'zip_prefix', 'counties', 'county',
             'neighborhoods', 'neighborhood', 'subdivisions', 'subdivision',
@@ -218,6 +226,7 @@ final readonly class MlsQuery
 
         return new self(
             query: $strOrNull($f['query'] ?? null),
+            listingIds: $merge($f['listing_id'] ?? null, $f['listing_ids'] ?? null),
             cities: $merge($f['city'] ?? null, $f['cities'] ?? null),
             zips: $merge($f['zip'] ?? null, $f['zips'] ?? null),
             zipPrefix: $strOrNull($f['zip_prefix'] ?? null),
@@ -293,6 +302,7 @@ final readonly class MlsQuery
         // round-tripped query unambiguous (saved searches replay cleanly).
         $a = [
             'query' => $this->query,
+            'listing_ids' => $this->listingIds,
             'cities' => $this->cities,
             'zips' => $this->zips,
             'zip_prefix' => $this->zipPrefix,

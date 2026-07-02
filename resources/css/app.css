@@ -232,6 +232,12 @@ body {
     white-space: nowrap;
     display: inline-block;
 }
+/* Custom cluster / price markers carry their own inline styling — strip
+   Leaflet's default white box + border from the divIcon root. */
+.ps-marker {
+    background: transparent;
+    border: 0;
+}
 .leaflet-popup-content {
     font-size: 13px;
     margin: 10px 12px;
@@ -323,4 +329,15 @@ body {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     cursor: pointer;
     pointer-events: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Property-search results grid. auto-fill so the same grid renders ~2 cards
+   per row in the half-width map/list (mixed) view and reflows to more columns
+   in the full-width grid view — matching the reference EcoListing layout.
+--------------------------------------------------------------------------- */
+@utility listings-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }

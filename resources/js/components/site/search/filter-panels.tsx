@@ -7,6 +7,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { CloseIcon } from '@/components/site/icons';
 import { DualRangeSlider } from './dual-range-slider';
+import { PROPERTY_TYPE_OPTIONS } from './use-property-filters';
 import type { FilterState } from './use-property-filters';
 
 export type PanelKey = 'price' | 'type' | 'built' | 'beds' | 'sqft' | 'filters';
@@ -20,15 +21,7 @@ const PANEL_WIDTH: Record<PanelKey, number> = {
     filters: 560,
 };
 
-const PROPERTY_TYPES = [
-    'Single Family',
-    'Duplex',
-    'Townhouse',
-    'Condo / Apartment',
-    'Multiplex',
-    'Land',
-    'ALR / Agricultural',
-];
+const PROPERTY_TYPES = PROPERTY_TYPE_OPTIONS.map((o) => o.label);
 
 const BASEMENT_TYPES = [
     'Finished',

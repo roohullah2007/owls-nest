@@ -31,7 +31,9 @@ export const HERO_SEARCH_TABS: HeroSearchTab[] = [
     {
         id: 'valuation',
         label: 'Home Valuation',
-        action: '#',
+        // In-page anchor: the home page intercepts this tab's submit, prefills
+        // the ValuationWidget and scrolls to it (see pages/home.tsx).
+        action: '#valuation',
         placeholder: 'Enter your property address',
         cta: 'Get Estimate',
     },

@@ -11,16 +11,14 @@ import {
 import { CardRail } from '@/components/site/sections/card-rail';
 import type { CardRailHandle } from '@/components/site/sections/card-rail';
 import { ListingCardOverlay } from '@/components/site/cards/listing-card-overlay';
-import { FEATURED_LISTINGS } from '@/data/home-listings';
 import type { Listing } from '@/types/listing';
 
 interface FeaturedListingsProps {
-    listings?: Listing[];
+    /** Live PrimeMLS listings passed from the home controller. */
+    listings: Listing[];
 }
 
-export function FeaturedListings({
-    listings = FEATURED_LISTINGS,
-}: FeaturedListingsProps) {
+export function FeaturedListings({ listings }: FeaturedListingsProps) {
     const railRef = useRef<CardRailHandle>(null);
 
     return (

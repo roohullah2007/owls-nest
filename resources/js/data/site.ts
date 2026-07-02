@@ -29,8 +29,10 @@ export const SITE = {
     email: 'TomDeMatteo.ONR@gmail.com',
     address: { line1: '399 NH Route 49', line2: 'Campton, NH 03223' },
     social: {
+        // TODO(client): real Facebook/X profile URLs are still unknown — these
+        // two remain placeholders until the brand provides them.
         facebook: '#',
-        instagram: '#',
+        instagram: 'https://instagram.com/owlsnestrealestate',
         x: '#',
     },
     realtorEhoLogo:
@@ -45,7 +47,7 @@ export const MLS_DISCLAIMER =
 export const FOOTER_NAV: NavLink[] = [
     { label: 'Featured Properties', href: '/featured-properties' },
     { label: 'Home Search', href: '/property-search' },
-    { label: 'Home Valuation', href: '#' },
+    { label: 'Home Valuation', href: '/#valuation' },
     { label: 'Neighborhoods', href: '/neighborhoods' },
     { label: 'Contact Us', href: '/contact' },
 ];

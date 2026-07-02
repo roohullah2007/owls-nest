@@ -76,7 +76,7 @@ export function NeighborhoodsExplorer({
                     <div className="mt-auto flex justify-start pt-10">
                         <Button
                             variant="outline-dark"
-                            href="#"
+                            href="/neighborhoods"
                             affordance="none"
                             className="w-full max-w-[280px]"
                         >

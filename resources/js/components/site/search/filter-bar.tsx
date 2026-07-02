@@ -2,6 +2,8 @@
 // (Price / Type / Built / Beds & Baths / Sqft), the "All Filters" button with
 // its active-count badge, Save Search, and the Map / Grid view toggle. Trigger
 // buttons report their on-screen rect so the parent can anchor the popovers.
+// Styled to match the EcoListing reference: rounded-xl chips with leading
+// icons, 40px controls, gray-300 borders and navy (our brand "blue") accents.
 import { cn } from '@/lib/utils';
 import { ChevronDownIcon, SearchIcon } from '@/components/site/icons';
 import { fmt } from './filter-panels';
@@ -20,7 +22,88 @@ interface FilterBarProps {
 }
 
 const CHIP =
-    'flex flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-2 text-[14px] leading-none';
+    'flex h-10 flex-shrink-0 items-center gap-1.5 whitespace-nowrap rounded-xl border px-4 text-[13px] font-medium leading-none';
+
+const ICON = 'h-3.5 w-3.5 shrink-0';
+
+const PriceIcon = () => (
+    <svg
+        className={ICON}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+        <line x1="7" y1="7" x2="7.01" y2="7" />
+    </svg>
+);
+const TypeIcon = () => (
+    <svg
+        className={ICON}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <path d="M3 21h18" />
+        <path d="M5 21V7l8-4v18" />
+        <path d="M19 21V11l-6-4" />
+        <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01" />
+    </svg>
+);
+const BuiltIcon = () => (
+    <svg
+        className={ICON}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <rect x="3" y="4" width="18" height="18" rx="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+);
+const BedsIcon = () => (
+    <svg
+        className={ICON}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <path d="M2 4v16" />
+        <path d="M2 8h18a2 2 0 0 1 2 2v10" />
+        <path d="M2 17h20" />
+        <path d="M6 8v9" />
+    </svg>
+);
+const SqftIcon = () => (
+    <svg
+        className={ICON}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <polyline points="15 3 21 3 21 9" />
+        <polyline points="9 21 3 21 3 15" />
+        <line x1="21" y1="3" x2="14" y2="10" />
+        <line x1="3" y1="21" x2="10" y2="14" />
+    </svg>
+);
 
 function priceLabel(f: FilterState) {
     if (f.priceMin == null && f.priceMax == null) {
@@ -83,14 +166,13 @@ function ChipButton({
             }}
             className={cn(
                 CHIP,
-                active || open
-                    ? 'border-navy font-medium text-navy'
-                    : 'border-gray-300 text-gray-700 hover:border-gray-400',
+                'text-navy hover:bg-gray-50',
+                active || open ? 'border-navy' : 'border-gray-300',
             )}
         >
             {children}
             <span>{label}</span>
-            <ChevronDownIcon className="h-3.5 w-3.5 text-gray-500" />
+            <ChevronDownIcon className="h-3 w-3 text-navy/70" />
         </button>
     );
 }
@@ -107,15 +189,15 @@ export function FilterBar({
 }: FilterBarProps) {
     return (
         <div className="sticky top-0 z-40 border-b border-gray-200 bg-white">
-            <div className="flex h-[72px] w-full [scrollbar-width:none] items-center gap-1.5 overflow-x-auto px-6 lg:px-10 [&::-webkit-scrollbar]:hidden">
+            <div className="flex w-full [scrollbar-width:none] items-center gap-2 overflow-x-auto px-4 py-5 [&::-webkit-scrollbar]:hidden">
                 {/* Search */}
-                <div className="flex min-w-[110px] flex-shrink-0 items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2">
+                <div className="flex h-10 min-w-[200px] flex-shrink-0 items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 lg:w-[220px]">
                     <SearchIcon className="h-4 w-4 text-gray-400" />
                     <input
                         value={filters.q}
                         onChange={(e) => onSearch(e.target.value)}
-                        placeholder="Search city, neighbourhood, or address"
-                        className="min-w-0 flex-1 bg-transparent text-[14px] leading-none text-gray-700 placeholder-gray-400 outline-none"
+                        placeholder="Search city, neighbourhood, or MLS®#…"
+                        className="min-w-0 flex-1 bg-transparent text-sm leading-none text-gray-700 placeholder-gray-400 outline-none"
                     />
                 </div>
 
@@ -127,7 +209,9 @@ export function FilterBar({
                     }
                     open={openPanel === 'price'}
                     onOpen={onOpenPanel}
-                />
+                >
+                    <PriceIcon />
+                </ChipButton>
                 <ChipButton
                     panel="type"
                     label={
@@ -138,7 +222,9 @@ export function FilterBar({
                     active={filters.types.length > 0}
                     open={openPanel === 'type'}
                     onOpen={onOpenPanel}
-                />
+                >
+                    <TypeIcon />
+                </ChipButton>
                 <ChipButton
                     panel="built"
                     label={builtLabel(filters)}
@@ -147,28 +233,65 @@ export function FilterBar({
                     }
                     open={openPanel === 'built'}
                     onOpen={onOpenPanel}
-                />
+                >
+                    <BuiltIcon />
+                </ChipButton>
                 <ChipButton
                     panel="beds"
                     label={bedsLabel(filters)}
                     active={filters.beds > 0 || filters.baths > 0}
                     open={openPanel === 'beds'}
                     onOpen={onOpenPanel}
-                />
+                >
+                    <BedsIcon />
+                </ChipButton>
                 <ChipButton
                     panel="sqft"
                     label={sqftLabel(filters)}
                     active={filters.sqftMin != null || filters.sqftMax != null}
                     open={openPanel === 'sqft'}
                     onOpen={onOpenPanel}
-                />
+                >
+                    <SqftIcon />
+                </ChipButton>
+
+                <button
+                    type="button"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenPanel(
+                            'filters',
+                            e.currentTarget.getBoundingClientRect(),
+                        );
+                    }}
+                    className="flex h-10 flex-shrink-0 items-center gap-1.5 rounded-xl border border-navy px-4 text-[13px] leading-none font-medium whitespace-nowrap text-navy hover:bg-gray-50"
+                >
+                    <svg
+                        className="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                    >
+                        <line x1="4" y1="6" x2="20" y2="6" />
+                        <line x1="4" y1="12" x2="20" y2="12" />
+                        <line x1="4" y1="18" x2="20" y2="18" />
+                    </svg>
+                    Filters
+                    {filterCount > 0 && (
+                        <span className="flex h-5 min-w-[20px] items-center justify-center rounded-lg bg-navy px-1.5 text-[11px] font-bold text-white">
+                            {filterCount}
+                        </span>
+                    )}
+                    <ChevronDownIcon className="h-3 w-3" />
+                </button>
 
                 <div className="ml-auto flex flex-shrink-0 items-center gap-2 pl-2">
                     {filterCount > 0 && (
                         <button
                             type="button"
                             onClick={onClearAll}
-                            className="flex flex-shrink-0 items-center gap-1.5 text-[14px] leading-none whitespace-nowrap text-navy hover:underline"
+                            className="hidden flex-shrink-0 items-center gap-1.5 text-[13px] leading-none whitespace-nowrap text-navy hover:underline xl:flex"
                         >
                             <svg
                                 className="h-4 w-4"
@@ -183,85 +306,53 @@ export function FilterBar({
                                     d="M6 18L18 6M6 6l12 12"
                                 />
                             </svg>
-                            Clear all filters
+                            Clear all
                         </button>
                     )}
+                    {/* Saved searches have no backend yet — the control stays
+                        visible per the design but is disabled with a reason
+                        instead of silently doing nothing. */}
                     <button
                         type="button"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            onOpenPanel(
-                                'filters',
-                                e.currentTarget.getBoundingClientRect(),
-                            );
-                        }}
-                        className={cn(
-                            'flex flex-shrink-0 items-center gap-2 rounded-full border border-navy px-4 py-2 text-[14px] leading-none font-medium whitespace-nowrap text-navy',
-                        )}
+                        disabled
+                        aria-disabled="true"
+                        title="Saved searches are coming soon"
+                        className="flex h-10 items-center gap-2 rounded-lg bg-navy px-4 text-[13px] font-semibold tracking-[0.3px] whitespace-nowrap text-white hover:opacity-90 disabled:cursor-not-allowed"
                     >
                         <svg
-                            className="h-4 w-4"
+                            className="h-3.5 w-3.5"
                             fill="none"
                             stroke="currentColor"
+                            strokeWidth="2"
                             viewBox="0 0 24 24"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M3 6h18M7 12h10M11 18h2"
-                            />
-                        </svg>
-                        Filters
-                        {filterCount > 0 && (
-                            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-navy text-[11px] text-white">
-                                {filterCount}
-                            </span>
-                        )}
-                        <ChevronDownIcon className="h-3.5 w-3.5" />
-                    </button>
-                    <button
-                        type="button"
-                        className="flex items-center gap-2 rounded-full bg-navy px-4 py-2 text-[14px] whitespace-nowrap text-white"
-                    >
-                        <svg
-                            className="h-4 w-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5 5h11l3 3v11a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"
-                            />
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                            <polyline points="17 21 17 13 7 13 7 21" />
+                            <polyline points="7 3 7 8 15 8" />
                         </svg>
                         Save Search
                     </button>
-                    <div className="flex items-center overflow-hidden rounded-full border border-gray-300 text-[14px]">
+                    <div className="flex h-10 items-center overflow-hidden rounded-lg border border-gray-300">
                         <button
                             type="button"
                             onClick={() => onViewChange('map')}
                             className={cn(
-                                'flex items-center gap-1.5 px-4 py-2',
+                                'flex h-full items-center gap-1.5 px-3 text-[12px] font-semibold',
                                 view === 'map'
                                     ? 'bg-navy text-white'
-                                    : 'text-gray-700',
+                                    : 'text-gray-500',
                             )}
                         >
                             <svg
-                                className="h-4 w-4"
+                                className="h-3.5 w-3.5"
                                 fill="none"
                                 stroke="currentColor"
+                                strokeWidth="2"
                                 viewBox="0 0 24 24"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                                />
+                                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                                <line x1="8" y1="2" x2="8" y2="18" />
+                                <line x1="16" y1="6" x2="16" y2="22" />
                             </svg>
                             Map
                         </button>
@@ -269,24 +360,23 @@ export function FilterBar({
                             type="button"
                             onClick={() => onViewChange('grid')}
                             className={cn(
-                                'flex items-center gap-1.5 px-4 py-2',
+                                'flex h-full items-center gap-1.5 border-l border-gray-300 px-3 text-[12px] font-semibold',
                                 view === 'grid'
                                     ? 'bg-navy text-white'
-                                    : 'text-gray-700',
+                                    : 'text-gray-500',
                             )}
                         >
                             <svg
-                                className="h-4 w-4"
+                                className="h-3.5 w-3.5"
                                 fill="none"
                                 stroke="currentColor"
+                                strokeWidth="2"
                                 viewBox="0 0 24 24"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M4 5h6v6H4zM14 5h6v6h-6zM4 15h6v6H4zM14 15h6v6h-6z"
-                                />
+                                <rect x="3" y="3" width="7" height="7" />
+                                <rect x="14" y="3" width="7" height="7" />
+                                <rect x="3" y="14" width="7" height="7" />
+                                <rect x="14" y="14" width="7" height="7" />
                             </svg>
                             Grid
                         </button>

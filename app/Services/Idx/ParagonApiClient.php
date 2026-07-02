@@ -63,6 +63,9 @@ class ParagonApiClient
     /** Photos requested in one batch — caps the Media call for a result page. */
     private const MEDIA_BATCH_LIMIT = 30;
 
+    /** Listing keys per Media request — Paragon 500s on very long OR filters. */
+    private const MEDIA_KEY_CHUNK = 20;
+
     public function __construct(
         private readonly ParagonTokenManager $tokenManager,
     ) {}
@@ -175,26 +178,34 @@ class ParagonApiClient
             return [];
         }
 
-        $keyFilter = '('.implode(' or ', array_map(
-            fn ($k) => "ResourceRecordKey eq '".$this->escape($k)."'",
-            $keys,
-        )).')';
+        // Paragon rejects very long $filter clauses / large $top values, so a
+        // single OR over a big result page returns nothing. Fetch media in
+        // chunks and merge — keeps large search pages working.
+        $rows = [];
+        foreach (array_chunk($keys, self::MEDIA_KEY_CHUNK) as $chunk) {
+            $keyFilter = '('.implode(' or ', array_map(
+                fn ($k) => "ResourceRecordKey eq '".$this->escape($k)."'",
+                $chunk,
+            )).')';
 
-        try {
-            $response = $this->request($credentials)
-                ->withQueryParameters([
-                    '$filter' => $keyFilter,
-                    '$orderby' => 'Order asc',
-                    '$select' => 'ResourceRecordKey,MediaURL,Order,MediaCategory,Permission',
-                    '$top' => count($keys) * self::MEDIA_BATCH_LIMIT,
-                ])
-                ->get($credentials->resourceUrl($datasetPath, 'Media'));
-            if ($response->failed()) {
-                return [];
+            try {
+                $response = $this->request($credentials)
+                    ->withQueryParameters([
+                        '$filter' => $keyFilter,
+                        '$orderby' => 'Order asc',
+                        '$select' => 'ResourceRecordKey,MediaURL,Order,MediaCategory,Permission',
+                        '$top' => count($chunk) * self::MEDIA_BATCH_LIMIT,
+                    ])
+                    ->get($credentials->resourceUrl($datasetPath, 'Media'));
+                if ($response->failed()) {
+                    continue;
+                }
+                foreach ((array) ($response->json()['value'] ?? []) as $row) {
+                    $rows[] = $row;
+                }
+            } catch (\Throwable) {
+                continue;
             }
-            $rows = (array) ($response->json()['value'] ?? []);
-        } catch (\Throwable) {
-            return [];
         }
 
         $grouped = [];
@@ -240,10 +251,16 @@ class ParagonApiClient
         $clauses = [];
 
         // Status — default Active so public surfaces never leak off-market.
+        // Exception: when specific ListingIds are pinned ("feature exactly
+        // these"), don't force Active — the admin chose those listings
+        // deliberately and may want a pending/sold one shown.
         $statuses = $this->values($f, 'statuses', 'status');
-        $clauses[] = $statuses
-            ? $this->orClause('StandardStatus', $statuses)
-            : "StandardStatus eq 'Active'";
+        $pinned = $this->values($f, 'listing_ids', 'listing_id');
+        if ($statuses) {
+            $clauses[] = $this->orClause('StandardStatus', $statuses);
+        } elseif (! $pinned) {
+            $clauses[] = "StandardStatus eq 'Active'";
+        }
 
         if ($types = $this->values($f, 'property_types', 'property_type')) {
             $clauses[] = $this->orClause('PropertyType', $types);
@@ -275,8 +292,17 @@ class ParagonApiClient
             $clauses[] = $this->orClause('SubdivisionName', $hoods);
         }
         if (! empty($f['query'])) {
+            // NB: UnparsedAddress is selectable but NOT filterable on this feed —
+            // including it 400s the whole $filter. Match City / PostalCode /
+            // StreetName / ListingId, which are all filterable.
             $q = $this->escape((string) $f['query']);
-            $clauses[] = "(contains(UnparsedAddress, '{$q}') or contains(City, '{$q}') or contains(PostalCode, '{$q}') or ListingId eq '{$q}')";
+            $clauses[] = "(contains(City, '{$q}') or contains(PostalCode, '{$q}') or contains(StreetName, '{$q}') or ListingId eq '{$q}')";
+        }
+
+        // Hand-picked MLS listing numbers (the admin's "feature exactly these"
+        // list) → exact OR over ListingId, the human-facing MLS number.
+        if ($listingIds = $this->values($f, 'listing_ids', 'listing_id')) {
+            $clauses[] = $this->orClause('ListingId', $listingIds);
         }
 
         if ($agentIds = $this->values($f, 'agent_ids', 'agent_id')) {

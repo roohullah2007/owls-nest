@@ -3,8 +3,10 @@
 // the brand's Instagram feed.
 import { Container } from '@/components/site/primitives';
 import { InstagramIcon } from '@/components/site/icons';
+import { SITE } from '@/data/site';
 
-const IG_URL = 'https://instagram.com/owlsnestrealestate';
+// Single source of truth for the brand Instagram URL (also used in footers).
+const IG_URL = SITE.social.instagram;
 
 const DEFAULT_IMAGES = [
     '/images/ig-1.webp',

@@ -4,32 +4,77 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Http\Controllers\Concerns\MapsMlsListings;
 use App\Services\Mls\Dto\MlsQuery;
 use App\Services\Mls\MlsGateway;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\Response;
+use Throwable;
 
 /**
- * Thin public endpoint over the PrimeMLS (Paragon) integration. Resolves the
- * single owner user, builds a typed MlsQuery from the request, and fans the
- * search out to the gateway restricted to the `primemls` dataset.
+ * Public PrimeMLS (Paragon) property search. `index()` renders the Inertia
+ * search page seeded with a live batch of PrimeMLS listings; `search()` is the
+ * JSON endpoint the page can re-query as filters change.
  */
 class PropertySearchController extends Controller
 {
-    public function search(Request $request): JsonResponse
+    use MapsMlsListings;
+
+    /** Listings seeded into the page on first load. */
+    private const INITIAL_LIMIT = 60;
+
+    public function index(): Response
     {
-        $user = User::first();
-        if (! $user) {
-            return response()->json([
-                'error' => 'No owner user configured.',
-            ], 503);
+        $owner = $this->resolveOwner();
+        $listings = [];
+
+        if ($owner) {
+            try {
+                $result = app(MlsGateway::class)->search(
+                    $owner,
+                    MlsQuery::fromArray([
+                        'statuses' => ['Active'],
+                        'per_page' => self::INITIAL_LIMIT,
+                        'sort' => MlsQuery::SORT_NEWEST,
+                    ]),
+                    ['primemls'],
+                );
+                $listings = array_values(array_filter(array_map(
+                    fn (array $l): ?array => $this->mapListing($l),
+                    $result->toArray()['listings'],
+                )));
+            } catch (Throwable) {
+                $listings = [];
+            }
         }
 
-        $query = MlsQuery::fromArray($request->all());
+        return Inertia::render('property-search', ['listings' => $listings]);
+    }
 
-        $result = app(MlsGateway::class)->search($user, $query, ['primemls']);
+    public function search(Request $request): JsonResponse
+    {
+        $owner = $this->resolveOwner();
+        if (! $owner) {
+            return response()->json(['listings' => [], 'total' => 0]);
+        }
 
-        return response()->json($result->toArray());
+        try {
+            $result = app(MlsGateway::class)->search($owner, MlsQuery::fromArray($request->all()), ['primemls']);
+        } catch (Throwable) {
+            return response()->json(['listings' => [], 'total' => 0]);
+        }
+
+        $data = $result->toArray();
+        $listings = array_values(array_filter(array_map(
+            fn (array $l): ?array => $this->mapListing($l),
+            $data['listings'],
+        )));
+
+        return response()->json([
+            'listings' => $listings,
+            'total' => $data['total'] ?? count($listings),
+        ]);
     }
 }

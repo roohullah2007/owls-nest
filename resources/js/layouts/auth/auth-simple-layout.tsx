@@ -49,8 +49,11 @@ export default function AuthSimpleLayout({
                 </div>
             </aside>
 
-            {/* RIGHT — form panel */}
-            <main className="flex w-full flex-1 items-center justify-center p-6 sm:p-10 lg:w-1/2">
+            {/* RIGHT — form panel. The sand panel is always light, so force any
+                form input's typed text to black (the shared Input sets no text
+                color and would otherwise inherit the light theme foreground and
+                vanish against the cream background). */}
+            <main className="flex w-full flex-1 items-center justify-center p-6 sm:p-10 lg:w-1/2 [&_input]:text-black">
                 <div className="w-full max-w-sm">
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col items-center gap-6 text-center">

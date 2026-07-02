@@ -18,6 +18,7 @@ import { WorkWithUsBand } from '@/components/site/sections/work-with-us-band';
 import { POPULAR_SEARCHES } from '@/data/popular-searches';
 import { TESTIMONIALS } from '@/data/testimonials';
 import { HERO_SEARCH_TABS } from '@/data/hero-search-tabs';
+import type { Listing, PropertySlide } from '@/types/listing';
 
 const ROTATING = [
     "Owl's Nest Resort",
@@ -27,13 +28,49 @@ const ROTATING = [
     'Investment Properties',
 ];
 
+interface HomeProps {
+    /** Latest live PrimeMLS listings from the home controller. */
+    featuredListings?: Listing[];
+}
+
+/** Group listings into slider slides of a big card + two thumbnails. */
+function toSlides(listings: Listing[]): PropertySlide[] {
+    const slides: PropertySlide[] = [];
+
+    for (let i = 0; i + 2 < listings.length; i += 3) {
+        slides.push({
+            big: listings[i],
+            thumbnails: [listings[i + 1], listings[i + 2]],
+        });
+    }
+
+    return slides;
+}
+
 // Thin page: the hero is composed inline (it embeds the header), and every
 // section below is a shared component from components/site/sections.
-export default function Home() {
+export default function Home({ featuredListings = [] }: HomeProps) {
     const rotating = useTypewriter(ROTATING);
     const [activeTab, setActiveTab] = useState(0);
     const [query, setQuery] = useState('');
+    // Address handed from the hero "Home Valuation" tab to the ValuationWidget.
+    const [valuationAddress, setValuationAddress] = useState('');
     const tab = HERO_SEARCH_TABS[activeTab];
+    const slides = toSlides(featuredListings);
+
+    // The valuation tab has no page of its own: hand the typed address to the
+    // ValuationWidget section further down this page and scroll to it.
+    function onHeroSubmit(e: React.FormEvent) {
+        if (tab.id !== 'valuation') {
+            return;
+        }
+
+        e.preventDefault();
+        setValuationAddress(query);
+        document
+            .getElementById('valuation')
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
     return (
         <SiteLayout showHeader={false}>
@@ -95,6 +132,7 @@ export default function Home() {
                     <form
                         action={tab.action}
                         method="get"
+                        onSubmit={onHeroSubmit}
                         className="mt-4 w-full max-w-xl self-start"
                     >
                         <div className="flex items-center gap-3 rounded-full bg-white py-2 pr-2 pl-6 shadow-lg">
@@ -126,7 +164,9 @@ export default function Home() {
                 </div>
             </section>
 
-            <FeaturedListings />
+            {featuredListings.length > 0 && (
+                <FeaturedListings listings={featuredListings} />
+            )}
 
             <ImageTextSplit
                 image="/images/home-about.webp"
@@ -161,11 +201,11 @@ export default function Home() {
 
             <PathCards />
 
-            <FeaturedPropertiesSlider />
+            {slides.length > 0 && <FeaturedPropertiesSlider slides={slides} />}
 
             <NeighborhoodsExplorer />
 
-            <ValuationWidget />
+            <ValuationWidget id="valuation" initialAddress={valuationAddress} />
 
             <BlogRotator />
 

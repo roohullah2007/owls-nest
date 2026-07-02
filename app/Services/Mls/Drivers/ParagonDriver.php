@@ -52,6 +52,21 @@ final class ParagonDriver extends AbstractMlsDriver
             $filters['select_extras'] = $extras;
         }
 
+        // Translate the canonical `sort` token into the sort_by/sort_dir pair the
+        // Paragon client turns into $orderby — otherwise sorting is dropped at the
+        // API layer and only the current page is (locally) re-ordered.
+        if (! empty($filters['sort']) && empty($filters['sort_by'])) {
+            [$by, $dir] = match ((string) $filters['sort']) {
+                MlsQuery::SORT_PRICE_ASC => ['price', 'asc'],
+                MlsQuery::SORT_PRICE_DESC => ['price', 'desc'],
+                MlsQuery::SORT_BEDS_DESC => ['beds', 'desc'],
+                MlsQuery::SORT_SQFT_DESC => ['sqft', 'desc'],
+                default => ['date', 'desc'],
+            };
+            $filters['sort_by'] = $by;
+            $filters['sort_dir'] = $dir;
+        }
+
         return $filters;
     }
 

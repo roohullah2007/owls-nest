@@ -72,13 +72,20 @@ function DesktopLink({
     );
 }
 
-export function SiteHeader() {
+export function SiteHeader({ fullWidth = false }: { fullWidth?: boolean }) {
     const { url } = usePage();
     const [mobileOpen, setMobileOpen] = useState(false);
 
     return (
         <nav className="relative z-20 w-full bg-navy/95">
-            <div className="mx-auto flex max-w-[1400px] items-center gap-6 px-6 py-4 lg:px-10">
+            <div
+                className={cn(
+                    'mx-auto flex items-center gap-6 py-4',
+                    fullWidth
+                        ? 'max-w-full px-4'
+                        : 'max-w-[1400px] px-6 lg:px-10',
+                )}
+            >
                 {/* Logo */}
                 <Link href="/" className="flex-shrink-0">
                     <img

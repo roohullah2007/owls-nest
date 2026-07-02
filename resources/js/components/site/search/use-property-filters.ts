@@ -7,7 +7,7 @@ import type { SearchListing } from '@/types/search-listing';
 export type SortKey =
     'recommended' | 'price-asc' | 'price-desc' | 'beds' | 'year';
 
-export type StatusKey = 'all' | 'active' | 'sold' | 'changed';
+export type StatusKey = 'all' | 'active' | 'sold' | 'expired' | 'changed';
 
 export type TourKey = 'virtual' | 'floor' | 'open';
 
@@ -27,6 +27,26 @@ export interface FilterState {
     sort: SortKey;
     tours: TourKey[];
 }
+
+// UI Type label → PrimeMLS (RESO) query values. Most map to PropertySubType;
+// "Multi-Family" / "Land" are top-level PropertyType values on this feed. These
+// strings must equal the RESO values exactly or the OData `eq` returns nothing.
+export interface PropertyTypeOption {
+    label: string;
+    subtypes?: string[];
+    types?: string[];
+}
+
+export const PROPERTY_TYPE_OPTIONS: PropertyTypeOption[] = [
+    { label: 'Single Family', subtypes: ['Single Family Residence'] },
+    { label: 'Condo', subtypes: ['Condominium'] },
+    { label: 'Apartment', subtypes: ['Apartment'] },
+    { label: 'Townhouse', subtypes: ['Townhouse'] },
+    { label: 'Duplex', subtypes: ['Duplex'] },
+    { label: 'Mobile Home', subtypes: ['Mobile Home'] },
+    { label: 'Multi-Family', types: ['Residential Income'] },
+    { label: 'Land', types: ['Land'] },
+];
 
 export const DEFAULT_FILTERS: FilterState = {
     q: '',
